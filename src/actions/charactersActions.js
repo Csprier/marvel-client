@@ -1,4 +1,4 @@
-import { MARVEL_URL, PUBLIC_KEY } from '../config';
+import { REACT_APP_MARVEL_URL, REACT_APP_PUBLIC_KEY } from '../config';
 import Axios from 'axios';
 
 export const GET_CHARACTERS_REQUEST = 'GET_CHARACTERS_REQUEST',
@@ -19,7 +19,7 @@ export const GET_CHARACTER_NAMES = 'GET_CHARACTER_NAMES',
 
 // ASYNC with redux-thunk
 export const listAllCharactersByName = dispatch => {
-  let url = `${MARVEL_URL}/characters?orderBy=name&apikey=${PUBLIC_KEY}`;
+  let url = `${REACT_APP_MARVEL_URL}/characters?orderBy=name&apikey=${REACT_APP_PUBLIC_KEY}`;
 
   Axios.get(url)
     .then(res => {
