@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Characters from './components/Characters';
 
 class App extends Component {
   render() {
@@ -9,7 +10,7 @@ class App extends Component {
           <h1>Marvel App</h1>
         </header>
         <main>
-          
+          <Characters />
         </main>
       </div>
     );

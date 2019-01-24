@@ -1,10 +1,34 @@
 import { MARVEL_URL, PUBLIC_KEY } from '../config';
+import Axios from 'axios';
 
 export const GET_CHARACTERS_REQUEST = 'GET_CHARACTERS_REQUEST',
   getCharactersRequest = () => ({
-    type: GET_CHARACTERS
+    type: GET_CHARACTERS_REQUEST
   });
 
+export const GET_CHARACTERS_SUCCESS = 'GET_CHARACTERS_SUCCESS',
+  getCharactersSuccess = () => ({
+    type: GET_CHARACTERS_SUCCESS
+  });
+
+export const GET_CHARACTER_NAMES = 'GET_CHARACTER_NAMES',
+  getCharacterNames = (characters) => ({
+    type: GET_CHARACTER_NAMES,
+    characters
+  });
+
+// ASYNC with redux-thunk
+export const listAllCharactersByName = dispatch => {
+  let url = `${MARVEL_URL}/characters?orderBy=name&apikey=${PUBLIC_KEY}`;
+
+  Axios.get(url)
+    .then(res => {
+      console.log(res);
+    })
+    .catch(e => console.error(e));
+}
+
+/*
 export const getAllCharacters = () => dispatch => {
   const {
     offset,
@@ -61,3 +85,4 @@ export const getAllCharacters = () => dispatch => {
     .then(json => dispatch(getCharactersRequest(json)))
     .catch(err => console.error(err));
 }
+*/
