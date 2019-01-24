@@ -21,7 +21,8 @@ export default (state = initialState, action) => {
       }
     case GET_CHARACTER_NAMES:
       return { // THIS IS NOT RIGHT YET
-        ...state
+        ...state,
+        characters: action.characters
       }
     default:
       return state;

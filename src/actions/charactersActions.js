@@ -1,4 +1,4 @@
-import { REACT_APP_MARVEL_URL, REACT_APP_PUBLIC_KEY } from '../config';
+import { REACT_APP_MARVEL_URL } from '../config';
 import Axios from 'axios';
 
 export const GET_CHARACTERS_REQUEST = 'GET_CHARACTERS_REQUEST',
@@ -11,6 +11,11 @@ export const GET_CHARACTERS_SUCCESS = 'GET_CHARACTERS_SUCCESS',
     type: GET_CHARACTERS_SUCCESS
   });
 
+export const GET_CHARACTERS_ERROR = 'GET_CHARACTERS_ERROR',
+  getCharactersError = () => ({
+    type: GET_CHARACTERS_ERROR
+  });
+
 export const GET_CHARACTER_NAMES = 'GET_CHARACTER_NAMES',
   getCharacterNames = (characters) => ({
     type: GET_CHARACTER_NAMES,
@@ -19,13 +24,21 @@ export const GET_CHARACTER_NAMES = 'GET_CHARACTER_NAMES',
 
 // ASYNC with redux-thunk
 export const listAllCharactersByName = dispatch => {
-  let url = `${REACT_APP_MARVEL_URL}/characters?orderBy=name&apikey=${REACT_APP_PUBLIC_KEY}`;
+  let url = `${REACT_APP_MARVEL_URL}/characters?orderBy=name&apikey=${process.env.REACT_APP_PUBLIC_KEY}`;
 
   Axios.get(url)
     .then(res => {
-      console.log(res);
+      res.json();
+      // console.log(res.data.data);
+      const characterNames = res.data.data.results.map(character => ({
+        id: character.id,
+        name: character.name,
+        resourceURI: character.resourceURI
+      }));
+      dispatch(getCharacterNames(characterNames));
+      dispatch(getCharactersSuccess());
     })
-    .catch(e => console.error(e));
+  .catch(e => dispatch(getCharactersError(e)));
 }
 
 /*
