@@ -3,89 +3,20 @@ import { connect } from 'react-redux';
 import './css/alphabet.css';
 
 class Alphabet extends Component {
+  state = {
+    alphabet: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+  }
   render() {
+    const buttons = this.state.alphabet.map(letter => {
+      return <li className="alphabet-item">
+               <button>{letter}</button>
+             </li>
+            })
     return(
       <div className="alphabet-selector-container">
         <div className="alphabet-selector">
           <ul>
-            <li className="alphabet-item">
-              <button>A</button>
-            </li>
-            <li className="alphabet-item">
-              <button>B</button>
-            </li>
-            <li className="alphabet-item">
-              <button>C</button>
-            </li>
-            <li className="alphabet-item">
-              <button>D</button>
-            </li>
-            <li className="alphabet-item">
-              <button>E</button>
-            </li>
-            <li className="alphabet-item">
-              <button>F</button>
-            </li>
-            <li className="alphabet-item">
-              <button>G</button>
-            </li>
-            <li className="alphabet-item">
-              <button>H</button>
-            </li>
-            <li className="alphabet-item">
-              <button>I</button>
-            </li>
-            <li className="alphabet-item">
-              <button>J</button>
-            </li>
-            <li className="alphabet-item">
-              <button>K</button>
-            </li>
-            <li className="alphabet-item">
-              <button>L</button>
-            </li>
-            <li className="alphabet-item">
-              <button>M</button>
-            </li>
-            <li className="alphabet-item">
-              <button>N</button>
-            </li>
-            <li className="alphabet-item">
-              <button>O</button>
-            </li>
-            <li className="alphabet-item">
-              <button>P</button>
-            </li>
-            <li className="alphabet-item">
-              <button>Q</button>
-            </li>
-            <li className="alphabet-item">
-              <button>R</button>
-            </li>
-            <li className="alphabet-item">
-              <button>S</button>
-            </li>
-            <li className="alphabet-item">
-              <button>T</button>
-            </li>
-            <li className="alphabet-item">
-              <button>U</button>
-            </li>
-            <li className="alphabet-item">
-              <button>V</button>
-            </li>
-            <li className="alphabet-item">
-              <button>W</button>
-            </li>
-            <li className="alphabet-item">
-              <button>X</button>
-            </li>
-            <li className="alphabet-item">
-              <button>Y</button>
-            </li>
-            <li className="alphabet-item">
-              <button>Z</button>
-            </li>
+            {buttons}
           </ul>
         </div>
       </div>
