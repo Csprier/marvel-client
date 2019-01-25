@@ -9,7 +9,7 @@ class Characters extends Component {
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const characterDummyInfo = this.props.characters.map((character, i) => {
       return (
         <li key={i} className="character-list-item">
