@@ -24,24 +24,27 @@ export const GET_CHARACTER_NAMES = 'GET_CHARACTER_NAMES',
   });
 
 // ASYNC with redux-thunk
-// export const listAllCharactersByName = dispatch => {
-  // let url = `${REACT_APP_MARVEL_URL}/characters?orderBy=name&apikey=${process.env.REACT_APP_PUBLIC_KEY}`;
-
-  // return Axios.get(url)
-  //   .then(res => res.json())
-  //   .then(res => {
-  //     const characterNames = res.data.data.results.map(character => ({
-  //       id: character.id,
-  //       name: character.name,
-  //       resourceURI: character.resourceURI
-  //     }));
-  //     dispatch(getCharacterNames(characterNames));
-  //     dispatch(getCharactersSuccess());
-  //   })
-  //   .catch(e => console.error(e));
-// }
-
 // WORKING VERSION
+export const listAllCharactersByName = () => dispatch => {
+  dispatch(getCharactersRequest())
+  let url = `${REACT_APP_MARVEL_URL}/characters?orderBy=name&apikey=${process.env.REACT_APP_PUBLIC_KEY}`;
+
+  return Axios.get(url)
+    .then(res => {
+      const characterNames = res.data.data.results.map(character => ({
+        id: character.id,
+        name: character.name,
+        urls: character.urls
+      }));
+      dispatch(getCharacterNames(characterNames));
+      dispatch(getCharactersSuccess());
+    })
+    .catch(err => {
+      console.error(err);
+      dispatch(getCharactersError(err));
+    });
+};
+
 // export const listAllCharactersByName = () => dispatch => {
 //   dispatch(getCharactersRequest())
 //   let url = `${REACT_APP_MARVEL_URL}/characters?orderBy=name&apikey=${process.env.REACT_APP_PUBLIC_KEY}`;
@@ -62,23 +65,3 @@ export const GET_CHARACTER_NAMES = 'GET_CHARACTER_NAMES',
 //       dispatch(getCharactersError(err))
 //     });
 // };
-
-export const listAllCharactersByName = () => dispatch => {
-  dispatch(getCharactersRequest())
-  let url = `${REACT_APP_MARVEL_URL}/characters?orderBy=name&apikey=${process.env.REACT_APP_PUBLIC_KEY}`;
-
-  return Axios.get(url)
-    .then(res => {
-      const characterNames = res.data.data.results.map(character => ({
-        id: character.id,
-        name: character.name,
-        resourceURI: character.resourceURI
-      }));
-      dispatch(getCharacterNames({characterNames}))
-      dispatch(getCharactersSuccess())
-    })
-    .catch(err => {
-      console.error(err);
-      dispatch(getCharactersError(err))
-    });
-};
