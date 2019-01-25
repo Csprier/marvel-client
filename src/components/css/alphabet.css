@@ -1,3 +1,21 @@
+.alphabet-selector-container {
+  width: 100%;
+}
+
+.alphabet-selector {
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px 0px;
+}
+
 .alphabet-item {
   list-style-type: none;
+}
+
+.alphabet-item button {
+  font-family: 'badaboom_bb';
+  font-size: 15px;
+  margin: 0px 5px;
+  padding: 0px 10px;
+  border: 1px solid black;
 }
