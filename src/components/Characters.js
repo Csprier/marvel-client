@@ -8,12 +8,15 @@ class Characters extends Component {
   }
 
   render() {
+    console.log(this.props);
     const characterDummyInfo = this.props.characters.map(character => {
       return (
         <li>
           <h3>{character.name}</h3>
           <p>ID: {character.id}</p>
-          <p>URLs: {character.urls.map(url => <li><a href={url.url}>{url.type}</a></li>)}</p>
+          <h4>Description:</h4>
+          <p>{character.description}</p>
+          <p>URLs to various external: {character.urls.map(url => <li><a href={url.url}>{url.type}</a></li>)}</p>
         </li>
       )
     })
@@ -30,7 +33,7 @@ class Characters extends Component {
 }
 
 const mapStateToProps = state => ({
-  characters: state.characters.characters
+  characters: state.characters.data
 });
 
 export default connect(mapStateToProps)(Characters);

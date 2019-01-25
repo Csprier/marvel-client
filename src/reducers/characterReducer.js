@@ -5,7 +5,7 @@ import {
 } from '../actions/charactersActions';
 
 export const initialState = {
-  characters: []
+  data: []
 }
 
 
@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
     case GET_CHARACTER_NAMES:
       return { // THIS IS NOT RIGHT YET
         ...state,
-        characters: action.characters
+        data: action.characters
       }
     default:
       return state;

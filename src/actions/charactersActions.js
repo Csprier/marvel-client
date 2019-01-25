@@ -31,12 +31,13 @@ export const listAllCharactersByName = () => dispatch => {
 
   return Axios.get(url)
     .then(res => {
-      const characterNames = res.data.data.results.map(character => ({
+      const characterData = res.data.data.results.map(character => ({
         id: character.id,
         name: character.name,
+        description: character.description,
         urls: character.urls
       }));
-      dispatch(getCharacterNames(characterNames));
+      dispatch(getCharacterNames(characterData));
       dispatch(getCharactersSuccess());
     })
     .catch(err => {
