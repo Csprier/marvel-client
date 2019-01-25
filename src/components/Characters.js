@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { listAllCharactersByName } from '../actions/charactersActions';
+import './css/characters.css';
 
 class Characters extends Component {
   componentDidMount() {
@@ -9,14 +10,17 @@ class Characters extends Component {
 
   render() {
     console.log(this.props);
-    const characterDummyInfo = this.props.characters.map(character => {
+    const characterDummyInfo = this.props.characters.map((character, i) => {
       return (
-        <li>
-          <h3>{character.name}</h3>
-          <p>ID: {character.id}</p>
-          <h4>Description:</h4>
-          <p>{character.description}</p>
-          <p>URLs to various external: {character.urls.map(url => <li><a href={url.url}>{url.type}</a></li>)}</p>
+        <li key={i} className="character-list-item">
+          <div className="character-item">
+            <h3>{character.name}</h3>
+            <p>ID: {character.id}</p>
+            <h4>Description:</h4>
+            <p>{character.description.length !== 0 ? character.description : 'Description not available'}</p>
+            <h4>URLs to various external:</h4>
+            <ul>{character.urls.map((url, i) => <li key={i}><a href={url.url}>{url.type}</a></li>)}</ul>
+          </div>
         </li>
       )
     })

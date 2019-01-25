@@ -1,0 +1,39 @@
+.characters-container {
+  margin: 0px;
+  padding: 0px;
+}
+
+.character-dummy-info {
+  margin: 0px;
+  padding: 0px;
+  border: 1px solid black;
+}
+
+.character-dummy-info ul {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.character-list-item {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  list-style-type: none;
+  border: 1px solid black;
+}
+
+.character-item h3, h4, p, ul {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+}
+
+.character-item {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
