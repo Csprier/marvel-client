@@ -12,8 +12,9 @@ export const GET_CHARACTERS_SUCCESS = 'GET_CHARACTERS_SUCCESS',
   });
 
 export const GET_CHARACTERS_ERROR = 'GET_CHARACTERS_ERROR',
-  getCharactersError = () => ({
-    type: GET_CHARACTERS_ERROR
+  getCharactersError = (err) => ({
+    type: GET_CHARACTERS_ERROR,
+    err
   });
 
 export const GET_CHARACTER_NAMES = 'GET_CHARACTER_NAMES',
@@ -23,79 +24,61 @@ export const GET_CHARACTER_NAMES = 'GET_CHARACTER_NAMES',
   });
 
 // ASYNC with redux-thunk
-export const listAllCharactersByName = dispatch => {
+// export const listAllCharactersByName = dispatch => {
+  // let url = `${REACT_APP_MARVEL_URL}/characters?orderBy=name&apikey=${process.env.REACT_APP_PUBLIC_KEY}`;
+
+  // return Axios.get(url)
+  //   .then(res => res.json())
+  //   .then(res => {
+  //     const characterNames = res.data.data.results.map(character => ({
+  //       id: character.id,
+  //       name: character.name,
+  //       resourceURI: character.resourceURI
+  //     }));
+  //     dispatch(getCharacterNames(characterNames));
+  //     dispatch(getCharactersSuccess());
+  //   })
+  //   .catch(e => console.error(e));
+// }
+
+// WORKING VERSION
+// export const listAllCharactersByName = () => dispatch => {
+//   dispatch(getCharactersRequest())
+//   let url = `${REACT_APP_MARVEL_URL}/characters?orderBy=name&apikey=${process.env.REACT_APP_PUBLIC_KEY}`;
+//   return fetch(url, { method: 'GET' })
+//     .then(res => res.json())
+//     .then(res => {
+//       console.log(`res: ${JSON.stringify(res, null, 2)}`);
+//       const characterNames = res.data.results.map(character => ({
+//         id: character.id,
+//         name: character.name,
+//         resourceURI: character.resourceURI
+//       }));
+//       dispatch(getCharacterNames({characterNames}))
+//       dispatch(getCharactersSuccess())
+//     })
+//     .catch(err => {
+//       console.error(err);
+//       dispatch(getCharactersError(err))
+//     });
+// };
+
+export const listAllCharactersByName = () => dispatch => {
+  dispatch(getCharactersRequest())
   let url = `${REACT_APP_MARVEL_URL}/characters?orderBy=name&apikey=${process.env.REACT_APP_PUBLIC_KEY}`;
 
-  Axios.get(url)
+  return Axios.get(url)
     .then(res => {
-      res.json();
-      // console.log(res.data.data);
       const characterNames = res.data.data.results.map(character => ({
         id: character.id,
         name: character.name,
         resourceURI: character.resourceURI
       }));
-      dispatch(getCharacterNames(characterNames));
-      dispatch(getCharactersSuccess());
+      dispatch(getCharacterNames({characterNames}))
+      dispatch(getCharactersSuccess())
     })
-  .catch(e => dispatch(getCharactersError(e)));
-}
-
-/*
-export const getAllCharacters = () => dispatch => {
-  const {
-    offset,
-    name,
-    exactMatch,
-    sortName,
-    limit,
-  } = Object.assign({
-    offset: 0,
-    name: '',
-    exactMatch: false,
-    sortName: '',
-    limit: 20,
-  }, options);
-
-  let url = `${MARVEL_URL}characters?${PUBLIC_KEY}&offset=${offset}&orderBy=${sortName}name&limit=${limit}`;
-  
-  if (name) {
-    if (exactMatch) { 
-      url += `&name=${name}`; 
-    } else { 
-      url += `&nameStartsWith=${name}`; 
-    }
-  }
-
-  return fetch(url, { method: 'GET' })
-    .then(res => res.json())
-    .then((resObj) => {
-      try {
-        // If the resObj.code is 200 OK
-        if (resObj.code === 200) {
-          // if offset is greater than resObj.data.total throw an error
-          if (offset > resObj.data.total) {
-            throw new Error('Page does not exist.');
-          } else { // else, return an object with the characters and a page range
-            const pages = Math.floor(resObj.data.total / limit);
-            return {
-              characters: resObj.data.results,
-              maxPage: resObj.data.total % limit > 0 ? pages + 1 : pages,
-            };
-          }
-        } else { // Else throw an error with the code
-          throw new Error(`Marvel API bad response. Status code ${resObj.code}.`);
-        }
-      } 
-      catch (e) { // Catch error and return an object with empty values
-        console.error(e);
-        return {
-          characters: [],
-          maxPage: 0,
-        };
-      }
-    })
-    .then(json => dispatch(getCharactersRequest(json)))
-    .catch(err => console.error(err));
-}
-*/
+    .catch(err => {
+      console.error(err);
+      dispatch(getCharactersError(err))
+    });
+};
