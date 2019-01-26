@@ -12,6 +12,7 @@ class SearchForm extends Component {
     super(props);
     this.submitNameStartsWithSearch = this.submitNameStartsWithSearch.bind(this);
   }
+
   submitNameStartsWithSearch(term) {
     console.log('Update searchTerm to: ', term);
     this.props.dispatch(updateSearchTerm(term));
@@ -22,7 +23,7 @@ class SearchForm extends Component {
       <div className="search-form">
         <form onSubmit={this.props.handleSubmit((e) => {
           this.submitNameStartsWithSearch(e.nameStartsWith);
-        })}>
+        })} ref="form">
           <label htmlFor="nameStartsWith">Name starting with:</label>
           <Field 
             name="nameStartsWith"

@@ -25,17 +25,20 @@ export const GET_CHARACTER_NAMES = 'GET_CHARACTER_NAMES',
 
 // ASYNC with redux-thunk
 // WORKING VERSION
+// Axios.get() does not require a .then(res => res.json())
 export const listAllCharactersByName = () => dispatch => {
   dispatch(getCharactersRequest())
   let url = `${REACT_APP_MARVEL_URL}/characters?orderBy=name&apikey=${process.env.REACT_APP_PUBLIC_KEY}`;
 
   return Axios.get(url)
     .then(res => {
+      const characterAttributionText = res.data.attributionText;
       const characterData = res.data.data.results.map(character => ({
         id: character.id,
         name: character.name,
         description: character.description,
-        urls: character.urls
+        urls: character.urls,
+        attributionText: characterAttributionText
       }));
       dispatch(getCharacterNames(characterData));
       dispatch(getCharactersSuccess());

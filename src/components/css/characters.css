@@ -39,3 +39,7 @@
   justify-content: space-around;
   flex-direction: column;
 }
+
+.attributionText {
+  font-size: 6px;
+}
