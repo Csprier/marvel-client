@@ -24,12 +24,18 @@ class Characters extends Component {
       return (
         <li key={i} className="character-list-item">
           <div className="character-item">
-            <h3>{character.name}</h3>
-            <p>ID: {character.id}</p>
-            <h4>Description:</h4>
-            <p>{character.description.length !== 0 ? character.description : '~Description not available~'}</p>
-            <h4>URLs to various external:</h4>
-            <ul>{character.urls.map((url, i) => <li key={i}><a href={url.url}>{url.type}</a></li>)}</ul>
+            <div className="character-header">
+              <h3>{character.name}</h3>
+            </div>
+            <div className="character-description">
+              <p>ID: {character.id}</p>  
+              <h4>Description:</h4>
+              <p>{character.description.length !== 0 ? character.description : '~Description not available~'}</p>  
+            </div>
+            <div className="character-urls">
+              <h4>URLs to various external:</h4>
+              <ul>{character.urls.map((url, i) => <li key={i}><a href={url.url}>{url.type}</a></li>)}</ul>  
+            </div>
             <p className="attributionText">{character.attributionText}</p>
           </div>
         </li>
@@ -37,6 +43,7 @@ class Characters extends Component {
     return (
       <div className="characters-container">
         <SearchForm />
+        <span>Results returned: {characterDummyInfo.length}</span>
         <div className="character-dummy-info">
           <ul>
             {characterDummyInfo}

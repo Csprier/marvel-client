@@ -16,28 +16,57 @@
 }
 
 .character-list-item {
-  margin: 0px;
+  width: 98%;
+  margin: 0 auto;
   padding: 0px;
   display: flex;
   list-style-type: none;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
+
+.character-item {
+  width: 100%;
+  margin: 00px 0px 5px 0px;
+  padding: 0px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
 .character-item h3, h4 { 
   font-family: 'Comic Sans MS', arial;
 }
 .character-item h3, h4, p, ul {
   margin: 0px;
-  padding: 0px;
+  padding: 0px 5px 5px 5px;
   display: flex;
 }
 
-.character-item {
+/* ================================================ */
+/* Character-item children */
+.character-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin: 0px;
   padding: 0px;
+  width: 100%;
+  background-color: darkblue;
+  color: yellow;
+}
+
+.character-description {
   display: flex;
-  justify-content: space-around;
   flex-direction: column;
+  margin: 0px;
+  padding: 5px;
+}
+
+.character-urls {
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  padding: 5px;
 }
 
 .attributionText {
