@@ -22,7 +22,6 @@ export const UPDATE_SEARCH_TERM_SUCCESS = 'UPDATE_SEARCH_TERM_SUCCESS',
 export const listAllCharactersByNameStartingWith = (searchTerm) => dispatch => {
   dispatch(getCharactersRequest());
   let url = `${REACT_APP_MARVEL_URL}/characters?nameStartsWith=${searchTerm}&apikey=${process.env.REACT_APP_PUBLIC_KEY}`;
-  console.log(url);
   return Axios.get(url)
     .then(res => {
       const characterData = res.data.data.results.map(character => ({

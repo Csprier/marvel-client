@@ -13,7 +13,6 @@ class Characters extends Component {
 
   componentDidUpdate() {
     if (this.props.searchTerm !== '') {
-      console.log('CDU', this.props.searchTerm);
       this.props.dispatch(listAllCharactersByNameStartingWith(this.props.searchTerm));
       let resetSearchTerm = '';
       this.props.dispatch(updateSearchTerm(resetSearchTerm));
@@ -21,7 +20,6 @@ class Characters extends Component {
   }
 
   render() {
-    console.log(this.props);
     const characterDummyInfo = this.props.characters.map((character, i) => {
       return (
         <li key={i} className="character-list-item">
