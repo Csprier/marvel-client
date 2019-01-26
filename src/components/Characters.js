@@ -1,15 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { listAllCharactersByName } from '../actions/charactersActions';
+import { listAllCharactersByNameStartingWith, updateSearchTerm } from '../actions/searchActions';
 import './css/characters.css';
+
+import SearchForm from './SearchForm';
 
 class Characters extends Component {
   componentDidMount() {
     this.props.dispatch(listAllCharactersByName());
   }
 
+  componentDidUpdate() {
+    if (this.props.searchTerm !== '') {
+      console.log('CDU', this.props.searchTerm);
+      this.props.dispatch(listAllCharactersByNameStartingWith(this.props.searchTerm));
+      let resetSearchTerm = '';
+      this.props.dispatch(updateSearchTerm(resetSearchTerm));
+    }
+  }
+
   render() {
-    // console.log(this.props);
+    console.log(this.props);
     const characterDummyInfo = this.props.characters.map((character, i) => {
       return (
         <li key={i} className="character-list-item">
@@ -22,10 +34,10 @@ class Characters extends Component {
             <ul>{character.urls.map((url, i) => <li key={i}><a href={url.url}>{url.type}</a></li>)}</ul>
           </div>
         </li>
-      )
-    })
+      )});
     return (
       <div className="characters-container">
+        <SearchForm />
         <div className="character-dummy-info">
           <ul>
             {characterDummyInfo}
@@ -37,7 +49,8 @@ class Characters extends Component {
 }
 
 const mapStateToProps = state => ({
-  characters: state.characters.data
+  characters: state.characters.data,
+  searchTerm: state.searchTerm.searchTerm
 });
 
 export default connect(mapStateToProps)(Characters);
