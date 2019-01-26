@@ -1,3 +1,12 @@
+/* @import './components/css/fonts/BADABB__.TTF'; */
+
+@font-face {
+  font-family: 'badaboom_bb';
+  src: local('badaboom_bb'), url('./components/css/fonts/BADABB__.TTF');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html {
   margin: 0px;
   padding: 0px;

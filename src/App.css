@@ -1,13 +1,22 @@
+@font-face {
+  font-family: 'badaboom_bb';
+  src: local('badaboom_bb'), url('./components/css/fonts/BADABB__.TTF');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .App {
   /* background-color: #282c34;   */
 }
 
 .App-header {
+  font-family: 'badaboom_bb';
+  letter-spacing: 4px;
   background-color: darkred;
   display: flex;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: yellow;
   margin: 0px;
   padding: 0px;
 }

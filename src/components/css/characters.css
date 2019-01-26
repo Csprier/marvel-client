@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'badaboom_bb';
+  src: local('badaboom_bb'), url('./fonts/BADABB__.TTF');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .characters-container {
   margin: 0px;
   padding: 0px;

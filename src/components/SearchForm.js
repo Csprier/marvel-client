@@ -12,16 +12,15 @@ class SearchForm extends Component {
     super(props);
     this.submitNameStartsWithSearch = this.submitNameStartsWithSearch.bind(this);
   }
-  submitNameStartsWithSearch(values) {
-    console.log('sNSW: ', values);
-    this.props.dispatch(updateSearchTerm(values));
+  submitNameStartsWithSearch(term) {
+    console.log('Update searchTerm to: ', term);
+    this.props.dispatch(updateSearchTerm(term));
   }
 
   render() {
     return(
       <div className="search-form">
         <form onSubmit={this.props.handleSubmit((e) => {
-          // console.log('e: ', e.nameStartsWith);
           this.submitNameStartsWithSearch(e.nameStartsWith);
         })}>
           <label htmlFor="nameStartsWith">Name starting with:</label>
@@ -29,7 +28,7 @@ class SearchForm extends Component {
             name="nameStartsWith"
             component={myInput}
             type="text"
-            placeholder="nameStartsWith"
+            placeholder="Search by first letter of character's name"
           />
           <button type="submit" label="submit">Submit</button>
         </form>
