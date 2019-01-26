@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'badaboom_bb';
+  src: local('badaboom_bb'), url('./fonts/BADABB__.TTF');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.navigation-container {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  font-family: 'badaboom_bb';
+  letter-spacing: 4px;
+  background-color: darkred;
+  display: flex;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: yellow;
+  margin: 0px;
+  padding: 0px;
+}
+
+.navigation-container h1 {
+  margin: 0px;
+  padding: 10px 0px;
+}
