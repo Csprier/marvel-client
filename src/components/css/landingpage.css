@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'badaboom_bb';
+  src: local('badaboom_bb'), url('./fonts/BADABB__.TTF');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* DEFAULT STYLES ARE FOR IPHONE 5/SE */
 .landing-page {
   background-image: url('./images/marvelcollage.jpg');
@@ -13,14 +20,14 @@
 }
 
 .landing-page-info-container {
-  position: relative;
-  top: 50%;
-  transform: perspective(1px) translateY(-50%);
+  position: fixed;
+  top: 25%;
   display: flex;
   flex-direction: column;
-  width: 98%;
-  height: 200px;
+  width: 100%;
+  height: 250px;
   margin: 0 auto;
+  padding: 0px;
 }
 
 .landing-page-info {
@@ -28,11 +35,19 @@
   width: 275px;
   height: auto;
   margin: 0 auto;
-  padding: 10px;
+  padding: 10px 40px;
   background-color: white;
   border: 2px solid black;
 }
-.landing-page-info span, p{
+.landing-page-info h1 {
+  font-family: 'badaboom_bb', 'Comic Sans MS', arial;
+  font-size: 40px;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+}
+.landing-page-info span, p {
+  font-family: 'Comic Sans MS', arial;
   padding: 5px;
 }
 
@@ -41,6 +56,7 @@
   width: 200px;
   padding: 0px;
   margin: 0 auto;
+  margin-top: 25px;
 }
 
 .marvel-button {
@@ -52,4 +68,20 @@
   font-size: calc(10px + 2vmin);
   background-color: darkred;
   color: yellow;
+}
+
+/* BIGGER THAN MOBILE */
+@media only screen and (min-width: 310px) {
+  .landing-page {
+    background-image: url('./images/marvelcollage.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    width: 100%;
+    height: 1000px;
+    padding: 0px;
+  }
 }
