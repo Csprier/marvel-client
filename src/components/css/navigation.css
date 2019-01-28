@@ -24,3 +24,14 @@
   margin: 0px;
   padding: 10px 0px;
 }
+
+.marvel-button {
+  display: flex;
+  margin: 0px;
+  padding: 10px;
+  font-family: 'badaboom_bb';
+  letter-spacing: 4px;
+  font-size: calc(10px + 2vmin);
+  background-color: darkred;
+  color: yellow;
+}
