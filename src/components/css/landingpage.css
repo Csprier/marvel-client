@@ -1,15 +1,35 @@
-.landing-page-container {
+.landing-page {
+  background-image: url('./images/marvelcollage.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 100%;
+  height: 1000px;
+  padding: 0px;
 }
 
-.landing-page {
-  position: fixed; 
-  top: -50%; 
-  left: -50%; 
-  width: 200%; 
-  height: 200%;
+/* FORM STYLES AND POSITIONING */
+.landing-page-form {
+  position: absolute;
+  z-index: 10;
+  width: 125px;
+  padding: 0px;
 }
+
+.marvel-button {
+  margin: 0px;
+  padding: 10px;
+  font-family: 'badaboom_bb';
+  letter-spacing: 4px;
+  font-size: calc(10px + 2vmin);
+  background-color: darkred;
+  color: yellow;
+}
+
 .landing-page img {
   position: absolute; 
   top: 0; 
@@ -19,17 +39,4 @@
   margin: auto; 
   min-width: 50%;
   min-height: 50%;
-}
-.move-to-dashboard { 
-  width: 100%;
-  height: 50px;
-}
-.move-to-dashboard a {
-  width: 50%;
-  height: 50px;
-  top: 250px;
-  background: black;
-  color: goldenrod;
-  margin: 0 auto;
-  z-index: 10;
 }
