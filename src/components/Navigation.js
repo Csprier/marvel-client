@@ -5,7 +5,7 @@ class Navigation extends Component {
   render() {
     return(
       <div className="navigation-container">
-        <h1>Mavel API</h1>
+        <h1>Marvel API</h1>
       </div>
     );
   }
