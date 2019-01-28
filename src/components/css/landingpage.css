@@ -1,26 +1,50 @@
+/* DEFAULT STYLES ARE FOR IPHONE 5/SE */
 .landing-page {
   background-image: url('./images/marvelcollage.jpg');
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-attachment: fixed;
   display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
-  height: 1000px;
+  height: 568px;
   padding: 0px;
 }
 
-/* FORM STYLES AND POSITIONING */
-.landing-page-form {
-  position: absolute;
+.landing-page-info-container {
+  position: relative;
+  top: 50%;
+  transform: perspective(1px) translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  width: 98%;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.landing-page-info {
   z-index: 10;
-  width: 125px;
+  width: 275px;
+  height: auto;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: white;
+  border: 2px solid black;
+}
+.landing-page-info span, p{
+  padding: 5px;
+}
+
+.landing-page-form {
+  z-index: 10;
+  width: 200px;
   padding: 0px;
+  margin: 0 auto;
 }
 
 .marvel-button {
+  display: flex;
   margin: 0px;
   padding: 10px;
   font-family: 'badaboom_bb';
@@ -28,15 +52,4 @@
   font-size: calc(10px + 2vmin);
   background-color: darkred;
   color: yellow;
-}
-
-.landing-page img {
-  position: absolute; 
-  top: 0; 
-  left: 0; 
-  right: 0; 
-  bottom: 0; 
-  margin: auto; 
-  min-width: 50%;
-  min-height: 50%;
 }
