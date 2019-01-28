@@ -6,32 +6,35 @@
 }
 
 .navigation-container {
+  display: flex;
+  justify-content: space-between;
   position: fixed;
   z-index: 10;
   width: 100%;
   font-family: 'badaboom_bb';
   letter-spacing: 4px;
   background-color: darkred;
-  display: flex;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: yellow;
-  margin: 0px;
-  padding: 0px;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 10px;
 }
 
 .navigation-container h1 {
+  display: flex;
+  width: 100%;
   margin: 0px;
   padding: 10px 0px;
 }
 
-.marvel-button {
+.return-button {
   display: flex;
-  margin: 0px;
-  padding: 10px;
+  margin: 0px 10px 0px 0px;
+  padding: 0px 10px 0px 0px;
   font-family: 'badaboom_bb';
   letter-spacing: 4px;
   font-size: calc(10px + 2vmin);
   background-color: darkred;
   color: yellow;
+  border: 1px solid darkred;
 }

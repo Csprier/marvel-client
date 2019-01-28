@@ -40,8 +40,10 @@ class Characters extends Component {
           </div>
         </li>
       )});
+
     return (
       <div className="characters-container">
+        <h2>Characters</h2>
         <SearchForm />
         <span>Results returned: {characterDummyInfo.length}</span>
         <div className="character-dummy-info">

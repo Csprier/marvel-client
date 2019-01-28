@@ -7,7 +7,7 @@ class Navigation extends Component {
     return(
       <div className="navigation-container">
         <h1>Marvel API</h1>
-        <button onClick={this.props.history.goBack} className="marvel-button">Return</button>
+        <button onClick={this.props.history.goBack} className="return-button">Return</button>
       </div>
     );
   }
