@@ -3,13 +3,15 @@ import thunk from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
 import characterReducer from './reducers/characterReducer';
 import searchReducer from './reducers/searchReducer';
+import comicsReducer from './reducers/comicsReducer';
 
 const rootReducer = combineReducers({
   // form: formReducer,
   // auth: authReducer,
   form: formReducer,
   searchTerm: searchReducer,
-  characters: characterReducer
+  characters: characterReducer,
+  comics: comicsReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

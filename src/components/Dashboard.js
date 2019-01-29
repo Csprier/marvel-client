@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Characters from './Characters';
+import Comics from './Comics';
 import Navigation from './Navigation';
 import './css/dashboard.css';
 
@@ -12,7 +13,8 @@ class Dashboard extends Component {
         </div>
         <div className="dashboard">
           <h1>Dashboard</h1>
-          <Characters />
+          {/* <Characters /> */}
+          <Comics />
         </div>
       </div>
     );
