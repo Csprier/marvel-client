@@ -12,8 +12,7 @@ class Dashboard extends Component {
           <Navigation />
         </div>
         <div className="dashboard">
-          <h1>Dashboard</h1>
-          {/* <Characters /> */}
+          <Characters />
           <Comics />
         </div>
       </div>

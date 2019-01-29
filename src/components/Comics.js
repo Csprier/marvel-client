@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { listAllComicsByTitle } from '../actions/comicsActions';
 import { listAllComicsByTitleStartingWith, updateSearchTerm } from '../actions/searchActions';
 import SearchForm from './SearchForm';
+import './css/comics.css';
 
 class Comics extends Component {
   componentDidMount() {
@@ -30,6 +31,7 @@ class Comics extends Component {
               <p>ID: {comic.id}</p>
               <h4>Description:</h4>
               {/* <p>{comic.description.length !== 0 ? comic.description : '~ Description not available ~'}</p> */}
+              <p>~ Description not available ~</p>
             </div>
             <div className="comic-urls">
               <h4>URLS to various external links:</h4>
@@ -41,9 +43,9 @@ class Comics extends Component {
       )});
     return (
       <div className="comics-container">
-        <h2>Characters</h2>
+        <h2>Comics</h2>
         <SearchForm />
-        {/* <span>Results returned: {comicDummyInfo.length}</span> */}
+        <span>Results returned: {comicDummyInfo.length}</span>
         <div className="comic-dummy-info">
           <ul>
             {comicDummyInfo}

@@ -15,9 +15,8 @@
 }
 
 .dashboard {
-  display: block;
-  position: relative;
-  top: 5%;
+  display: flex;
+  flex-direction: row;
 }
 
 .dashboard h1 {
