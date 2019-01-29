@@ -44,6 +44,7 @@ class Characters extends Component {
     return (
       <div className="characters-container">
         <h2>Characters</h2>
+        <button onClick={this.props.history.goBack} className="return-to-dashboard-button">&#x3c; Dashboard</button>
         <SearchForm />
         <span>Results returned: {characterDummyInfo.length}</span>
         <div className="character-dummy-info">

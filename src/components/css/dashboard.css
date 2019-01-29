@@ -15,8 +15,12 @@
 }
 
 .dashboard {
+  position: absolute;
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
+  flex-direction: row;
+  top: 15%;
 }
 
 .dashboard h1 {
@@ -28,8 +32,50 @@
   font-family: arial;
 }
 
-.comics-button {
+/* ================================================ */
+.characters-form-container {
+  background-image: url('./images/marvelCharacters.png');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
   display: flex;
+  width: 500px;
+  height: 400px;
+}
+.characters-form-container form {
+  width: 100%;
+}
+.characters-button {
+  display: inline-block;
+  width: 100%;
+  margin: 0px;
+  padding: 10px;
+  font-family: 'badaboom_bb';
+  letter-spacing: 4px;
+  font-size: calc(10px + 2vmin);
+  background-color: darkred;
+  color: yellow;
+}
+/* ================================================ */
+.comics-form-container {
+  background-image: url('./images/marvel-comics.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  width: 500px;
+  height: 400px;
+}
+.comics-form-container form {
+  width: 100%;
+}
+.comics-button {
+  display: inline-block;
+  width: 100%;
   margin: 0px;
   padding: 10px;
   font-family: 'badaboom_bb';

@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-// import Characters from './Characters';
-// import Comics from './Comics';
 import Navigation from './Navigation';
 import './css/dashboard.css';
 
 class Dashboard extends Component {
+  goToCharacters(e) {
+    e.preventDefault();
+    this.props.history.push('/characters');
+  }
+
   goToComics(e) {
     e.preventDefault();
     this.props.history.push('/comics');
@@ -16,10 +19,20 @@ class Dashboard extends Component {
         <div className="db-navigation-container">
           <Navigation />
         </div>
+
         <div className="dashboard">
-          <form onSubmit={e => this.goToComics(e)} className="dashboard-comics-form">
-            <button className="comics-button">Comics</button>
-          </form>
+          <div className="characters-form-container">
+            <form onSubmit={e => this.goToCharacters(e)} className="dashboard-characters-form">
+              <button className="characters-button">Characters</button>
+            </form>
+          </div>
+          
+          <div className="comics-form-container">
+            <form onSubmit={e => this.goToComics(e)} className="dashboard-comics-form">
+              <button className="comics-button">Comics</button>
+            </form>
+          </div>
+        
         </div>
       </div>
     );

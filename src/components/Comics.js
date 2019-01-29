@@ -36,7 +36,7 @@ class Comics extends Component {
           <Navigation />
         </div>
         <h2>Comics</h2>
-        <button onClick={this.props.history.goBack} className="return-to-dashboard-button">&#x3c;</button>
+        <button onClick={this.props.history.goBack} className="return-to-dashboard-button">&#x3c; Dashboard</button>
         <AdvanComicSearch />
         <div className="comic-dummy-info">
           {comicImages}
