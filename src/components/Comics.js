@@ -13,10 +13,10 @@ class Comics extends Component {
   render() {
     const comicImages = this.props.images.map((comic, i) => {
       return (
-        <div className="image-container">
+        <div className="image-container" key={i}>
           <h4>{comic.title}</h4>
           <p>ID: {comic.id}</p>
-          <img src={`${comic.image.path}.${comic.image.extension}`} key={i} alt=""></img>
+          <img src={`${comic.image.path}.${comic.image.extension}`} alt=""></img>
         </div>
       );
     })
@@ -27,7 +27,7 @@ class Comics extends Component {
           <Navigation />
         </div>
         <h2>Comics</h2>
-        <button onClick={this.props.history.goBack} className="return-to-dashboard-button">Return</button>
+        <button onClick={this.props.history.goBack} className="return-to-dashboard-button">&#x3c;</button>
         <AdvanComicSearch />
         <div className="comic-dummy-info">
           {comicImages}
