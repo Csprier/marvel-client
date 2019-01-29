@@ -7,15 +7,15 @@ import {
 import myInput from './Field/Input';
 import './css/advanSearch.css';
 
-class AdvanSearch extends Component {
+class AdvanComicSearch extends Component {
   render() {
     return (
       <div className="advanced-search-container">
         <div className="advanced-search-form-container">
           <form>
-            <label htmlFor="advancSearch"></label>
+            <label htmlFor="advanComicSearch"></label>
             <Field 
-              name="advanSearch"
+              name="advanComicSearch"
               component={myInput}
               type="text"
               placeholder="Search"
@@ -28,8 +28,8 @@ class AdvanSearch extends Component {
   }
 }
 
-AdvanSearch = reduxForm({
-  form: 'advanSearch'
-})(AdvanSearch);
+AdvanComicSearch = reduxForm({
+  form: 'advanComicSearch'
+})(AdvanComicSearch);
 
-export default connect()(AdvanSearch);
+export default connect()(AdvanComicSearch);
