@@ -14,6 +14,8 @@
 .comics-container h2 {
   /* margin: 0px;
   padding: 0px; */
+  text-align: center;
+  font-family: 'badaboom_bb';
 }
 
 .comic-dummy-info {
@@ -42,11 +44,13 @@
 .image-container h4 {
   margin: 0px;
   padding: 0px;
+  text-align: center;
 }
 .image-container p {
   margin: 0px;
   padding: 0px;
   font-size: 10px;
+  text-align: center;
 }
 .image-container img {
   max-width: 100%;
