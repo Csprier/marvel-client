@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { listAllComicsByTitle } from '../actions/comicsActions';
+import { listAllComicsByTitleStartingWith, updateComicSearchTerm } from '../actions/searchActions';
 import AdvanComicSearch from './AdvanComicSearch';
 import Navigation from './Navigation';
 import './css/comics.css';
@@ -8,6 +9,14 @@ import './css/comics.css';
 class Comics extends Component {
   componentDidMount() {
     this.props.dispatch(listAllComicsByTitle());
+  }
+
+  componentDidUpdate() {
+    if (this.props.comicSearchTerm !== '') {
+      this.props.dispatch(listAllComicsByTitleStartingWith(this.props.comicSearchTerm));
+      let resetSearchTerm = '';
+      this.props.dispatch(updateComicSearchTerm(resetSearchTerm));
+    }
   }
 
   render() {
@@ -39,7 +48,7 @@ class Comics extends Component {
 
 const mapStateToProps = state => ({
   comics: state.comics.data,
-  searchTerm: state.searchTerm.searchTerm,
+  comicSearchTerm: state.searchTerm.comicSearchTerm,
   images: state.comics.data.map(comic => ({
     image: comic.images[0],
     title: comic.title,
