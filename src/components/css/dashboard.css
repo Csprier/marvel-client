@@ -16,7 +16,7 @@
 
 .dashboard {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .dashboard h1 {
@@ -25,5 +25,16 @@
   margin: 0px;
   padding: 0px;
   text-align: center;
-  font-family: 'Comic Sans MS', arial;
+  font-family: arial;
+}
+
+.comics-button {
+  display: flex;
+  margin: 0px;
+  padding: 10px;
+  font-family: 'badaboom_bb';
+  letter-spacing: 4px;
+  font-size: calc(10px + 2vmin);
+  background-color: darkred;
+  color: yellow;
 }

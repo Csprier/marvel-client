@@ -49,7 +49,7 @@
   flex-direction: column;
 }
 .character-item h3, h4 { 
-  font-family: 'Comic Sans MS', arial;
+  font-family: arial;
 }
 .character-item h3, h4, p, ul {
   margin: 0px;

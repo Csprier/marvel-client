@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { listAllComicsByTitle } from '../actions/comicsActions';
-// import { listAllComicsByTitleStartingWith, updateComicSearchTerm } from '../actions/searchActions';
-// import SearchForm from './SearchForm';
+import { listAllComicsByTitleStartingWith, updateComicSearchTerm } from '../actions/searchActions';
+import AdvanComicSearch from './AdvanComicSearch';
+import Navigation from './Navigation';
 import './css/comics.css';
 
 class Comics extends Component {
@@ -10,20 +11,33 @@ class Comics extends Component {
     this.props.dispatch(listAllComicsByTitle());
   }
 
+  componentDidUpdate() {
+    if (this.props.comicSearchTerm !== '') {
+      this.props.dispatch(listAllComicsByTitleStartingWith(this.props.comicSearchTerm));
+      let resetSearchTerm = '';
+      this.props.dispatch(updateComicSearchTerm(resetSearchTerm));
+    }
+  }
+
   render() {
     const comicImages = this.props.images.map((comic, i) => {
       return (
-        <div className="image-container">
+        <div className="image-container" key={i}>
           <h4>{comic.title}</h4>
           <p>ID: {comic.id}</p>
-          <img src={`${comic.image.path}.${comic.image.extension}`} key={i} alt=""></img>
+          <img src={`${comic.image.path}.${comic.image.extension}`} alt=""></img>
         </div>
       );
     })
 
     return (
       <div className="comics-container">
+        <div className="db-navigation-container">
+          <Navigation />
+        </div>
         <h2>Comics</h2>
+        <button onClick={this.props.history.goBack} className="return-to-dashboard-button">&#x3c;</button>
+        <AdvanComicSearch />
         <div className="comic-dummy-info">
           {comicImages}
         </div>
@@ -34,7 +48,7 @@ class Comics extends Component {
 
 const mapStateToProps = state => ({
   comics: state.comics.data,
-  searchTerm: state.searchTerm.searchTerm,
+  comicSearchTerm: state.searchTerm.comicSearchTerm,
   images: state.comics.data.map(comic => ({
     image: comic.images[0],
     title: comic.title,
