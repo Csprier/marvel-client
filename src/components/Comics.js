@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { listAllComicsByTitle } from '../actions/comicsActions';
-import { listAllComicsByTitleStartingWith, updateSearchTerm } from '../actions/searchActions';
+// import { listAllComicsByTitleStartingWith, updateComicSearchTerm } from '../actions/searchActions';
 import SearchForm from './SearchForm';
 import './css/comics.css';
 
@@ -11,18 +11,22 @@ class Comics extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.searchTerm !== '') {
-      this.props.dispatch(listAllComicsByTitleStartingWith(this.props.searchTerm));
-      let resetSearchTerm = '';
-      this.props.dispatch(updateSearchTerm(resetSearchTerm));
-    }
+    // if (this.props.comicSearchTerm !== '') {
+    //   this.props.dispatch(listAllComicsByTitleStartingWith(this.props.comicSearchTerm));
+    //   let resetComicSearchTerm = '';
+    //   this.props.dispatch(updateComicSearchTerm(resetComicSearchTerm));
+    // }
   }
 
   render() {
-    console.log('comics this.props', this.props);
+    console.log('comics this.props', this.props.images);
     const comicDummyInfo = this.props.comics.map((comic, i) => {
       return (
         <li key={i} className="comic-list-item">
+          <div className="comic-images">
+            {/* {comic.images.map((comic, i) => <li className="comic-li" key={i}><img src={`${comic.path}.${comic.extension}`} alt=""></img></li>)} */}
+            <img src={`${comic.images[0].path}.${comic.images[0].extension}`} alt=""></img>
+          </div>
           <div className="comic-item">
             <div className="comic-header">
               <h3>{comic.title}</h3>
@@ -35,7 +39,9 @@ class Comics extends Component {
             </div>
             <div className="comic-urls">
               <h4>URLS to various external links:</h4>
-              <ul>{comic.urls.map((url, i) => <li key={i}><a href={url.url}>{url.type}</a></li>)}</ul>
+              <ul>
+                {comic.urls.map((url, i) => <li key={i}><a href={url.url}>{url.type}</a></li>)}
+              </ul>
             </div>
             <p className="comic-attributionText">{comic.attributionText}</p>
           </div>

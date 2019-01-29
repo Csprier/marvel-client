@@ -9,6 +9,8 @@
   margin: 0px;
   padding: 0px;
   width: 50%;
+  height: 600px;
+  overflow-y: scroll;
 }
 .comics-container h2 {
   text-align: center;
@@ -39,7 +41,7 @@
 }
 
 .comic-item {
-  width: 100%;
+  width: 76%;
   margin: 00px 0px 5px 0px;
   padding: 0px;
   display: flex;
@@ -84,4 +86,14 @@
 
 .comic-attributionText {
   font-size: 6px;
+}
+
+.comic-images {
+  display: flex;
+  height: 250px;
+  overflow: hidden;
+}
+
+.comic-images img {
+  width: 150px;
 }

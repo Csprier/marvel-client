@@ -1,7 +1,11 @@
-import { UPDATE_SEARCH_TERM } from '../actions/searchActions';
+import { 
+  UPDATE_SEARCH_TERM, 
+  UPDATE_COMIC_SEARCH_TERM 
+} from '../actions/searchActions';
 
 export const initialState = {
-  searchTerm: ''
+  searchTerm: '',
+  comicSearchTerm: ''
 }
 
 export default (state = initialState, action) => {
@@ -10,6 +14,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         searchTerm: action.searchTerm
+      }
+    case UPDATE_COMIC_SEARCH_TERM:
+      return {
+        ...state,
+        comicSearchTerm: action.comicSearchTerm
       }
     default:
       return state;

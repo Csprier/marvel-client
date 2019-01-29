@@ -47,6 +47,17 @@ export const listAllCharactersByNameStartingWith = (searchTerm) => dispatch => {
 };  
 
 // COMICS BY TITLE
+export const UPDATE_COMIC_SEARCH_TERM = 'UPDATE_COMIC_SEARCH_TERM',
+  updateComicSearchTerm = (comicSearchTerm) => ({
+    type: UPDATE_COMIC_SEARCH_TERM,
+    comicSearchTerm
+  });
+
+export const UPDATE_COMIC_SEARCH_TERM_SUCCESS = 'UPDATE_COMIC_SEARCH_TERM_SUCCESS',
+  updateComicSearchTermSuccess = () => ({
+    type: UPDATE_COMIC_SEARCH_TERM_SUCCESS
+  });  
+
 export const listAllComicsByTitleStartingWith = (searchTerm) => dispatch => {
   dispatch(getComicsRequest());
   let url = `${REACT_APP_MARVEL_URL}/comics?titleStartsWith=${searchTerm}&apikey=${process.env.REACT_APP_PUBLIC_KEY}`;

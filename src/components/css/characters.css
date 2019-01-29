@@ -9,6 +9,8 @@
   margin: 0px;
   padding: 0px;
   width: 50%;
+  height: 600px;
+  overflow-y: scroll;
 }
 .characters-container h2 {
   text-align: center;
