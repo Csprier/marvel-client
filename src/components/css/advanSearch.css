@@ -1,0 +1,49 @@
+@font-face {
+  font-family: 'badaboom_bb';
+  src: local('badaboom_bb'), url('./fonts/BADABB__.TTF');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.advanced-search-container {
+  display: block;
+  width: 100%;
+  margin: 20px 0px 0px 0px;
+  padding: 0px;
+}
+
+.advanced-search-form-container {
+  display: flex;
+  width: 98%;
+  height: 50px;
+  margin: 0 auto;
+  padding: 0px;
+  /* border: 1px solid black; */
+}
+.advanced-search-form-container form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.advanced-search-form-container input {
+  display: flex;
+  width: 80%;
+  height: 30px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.search-button {
+  display: flex;
+  margin: 0px;
+  padding: 0px 10px 0px 10px;
+  font-family: 'badaboom_bb';
+  text-align: center;
+  letter-spacing: 4px;
+  font-size: calc(10px + 2vmin);
+  background-color: darkred;
+  color: yellow;
+}

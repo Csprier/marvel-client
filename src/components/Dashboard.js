@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Comics from './Comics';
 import Navigation from './Navigation';
 import './css/dashboard.css';
+import AdvanSearch from './AdvanSearch';
 
 class Dashboard extends Component {
   render() {
@@ -12,6 +13,7 @@ class Dashboard extends Component {
           <Navigation />
         </div>
         <div className="dashboard">
+          <AdvanSearch />
           {/* <Characters /> */}
           <Comics />
         </div>
