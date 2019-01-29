@@ -44,13 +44,14 @@
 .image-container h4 {
   margin: 0px;
   padding: 0px;
-  text-align: center;
+  /* text-align: center; */
+  font-family: arial;
 }
 .image-container p {
   margin: 0px;
   padding: 0px;
   font-size: 10px;
-  text-align: center;
+  /* text-align: center; */
 }
 .image-container img {
   max-width: 100%;

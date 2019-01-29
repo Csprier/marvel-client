@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { listAllComicsByTitle } from '../actions/comicsActions';
-// import { listAllComicsByTitleStartingWith, updateComicSearchTerm } from '../actions/searchActions';
-// import SearchForm from './SearchForm';
+import AdvanComicSearch from './AdvanComicSearch';
+import Navigation from './Navigation';
 import './css/comics.css';
 
 class Comics extends Component {
@@ -23,7 +23,12 @@ class Comics extends Component {
 
     return (
       <div className="comics-container">
+        <div className="db-navigation-container">
+          <Navigation />
+        </div>
         <h2>Comics</h2>
+        <button onClick={this.props.history.goBack} className="return-to-dashboard-button">Return</button>
+        <AdvanComicSearch />
         <div className="comic-dummy-info">
           {comicImages}
         </div>
