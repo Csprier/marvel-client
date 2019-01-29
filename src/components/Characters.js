@@ -33,7 +33,7 @@ class Characters extends Component {
               <p>{character.description.length !== 0 ? character.description : '~Description not available~'}</p>  
             </div>
             <div className="character-urls">
-              <h4>URLs to various external:</h4>
+              <h4>URLs to various external links:</h4>
               <ul>{character.urls.map((url, i) => <li key={i}><a href={url.url}>{url.type}</a></li>)}</ul>  
             </div>
             <p className="attributionText">{character.attributionText}</p>

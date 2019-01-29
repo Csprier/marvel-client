@@ -32,21 +32,22 @@ export const listAllComicsByTitle = () => dispatch => {
 
   return Axios.get(url)
     .then(res => {
-      // const characterAttributionText = res.data.attributionText;
-    //   const comicData = res.data.data.results.map(comic => ({
-    //     id: comic.id,
-    //     name: comic.name,
-    //     description: comic.description,
-    //     urls: comic.urls,
-    //     attributionText: comicAttributionText
-    //   }));
-    //   dispatch(getComicNames(comicData));
-    //   dispatch(getComicsSuccess());
-    // })
-    console.log(res.data.data.results);
-    })
-    .catch(err => {
-      console.error(err);
-      dispatch(getComicsError(err));
-    });
+      const comicAttributionText = res.data.attributionText;
+      const comicData = res.data.data.results.map(comic => ({
+          id: comic.id,
+          title: comic.title,
+          description: comic.description,
+          pageCount: comic.pageCount,
+          thumbnail: comic.thumbnail,
+          images: comic.images,
+          urls: comic.urls,
+          attributionText: comicAttributionText
+        }))
+        dispatch(getComicNames(comicData));
+        dispatch(getComicsSuccess());
+      })
+      .catch(err => {
+        console.error(err);
+        dispatch(getComicsError(err));
+      });
 };

@@ -6,6 +6,12 @@ import {
   getCharactersSuccess,
   getCharactersError
 } from './charactersActions';
+import {
+  getComicsRequest,
+  getComicNames,
+  getComicsSuccess,
+  getComicsError
+} from './comicsActions';
 
 export const UPDATE_SEARCH_TERM = 'UPDATE_SEARCH_TERM',
   updateSearchTerm = (searchTerm) => ({
@@ -19,6 +25,7 @@ export const UPDATE_SEARCH_TERM_SUCCESS = 'UPDATE_SEARCH_TERM_SUCCESS',
   });  
 
 // ASYNC with redux-thunk
+// CHARACTERS BY TITLE
 export const listAllCharactersByNameStartingWith = (searchTerm) => dispatch => {
   dispatch(getCharactersRequest());
   let url = `${REACT_APP_MARVEL_URL}/characters?nameStartsWith=${searchTerm}&apikey=${process.env.REACT_APP_PUBLIC_KEY}`;
@@ -36,5 +43,31 @@ export const listAllCharactersByNameStartingWith = (searchTerm) => dispatch => {
     .catch(err => {
       console.error(err);
       dispatch(getCharactersError(err));
+    });
+};  
+
+// COMICS BY TITLE
+export const listAllComicsByTitleStartingWith = (searchTerm) => dispatch => {
+  dispatch(getComicsRequest());
+  let url = `${REACT_APP_MARVEL_URL}/comics?titleStartsWith=${searchTerm}&apikey=${process.env.REACT_APP_PUBLIC_KEY}`;
+  return Axios.get(url)
+    .then(res => {
+      const comicAttributionText = res.data.attributionText;
+      const comicData = res.data.data.results.map(comic => ({
+        id: comic.id,
+        title: comic.title,
+        description: comic.description,
+        pageCount: comic.pageCount,
+        thumbnail: comic.thumbnail,
+        images: comic.images,
+        urls: comic.urls,
+        attributionText: comicAttributionText
+      }))
+      dispatch(getComicNames(comicData));
+      dispatch(getComicsSuccess());
+    })
+    .catch(err => {
+      console.error(err);
+      dispatch(getComicsError(err));
     });
 };  
