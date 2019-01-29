@@ -14,7 +14,9 @@ class Comics extends Component {
     const comicImages = this.props.images.map((comic, i) => {
       return (
         <div className="image-container">
-          <img src={`${comic.path}.${comic.extension}`} key={i} alt=""></img>
+          <h4>{comic.title}</h4>
+          <p>ID: {comic.id}</p>
+          <img src={`${comic.image.path}.${comic.image.extension}`} key={i} alt=""></img>
         </div>
       );
     })
@@ -33,7 +35,11 @@ class Comics extends Component {
 const mapStateToProps = state => ({
   comics: state.comics.data,
   searchTerm: state.searchTerm.searchTerm,
-  images: state.comics.data.map(comic => comic.images[0])
+  images: state.comics.data.map(comic => ({
+    image: comic.images[0],
+    title: comic.title,
+    id: comic.id
+  }))
 });
 
 export default connect(mapStateToProps)(Comics);
