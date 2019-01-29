@@ -11,6 +11,9 @@ import { updateComicSearchTerm } from '../actions/searchActions';
 class AdvanComicSearch extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      alphabet: [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' ]
+    }
     this.submitTitleStartsWithSearch = this.submitTitleStartsWithSearch.bind(this);
   }
 
@@ -20,6 +23,19 @@ class AdvanComicSearch extends Component {
   }
 
   render() {
+    const alphabetSearch = this.state.alphabet.map((letter, i) => {
+      const letterObj = { letter: letter }
+      return (
+        <li key={i} className="ab-search-li">
+          <form onSubmit={this.props.handleSubmit(() => {
+            this.submitTitleStartsWithSearch(letterObj.letter);
+          })} ref="form">
+            <button type="submit" className="alphabet-search-button">{letter}</button>
+          </form>
+        </li>
+      );
+    });
+
     return (
       <div className="advanced-search-container">
         <div className="advanced-search-form-container">
@@ -36,6 +52,9 @@ class AdvanComicSearch extends Component {
             <button type="submit" className="search-button" label="submit">&#x26B2;</button>
           </form>
         </div>
+        <ul className="ab-search">
+          {alphabetSearch}
+        </ul>
       </div>
     );
   }

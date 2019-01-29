@@ -47,3 +47,22 @@
   background-color: darkred;
   color: yellow;
 }
+
+.ab-search {
+  width: 85%;
+  margin: 0 auto;
+}
+.ab-search ul {
+  list-style-type: none;
+  text-decoration: none;
+}
+.ab-search-li {
+  list-style-type: none;
+  text-decoration: none;
+}
+.alphabet-search-button {
+  margin: 0px 5px;
+  padding: 0px;
+  width: 30px;
+  height: 30px;
+}
