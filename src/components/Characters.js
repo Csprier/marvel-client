@@ -4,6 +4,7 @@ import { listAllCharactersByName } from '../actions/charactersActions';
 import { listAllCharactersByNameStartingWith, updateSearchTerm } from '../actions/searchActions';
 import './css/characters.css';
 
+import Navigation from './Navigation';
 import SearchForm from './SearchForm';
 
 class Characters extends Component {
@@ -43,10 +44,13 @@ class Characters extends Component {
 
     return (
       <div className="characters-container">
+        <div className="db-navigation-container">
+          <Navigation />
+        </div>
         <h2>Characters</h2>
         <button onClick={this.props.history.goBack} className="return-to-dashboard-button">&#x3c; Dashboard</button>
         <SearchForm />
-        <span>Results returned: {characterDummyInfo.length}</span>
+        {/* <span>Results returned: {characterDummyInfo.length}</span> */}
         <div className="character-dummy-info">
           <ul>
             {characterDummyInfo}

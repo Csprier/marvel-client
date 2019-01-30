@@ -51,10 +51,12 @@ class AdvanComicSearch extends Component {
             />
             <button type="submit" className="search-button" label="submit">&#x26B2;</button>
           </form>
+          <div className="alphabet-search-container">
+            <ul className="ab-search">
+              {alphabetSearch}
+            </ul>
+          </div>
         </div>
-        <ul className="ab-search">
-          {alphabetSearch}
-        </ul>
       </div>
     );
   }
