@@ -6,6 +6,19 @@
 }
 
 .navigation-container {
+
+}
+
+.navigation-container h1 {
+
+}
+
+.return-button {
+
+}
+
+/* 
+.navigation-container {
   display: flex;
   justify-content: space-between;
   position: fixed;
@@ -37,4 +50,4 @@
   background-color: darkred;
   color: yellow;
   border: 1px solid darkred;
-}
+} */

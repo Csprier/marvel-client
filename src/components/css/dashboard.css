@@ -1,4 +1,15 @@
 .dashboard-container {
+
+}
+
+.db-navigation-container {
+
+}
+
+.dashboard {
+  
+}
+/* .dashboard-container {
   display: block;
   position: absolute;
   width: 100%;
@@ -30,10 +41,10 @@
   padding: 0px;
   text-align: center;
   font-family: arial;
-}
+} */
 
 /* ================================================ */
-.characters-form-container {
+/* .characters-form-container {
   background-image: url('./images/marvelCharacters.png');
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -57,10 +68,10 @@
   font-size: calc(10px + 2vmin);
   background-color: darkred;
   color: yellow;
-}
+} */
 
 /* ================================================ */
-.comics-form-container {
+/* .comics-form-container {
   background-image: url('./images/marvel-comics.jpg');
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -84,4 +95,4 @@
   font-size: calc(10px + 2vmin);
   background-color: darkred;
   color: yellow;
-}
+} */
