@@ -1,13 +1,19 @@
 .dashboard-container {
-
+  margin: 0px;
+  padding: 0px;
+  border: 1px solid red;
 }
 
 .db-navigation-container {
-
+  margin: 0px;
+  padding: 0px;
+  border: 2px solid orange;
 }
 
 .dashboard {
-  
+  margin: 0px;
+  padding: 0px;
+  border: 3px solid green;
 }
 /* .dashboard-container {
   display: block;

@@ -6,14 +6,51 @@
 }
 
 .comics-container {
+
+}
+
+.comics-container h2 {
+
+}
+
+.comic-dummy-info {
+
+}
+
+.comic-images-item {
+
+}
+
+.image-container {
+
+}
+
+.image-container h4 {
+ 
+}
+
+.image-container p {
+ 
+}
+
+.image-container img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.comic-attributionText {
+  font-size: 6px;
+} 
+
+/* .comics-container {
   margin: 0px;
   padding: 0px;
   width: 100%;
   height: 100%;
 }
 .comics-container h2 {
-  /* margin: 0px;
-  padding: 0px; */
+  margin: 0px;
+  padding: 0px;
   text-align: center;
   font-family: 'badaboom_bb';
 }
@@ -28,7 +65,6 @@
 
 .comic-images-item {
   position: relative;
-  /* display: flex; */
   margin: 0px 10px 0px 0px;
   padding: 0px;
   width: 100px;
@@ -44,14 +80,12 @@
 .image-container h4 {
   margin: 0px;
   padding: 0px;
-  /* text-align: center; */
   font-family: arial;
 }
 .image-container p {
   margin: 0px;
   padding: 0px;
   font-size: 10px;
-  /* text-align: center; */
 }
 .image-container img {
   max-width: 100%;
@@ -63,97 +97,4 @@
 
 .comic-attributionText {
   font-size: 6px;
-}
-/* 
-.comics-container {
-  margin: 0px;
-  padding: 0px;
-  width: 50%;
-  height: 600px;
-  overflow-y: scroll;
-}
-.comics-container h2 {
-  text-align: center;
-  font-family: 'badaboom_bb';
-  letter-spacing: 4px;
-}
-
-.comic-dummy-info {
-  margin: 0px;
-  padding: 0px;
-}
-
-.comic-dummy-info ul {
-  margin: 0px;
-  padding: 0px;
-  display: flex;
-  flex-direction: column;
-}
-
-.comic-list-item {
-  width: 98%;
-  margin: 0 auto;
-  padding: 0px;
-  display: flex;
-  list-style-type: none;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-}
-
-.comic-item {
-  width: 76%;
-  margin: 00px 0px 5px 0px;
-  padding: 0px;
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-}
-.comic-item h3, h4 { 
-  font-family: arial;
-}
-.comic-item h3, h4, p, ul {
-  margin: 0px;
-  padding: 0px 5px 5px 5px;
-  display: flex;
-} */
-
-/* ================================================ */
-/* Character-item children */
-/* .comic-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin: 0px;
-  padding: 0px;
-  width: 100%;
-  background-color: darkblue;
-  color: yellow;
-}
-
-.comic-description {
-  display: flex;
-  flex-direction: column;
-  margin: 0px;
-  padding: 5px;
-}
-
-.comic-urls {
-  display: flex;
-  flex-direction: column;
-  margin: 0px;
-  padding: 5px;
-}
-
-.comic-attributionText {
-  font-size: 6px;
-}
-
-.comic-images {
-  display: flex;
-  height: 250px;
-  overflow: hidden;
-}
-
-.comic-images img {
-  width: 150px;
 } */
