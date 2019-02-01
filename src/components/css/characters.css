@@ -6,6 +6,52 @@
 }
 
 .characters-container {
+
+}
+
+.characters-container h2 {
+ 
+}
+
+.character-dummy-info {
+ 
+}
+
+.character-dummy-info ul {
+ 
+}
+
+.character-list-item {
+ 
+}
+
+.character-item {
+ 
+}
+.character-item h3, h4 { 
+  
+}
+.character-item h3, h4, p, ul {
+  
+}
+
+.character-header {
+  
+}
+
+.character-description {
+  
+}
+
+.character-urls {
+ 
+}
+
+.attributionText {
+  font-size: 6px;
+}
+
+/* .characters-container {
   margin: 0px;
   padding: 0px;
   width: 100%;
@@ -55,11 +101,11 @@
   margin: 0px;
   padding: 0px 5px 5px 5px;
   display: flex;
-}
+} */
 
 /* ================================================ */
 /* Character-item children */
-.character-header {
+/* .character-header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -86,4 +132,4 @@
 
 .attributionText {
   font-size: 6px;
-}
+} */

@@ -6,6 +6,41 @@
 }
 
 .advanced-search-container {
+  
+}
+
+.advanced-search-form-container {
+  
+}
+.advanced-search-form-container form {
+  
+}
+
+.advanced-search-form-container input {
+ 
+}
+
+.search-button {
+ 
+}
+
+.alphabet-search-container {
+  
+}
+.ab-search {
+  
+}
+.ab-search ul {
+  
+}
+.ab-search-li {
+
+}
+.alphabet-search-button {
+  
+}
+
+/* .advanced-search-container {
   display: block;
   width: 100%;
   margin: 20px 0px 0px 0px;
@@ -19,7 +54,6 @@
   height: 50px;
   margin: 0 auto;
   padding: 0px;
-  /* border: 1px solid black; */
 }
 .advanced-search-form-container form {
   display: flex;
@@ -70,4 +104,4 @@
   padding: 0px;
   width: 30px;
   height: 30px;
-}
+} */

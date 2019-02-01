@@ -3,7 +3,7 @@
 }
 
 .App-header {
-  position: fixed;
+  /* position: fixed;
   z-index: 10;
   width: 100%;
   font-family: 'badaboom_bb';
@@ -14,10 +14,10 @@
   font-size: calc(10px + 2vmin);
   color: yellow;
   margin: 0px;
-  padding: 0px;
+  padding: 0px; */
 }
 
 .App-header h1 {
-  margin: 0px;
-  padding: 10px 0px;
+  /* margin: 0px;
+  padding: 10px 0px; */
 }
