@@ -21,15 +21,15 @@ class Dashboard extends Component {
         </div>
 
         <div className="dashboard">
-          <div className="characters-form-container">
+          <div className="characters form-container">
             <form onSubmit={e => this.goToCharacters(e)} className="dashboard-characters-form">
-              <button className="characters-button">Characters</button>
+              <button className="dashboard-button">CHARACTERS</button>
             </form>
           </div>
           
-          <div className="comics-form-container">
+          <div className="comics form-container">
             <form onSubmit={e => this.goToComics(e)} className="dashboard-comics-form">
-              <button className="comics-button">Comics</button>
+              <button className="dashboard-button">COMICS</button>
             </form>
           </div>
         

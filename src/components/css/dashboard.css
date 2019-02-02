@@ -1,7 +1,7 @@
 .dashboard-container {
   margin: 0px;
   padding: 0px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .db-navigation-container {
@@ -12,27 +12,31 @@
 .dashboard {
   margin: 0px;
   padding: 0px;
-  border: 1px solid green;
+  /* border: 1px solid green; */
 }
 
-.characters-form-container {
-  display: flex;
-  align-items: center;
-}
-.characters-form-container form {
-  display: flex;
+.form-container {
   width: 98%;
   margin: 0 auto;
   padding: 0px;
+  /* border: 1px solid blue; */
 }
 
-.comics-form-container {
-  display: flex;
-  align-items: center;
+.characters {
+
 }
-.comics-form-container form, button {
-  display: flex;
+.comics {
+
 }
+.dashboard-button {
+  width: 100%;
+  margin: 0px;
+  padding: 5px 0px;
+  font-family: arial;
+  background-color: black;
+  color: white;
+}
+
 /* .dashboard-container {
   display: block;
   position: absolute;
