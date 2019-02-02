@@ -1,33 +1,47 @@
 .dashboard-container {
   margin: 0px;
   padding: 0px;
-  /* border: 1px solid red; */
 }
 
 .db-navigation-container {
   margin: 0px;
   padding: 0px;
+  border-bottom: 1px solid black;
 }
 
 .dashboard {
   margin: 0px;
   padding: 0px;
-  /* border: 1px solid green; */
 }
 
 .form-container {
-  width: 98%;
+  width: 100%;
   margin: 0 auto;
+  margin-top: 5px;
   padding: 0px;
-  /* border: 1px solid blue; */
 }
 
 .characters {
-
+  background-image: url('./images/marvelCharacters.png');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
+  width: 98%;
+  height: 150px;
 }
 .comics {
-
+  background-image: url('./images/marvel-comics.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
+  width: 98%;
+  height: 150px;
 }
+
 .dashboard-button {
   width: 100%;
   margin: 0px;

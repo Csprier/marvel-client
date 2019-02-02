@@ -6,48 +6,64 @@
 }
 
 .characters-container {
-
+  margin: 0px;
+  padding: 0px;
+  border: 1px solid orange;
 }
 
 .characters-container h2 {
- 
+  margin: 0px;
+  padding: 0px;
+  font-family: arial;
 }
 
-.character-dummy-info {
- 
+.character-info {
+  margin: 0px;
+  padding: 0px;
+  border: 1px solid blue;
 }
 
-.character-dummy-info ul {
- 
+.character-info ul {
+  margin: 0px;
+  padding: 0px;
 }
 
 .character-list-item {
- 
+  margin: 0px;
+  padding: 0px;
 }
 
 .character-item {
- 
+  margin: 0px;
+  padding: 0px;
 }
 .character-item h3, h4 { 
-  
+  margin: 0px;
+  padding: 0px;
 }
 .character-item h3, h4, p, ul {
-  
+  margin: 0px;
+  padding: 0px;
 }
 
 .character-header {
-  
+  margin: 0px;
+  padding: 0px;
 }
 
 .character-description {
-  
+  margin: 0px;
+  padding: 0px;
 }
 
 .character-urls {
- 
+  margin: 0px;
+  padding: 0px;
 }
 
 .attributionText {
+  margin: 0px;
+  padding: 0px;
   font-size: 6px;
 }
 
