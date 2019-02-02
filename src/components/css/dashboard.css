@@ -7,13 +7,31 @@
 .db-navigation-container {
   margin: 0px;
   padding: 0px;
-  border: 2px solid orange;
 }
 
 .dashboard {
   margin: 0px;
   padding: 0px;
-  border: 3px solid green;
+  border: 1px solid green;
+}
+
+.characters-form-container {
+  display: flex;
+  align-items: center;
+}
+.characters-form-container form {
+  display: flex;
+  width: 98%;
+  margin: 0 auto;
+  padding: 0px;
+}
+
+.comics-form-container {
+  display: flex;
+  align-items: center;
+}
+.comics-form-container form, button {
+  display: flex;
 }
 /* .dashboard-container {
   display: block;
