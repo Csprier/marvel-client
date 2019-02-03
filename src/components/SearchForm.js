@@ -49,7 +49,7 @@ class SearchForm extends Component {
               type="text"
               placeholder="Search by first letter of character's name"
             />
-            <button type="submit" label="submit">&#x26B2;</button>
+            <button type="submit" label="submit" className="search-button">&#x26B2;</button>
           </form>
           <div className="character-alphabet-search-container">
             <ul className="character-ab-search">

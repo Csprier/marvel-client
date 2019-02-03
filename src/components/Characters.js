@@ -45,8 +45,10 @@ class Characters extends Component {
     return (
       <div className="characters-container">
         <Navigation />
-        <h2>Characters</h2>
-        <SearchForm />
+        <div className="searchform-container">
+          <h4>Search Characters</h4>
+          <SearchForm />
+        </div>
         <div className="character-info">
           <ul>
             {characterDummyInfo}
