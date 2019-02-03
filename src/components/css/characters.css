@@ -6,48 +6,84 @@
 }
 
 .characters-container {
+  margin: 0px;
+  padding: 0px;
+}
 
+.searchform-container {
+  display: block;
+  position: relative;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  top: 25px;
 }
 
 .characters-container h2 {
- 
+  margin: 0px;
+  padding: 0px;
+  font-family: arial;
+  font-weight: 100;
+  /* text-align: center; */
+  background-color: black;
+  color: white;
 }
 
-.character-dummy-info {
- 
+.character-info {
+  display: block;
+  position: relative;
+  margin: 0px;
+  padding: 0px;
 }
 
-.character-dummy-info ul {
- 
+.character-info ul {
+  margin: 0px;
+  padding: 0px;
 }
 
 .character-list-item {
- 
+  margin: 0px;
+  padding: 0px;
+  border: 1px solid black;
 }
 
 .character-item {
- 
+  margin: 0px;
+  padding: 0px;
 }
 .character-item h3, h4 { 
-  
+  margin: 0px;
+  padding: 0px;
+  font-family: arial;
+  font-weight: 100;
 }
 .character-item h3, h4, p, ul {
-  
+  margin: 0px;
+  padding: 0px;
+  font-family: arial;
+  font-weight: 100;
 }
 
 .character-header {
-  
+  margin: 0px;
+  padding: 0px;
+  background-color: black;
+  color: white;
 }
 
 .character-description {
-  
+  margin: 0px;
+  padding: 0px;
 }
 
 .character-urls {
- 
+  margin: 0px;
+  padding: 0px;
 }
 
 .attributionText {
+  margin: 0px;
+  padding: 0px;
   font-size: 6px;
 }
 

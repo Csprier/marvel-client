@@ -44,14 +44,12 @@ class Characters extends Component {
 
     return (
       <div className="characters-container">
-        <div className="db-navigation-container">
-          <Navigation />
+        <Navigation />
+        <div className="searchform-container">
+          <h4>Search Characters</h4>
+          <SearchForm />
         </div>
-        <h2>Characters</h2>
-        <button onClick={this.props.history.goBack} className="return-to-dashboard-button">&#x3c; Dashboard</button>
-        <SearchForm />
-        {/* <span>Results returned: {characterDummyInfo.length}</span> */}
-        <div className="character-dummy-info">
+        <div className="character-info">
           <ul>
             {characterDummyInfo}
           </ul>
