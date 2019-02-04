@@ -26,11 +26,13 @@ class Characters extends Component {
         <li key={i} className="character-list-item">
           <div className="character-item">
             <div className="character-header">
-              <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} className="character-thumbnail" alt="" />
               <h3>{character.name}</h3>
             </div>
             <div className="character-description">
               <p>ID: {character.id}</p>  
+              {(character.thumbnail) 
+                ? <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} className="character-thumbnail" alt="" /> 
+                : <img src={'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg'} className="character-thumbnail" alt="no thumbnail available" />}
               <h4>Description:</h4>
               <p>{character.description.length !== 0 ? character.description : '~Description not available~'}</p>  
             </div>

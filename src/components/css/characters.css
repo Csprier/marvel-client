@@ -11,12 +11,11 @@
 }
 
 .searchform-container {
-  display: block;
   position: relative;
-  width: 100%;
-  margin: 0px;
+  width: 98%;
+  margin: 0 auto;
   padding: 0px;
-  top: 25px;
+  top: 50px;
 }
 
 .characters-container h2 {
@@ -24,16 +23,20 @@
   padding: 0px;
   font-family: arial;
   font-weight: 100;
-  /* text-align: center; */
   background-color: black;
   color: white;
 }
 
 .character-info {
-  display: block;
-  position: relative;
-  margin: 0px;
+  position: fixed;
+  width: 98%;
+  max-height: 100%;
+  margin: 0 auto;
   padding: 0px;
+  top: 125px;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow-y: scroll;
 }
 
 .character-info ul {
@@ -42,9 +45,9 @@
 }
 
 .character-list-item {
-  margin: 0px;
-  padding: 0px;
-  border: 1px solid black;
+  margin: 0px 0px 5px 0px;
+  padding: 0px 0px 5px 0px;
+  border-bottom: 1px solid black;
 }
 
 .character-item {
@@ -83,6 +86,9 @@
   display: flex;
   width: 100px;
   height: 100px;
+}
+.no-thumbnail {
+  font-size: 6px;
 }
 
 .character-description {
