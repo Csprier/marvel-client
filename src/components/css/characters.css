@@ -57,7 +57,7 @@
   font-family: arial;
   font-weight: 100;
 }
-.character-item h3, h4, p, ul {
+.character-item h4, p, ul {
   margin: 0px;
   padding: 0px;
   font-family: arial;
@@ -65,10 +65,24 @@
 }
 
 .character-header {
+  display: flex;
+  justify-content: space-between;
   margin: 0px;
   padding: 0px;
   background-color: black;
   color: white;
+}
+.character-header h3 { 
+  display: flex; 
+  margin: 0px;
+  padding: 0px;
+  font-family: arial;
+  font-weight: 100;
+}
+.character-thumbnail {
+  display: flex;
+  width: 100px;
+  height: 100px;
 }
 
 .character-description {

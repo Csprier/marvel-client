@@ -26,6 +26,7 @@ class Characters extends Component {
         <li key={i} className="character-list-item">
           <div className="character-item">
             <div className="character-header">
+              <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} className="character-thumbnail" alt="" />
               <h3>{character.name}</h3>
             </div>
             <div className="character-description">

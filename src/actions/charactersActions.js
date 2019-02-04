@@ -32,13 +32,15 @@ export const listAllCharactersByName = () => dispatch => {
 
   return Axios.get(url)
     .then(res => {
+      console.log(res);
       const characterAttributionText = res.data.attributionText;
       const characterData = res.data.data.results.map(character => ({
         id: character.id,
         name: character.name,
         description: character.description,
         urls: character.urls,
-        attributionText: characterAttributionText
+        attributionText: characterAttributionText,
+        thumbnail: character.thumbnail
       }));
       dispatch(getCharacterNames(characterData));
       dispatch(getCharactersSuccess());
