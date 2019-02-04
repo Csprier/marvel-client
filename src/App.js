@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import './App.css';
-// import Navigation from './components/Navigation';
+import { Router, Route } from 'react-router-dom';
+
 import LandingPage from './components/LandingPage';
 import Dashboard from './components/Dashboard';
 import Characters from './components/Characters';
 import Comics from './components/Comics';
+import history from './history';
+import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <Router>
+      <Router history={history}>
         <div className="App">
           <main>
             <Route exact path="/" component={LandingPage} />

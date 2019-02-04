@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import Navigation from './Navigation';
+import CharacterForm from './CharacterForm';
+import ComicForm from './ComicForm';
 import './css/dashboard.css';
 
 class Dashboard extends Component {
   goToCharacters(e) {
     e.preventDefault();
-    this.props.history.push('/characters');
+    const { history } = this.props;
+    history.push('/characters');
   }
 
   goToComics(e) {
     e.preventDefault();
-    this.props.history.push('/comics');
+    const { history } = this.props;
+    history.push('/comics');
   }
 
   render() {
@@ -21,18 +25,8 @@ class Dashboard extends Component {
         </div>
 
         <div className="dashboard">
-          <div className="characters form-container">
-            <form onSubmit={e => this.goToCharacters(e)} className="dashboard-characters-form">
-              <button className="dashboard-button">CHARACTERS</button>
-            </form>
-          </div>
-          
-          <div className="comics form-container">
-            <form onSubmit={e => this.goToComics(e)} className="dashboard-comics-form">
-              <button className="dashboard-button">COMICS</button>
-            </form>
-          </div>
-        
+          <CharacterForm onSubmit={e => this.goToCharacters(e)} />
+          <ComicForm onSubmit={e => this.goToComics(e)} />
         </div>
       </div>
     );
