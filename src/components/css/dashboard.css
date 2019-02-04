@@ -10,6 +10,8 @@
 }
 
 .dashboard {
+  position: relative;
+  top: 35px;
   margin: 0px;
   padding: 0px;
 }
@@ -27,7 +29,6 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-attachment: fixed;
   width: 98%;
   height: 150px;
 }
@@ -37,7 +38,6 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-attachment: fixed;
   width: 98%;
   height: 150px;
 }
@@ -49,6 +49,7 @@
   font-family: arial;
   background-color: black;
   color: white;
+  border: 1px solid black;
 }
 
 /* .dashboard-container {
