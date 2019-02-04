@@ -6,38 +6,58 @@
 }
 
 .advanced-search-container {
-  
+  margin: 0px;
+  padding: 0px;
 }
 
 .advanced-search-form-container {
-  
+  margin: 0px;
+  padding: 0px;
 }
 .advanced-search-form-container form {
-  
+  display: flex;
+  justify-content: space-between;
+  margin: 0px;
+  padding: 0px;
 }
 
 .advanced-search-form-container input {
- 
+  width: 80%;
+  margin: 0px;
+  padding: 5px;
 }
 
 .search-button {
- 
+  width: 10%;
+  margin: 0px;
+  padding: 0px;
 }
 
 .alphabet-search-container {
-  
+  display: flex;
+  justify-content: row;
+  margin: 0px;
+  padding: 0px;
 }
 .ab-search {
-  
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: scroll;
 }
 .ab-search ul {
-  
+  margin: 0px;
+  padding: 0px;
 }
 .ab-search-li {
-
+  display: flex;
+  margin: 0px;
+  padding: 0px;
 }
 .alphabet-search-button {
-  
+  margin: 0px;
+  padding: 5px 15px;
+  /* border: 1px solid black; */
 }
 
 /* .advanced-search-container {

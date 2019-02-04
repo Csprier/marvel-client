@@ -32,14 +32,15 @@ class Comics extends Component {
 
     return (
       <div className="comics-container">
-        <div className="db-navigation-container">
-          <Navigation />
+        <Navigation />
+        <div className="comics-search-container">
+          <h4>Search Comics</h4>
+          <AdvanComicSearch />
         </div>
-        <h2>Comics</h2>
-        <button onClick={this.props.history.goBack} className="return-to-dashboard-button">&#x3c; Dashboard</button>
-        <AdvanComicSearch />
-        <div className="comic-dummy-info">
-          {comicImages}
+        <div className="comic-info">
+          <ul>
+            {comicImages}
+          </ul>
         </div>
       </div>
     );
