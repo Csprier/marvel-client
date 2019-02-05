@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "dotenv": "^6.2.0",
     "enzyme": "^3.8.0",
+    "netlify-cli": "^2.6.6",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",

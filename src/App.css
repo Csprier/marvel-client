@@ -1,23 +1,17 @@
 .App {
-  
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
 }
 
 .App-header {
-  /* position: fixed;
-  z-index: 10;
-  width: 100%;
-  font-family: 'badaboom_bb';
-  letter-spacing: 4px;
-  background-color: darkred;
-  display: flex;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: yellow;
   margin: 0px;
-  padding: 0px; */
+  padding: 0px;
 }
 
 .App-header h1 {
-  /* margin: 0px;
-  padding: 10px 0px; */
+  margin: 0px;
+  padding: 0px;
 }
