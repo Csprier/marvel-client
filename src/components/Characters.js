@@ -28,19 +28,19 @@ class Characters extends Component {
             <div className="character-header">
               <h3>{character.name}</h3>
             </div>
-            <div className="character-description">
-              <p>ID: {character.id}</p>  
-              {(character.thumbnail) 
+            {(character.thumbnail) 
                 ? <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} className="character-thumbnail" alt="" /> 
                 : <img src={'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg'} className="character-thumbnail" alt="no thumbnail available" />}
+            <div className="character-description">
+              <p>ID: {character.id}</p>  
               <h4>Description:</h4>
               <p>{character.description.length !== 0 ? character.description : '~Description not available~'}</p>  
+              <div className="character-urls">
+                <h4>URLs to various external links:</h4>
+                <ul>{character.urls.map((url, i) => <li key={i}><a href={url.url}>{url.type}</a></li>)}</ul>  
+              </div>
+              <p className="attributionText">{character.attributionText}</p>
             </div>
-            <div className="character-urls">
-              <h4>URLs to various external links:</h4>
-              <ul>{character.urls.map((url, i) => <li key={i}><a href={url.url}>{url.type}</a></li>)}</ul>  
-            </div>
-            <p className="attributionText">{character.attributionText}</p>
           </div>
         </li>
       )});
