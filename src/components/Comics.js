@@ -25,7 +25,9 @@ class Comics extends Component {
         <div className="image-container" key={i}>
           <h4>{comic.title}</h4>
           {/* <p>ID: {comic.id}</p> */}
-          <img src={`${comic.image.path}.${comic.image.extension}`} alt=""></img>
+          {(comic.image) 
+            ? <img src={`${comic.image.path}.${comic.image.extension}`} alt=""></img> 
+            : <div><p>Image not available</p></div>}
         </div>
       );
     })

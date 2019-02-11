@@ -18,7 +18,7 @@ class AdvanComicSearch extends Component {
   }
 
   submitTitleStartsWithSearch(term) {
-    console.log('Update searchTerm to: ', term);
+    console.log('Comic Update searchTerm to: ', term);
     this.props.dispatch(updateComicSearchTerm(term));
   }
 
