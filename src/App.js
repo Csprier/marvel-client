@@ -7,7 +7,8 @@ import Characters from './components/Characters';
 import Comics from './components/Comics';
 import history from './history';
 
-// import UserCreationForm from './components/userComponents/UserCreationForm';
+import UserCreationForm from './components/userComponents/UserCreationForm';
+// import UserLoginForm from './userComponents/UserLoginForm';
 
 import './App.css';
 
@@ -18,8 +19,8 @@ class App extends Component {
         <div className="App">
           <main>
             <Route exact path="/" component={LandingPage} />
-            {/* <Route path="/" component={UserCreationForm} /> */}
-            {/* <Route exact path="/" component={UserLogin} /> */}
+            <Route exact path="/" component={UserCreationForm} />
+            {/* <Route path="/" component={UserLogin} /> */}
 
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/characters" component={Characters} />

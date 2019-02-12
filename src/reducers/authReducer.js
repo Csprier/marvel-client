@@ -1,4 +1,9 @@
-import {CLEAR_TOKEN, REQUEST_LOGIN, LOGIN_SUCCESS, LOGIN_ERROR } from '../actions/authActions';
+import {
+  CLEAR_TOKEN, 
+  REQUEST_LOGIN, 
+  LOGIN_SUCCESS, 
+  LOGIN_ERROR 
+} from '../actions/authActions';
 
 const initialState = {
 	user: null,

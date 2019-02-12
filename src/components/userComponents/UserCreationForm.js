@@ -8,9 +8,8 @@ import '../css/user-component-styles/user-creation.css';
 
 class UserCreationForm extends Component {
   onSubmit(values) {
-    console.log(values);
     this.props.dispatch(registerNewUserHandler(values.username, values.password, values.email))
-    .then(() => this.props.history.push('/dashboard'))
+      .then(() => this.props.history.push('/dashboard'))
   }
 
   render() {
