@@ -34,7 +34,7 @@ class UserCreationForm extends Component {
               type="password" 
               component="input" 
             />
-            <button name="submit-create-account" type="submit">CREATE ACCOUNT</button>
+            <button className="creation-button" name="submit-create-account" type="submit">CREATE ACCOUNT</button>
           </form>
       </div>
     );

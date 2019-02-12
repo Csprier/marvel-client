@@ -8,27 +8,49 @@
 
 /* =============================================================== */
 .user-creation-form {
-  width: 98%;
+  width: 200px;
   margin: 0 auto;
-  padding: 0px;
+  margin-top: 5px;
+  padding: 5px;
   background-color: white;
   color: black;
   border: 1px solid black;
 }
+.user-creation-form h2 {
+  margin: 0px;
+  padding: 10px 0px;
+  letter-spacing: 2px;
+  text-align: center;
+  font-family: 'badaboom_bb', arial;
+}
 .user-creation-form form {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 100%;
   background-color: white;
   color: black;
-}
-.user-creation-form h2 {
-  display: flex;
-  margin: 0px;
-  padding: 0px;
-  letter-spacing: 2px;
-  font-family: 'badaboom_bb', arial;
 }
 .user-creation-form label, input, button {
   display: flex;
   font-family: arial;
+}
+.user-creation-form input {
+  width: 98%;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  padding: 5px 0px;
+  border: 1px solid black;
+}
+
+.creation-button {
+  height: 25px;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  padding: 5px;
+  text-align: center;
+  font-family: arial;
+  background-color: red;
+  color: white;
+  /* border: 1px solid black; */
 }
