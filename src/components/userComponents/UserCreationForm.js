@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 
-import { registerNewUserHandler } from '../../actions/userActions';
+import { createUser } from '../../actions/userActions';
 
 import '../css/user-component-styles/user-creation.css';
 
 class UserCreationForm extends Component {
   onSubmit(values) {
-    this.props.dispatch(registerNewUserHandler(values.username, values.password, values.email))
+    this.props.dispatch(createUser(values.username, values.password, values.email))
       .then(() => this.props.history.push('/dashboard'))
   }
 

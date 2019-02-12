@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { logoutUser } from '../actions/userActions';
+import { logout } from '../actions/authActions';
 
 import './css/navigation.css';
 
 class Navigation extends Component {
   onClickLogout = () => {
-    this.props.dispatch(logoutUser())
+    this.props.dispatch(logout())
     this.props.history.push('/')
   }
 

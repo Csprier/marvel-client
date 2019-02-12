@@ -51,7 +51,7 @@ export const storeToken = (token, dispatch) => {
 export const login = (username, password) => dispatch => {
 	dispatch(requestLogin());
 	return (
-		fetch(`${API_BASE_URL}/login`, {
+		fetch(`${API_BASE_URL}/api/auth/login`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -63,14 +63,14 @@ export const login = (username, password) => dispatch => {
 		})
 			.then(res => normalizeResponseErrors(res))
 			.then(res => res.json())
-			.then(({authToken}) => storeToken(authToken, dispatch))
+			.then(({ authToken }) => storeToken(authToken, dispatch))
 			.catch(error => {
 				if (error.error) {
-					const {status} = error.error;
+					const { status } = error.error;
 					const message = status === 401 ? 'Incorrect username or password' : 'Unable to login , please try again';
 					return Promise.reject( new SubmissionError({_error : message}));
 				}
-				dispatch(loginError('Unable to login , please try again'));
+				dispatch(loginError('Unable to login, please try again'));
 				return Promise.reject( new SubmissionError({_error : 'Unable to login , please try again'}));
 			})
 	);
