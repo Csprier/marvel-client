@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 
+import { registerNewUserHandler } from '../../actions/userActions';
+
 import '../css/user-component-styles/user-creation.css';
 
 class UserCreationForm extends Component {
   onSubmit(values) {
-    // this.props.dispatch(registerNewUserHandler(values.username, values.password, values.fullname))
-    // .then(() => this.props.history.push('/dashboard'))
     console.log(values);
+    this.props.dispatch(registerNewUserHandler(values.username, values.password, values.email))
+    .then(() => this.props.history.push('/dashboard'))
   }
 
   render() {
@@ -23,6 +25,14 @@ class UserCreationForm extends Component {
               aria-label="createusername"
               name="username" 
               id="username" 
+              type="text" 
+              component="input"
+              />
+            <label htmlFor="createemail">Email</label>
+            <Field 
+              aria-label="createemail"
+              name="email" 
+              id="email" 
               type="text" 
               component="input"
               />

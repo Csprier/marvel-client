@@ -13,7 +13,7 @@ class UserLoginForm extends Component {
   render() {
     return (
       <div className="user-login-form">
-        <h2>Login to an Account</h2>
+        <h2>Login</h2>
         <form onSubmit={this.props.handleSubmit(values =>
           this.onSubmit(values)
         )}>
