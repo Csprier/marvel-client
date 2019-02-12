@@ -6,6 +6,9 @@ import Dashboard from './components/Dashboard';
 import Characters from './components/Characters';
 import Comics from './components/Comics';
 import history from './history';
+
+// import UserCreationForm from './components/userComponents/UserCreationForm';
+
 import './App.css';
 
 class App extends Component {
@@ -15,6 +18,9 @@ class App extends Component {
         <div className="App">
           <main>
             <Route exact path="/" component={LandingPage} />
+            {/* <Route path="/" component={UserCreationForm} /> */}
+            {/* <Route exact path="/" component={UserLogin} /> */}
+
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/characters" component={Characters} />
             <Route exact path="/comics" component={Comics} />
