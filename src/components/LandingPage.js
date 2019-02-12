@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './css/landingpage.css';
 import UserCreationForm from './userComponents/UserCreationForm';
+import UserLoginForm from './userComponents/UserLoginForm';
 
 class LandingPage extends Component {
   goToBoard(e) {
@@ -21,6 +22,7 @@ class LandingPage extends Component {
             <button className="marvel-button">Go to the Dashboard</button>
           </form> */}
           <UserCreationForm />
+          <UserLoginForm />
         </div>
       </div>
     );
