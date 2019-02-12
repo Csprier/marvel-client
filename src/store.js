@@ -6,7 +6,6 @@ import searchReducer from './reducers/searchReducer';
 import comicsReducer from './reducers/comicsReducer';
 
 const rootReducer = combineReducers({
-  // form: formReducer,
   // auth: authReducer,
   form: formReducer,
   searchTerm: searchReducer,
