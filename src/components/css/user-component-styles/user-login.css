@@ -1,0 +1,56 @@
+@font-face {
+  font-family: 'badaboom_bb';
+  src: local('badaboom_bb'), url('../fonts/BADABB__.TTF');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/* =============================================================== */
+.user-login-form {
+  width: 200px;
+  margin: 0 auto;
+  margin-top: 5px;
+  padding: 5px;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+.user-login-form h2 {
+  margin: 0px;
+  padding: 10px 0px;
+  letter-spacing: 2px;
+  text-align: center;
+  font-family: 'badaboom_bb', arial;
+}
+.user-login-form form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  color: black;
+}
+.user-login-form label, input, button {
+  display: flex;
+  font-family: arial;
+}
+.user-login-form input {
+  width: 98%;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  padding: 5px 0px;
+  border: 1px solid black;
+}
+
+.login-button {
+  height: 25px;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  padding: 5px;
+  text-align: center;
+  font-family: arial;
+  background-color: red;
+  color: white;
+  /* border: 1px solid black; */
+}
