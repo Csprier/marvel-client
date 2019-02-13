@@ -18,10 +18,7 @@ export const createUser = (username, email, password) => dispatch => {
   })
   .then(res => normalizeResponseErrors(res))
   .then(res => res.json())
-  .then(res => {
-    console.log('response inside createUser async:', res)
-    // dispatch(login(res.username, res.password))
-  })
+  .then(res => dispatch(login(username, password)))
   .catch(error => {
     console.error(error);
     const { message } = error;
