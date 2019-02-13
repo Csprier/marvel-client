@@ -24,7 +24,6 @@ class Comics extends Component {
       return (
         <div className="image-container" key={i}>
           <h4>{comic.title}</h4>
-          {/* <p>ID: {comic.id}</p> */}
           {(comic.image) 
             ? <img src={`${comic.image.path}.${comic.image.extension}`} alt=""></img> 
             : <div><p>Image not available</p></div>}
@@ -36,7 +35,10 @@ class Comics extends Component {
       <div className="comics-container">
         <Navigation />
         <div className="comics-search-container">
-          <h4>Search Comics</h4>
+          <div className="advan-search-row">
+            <h4 className="advan-search-header">Search Comics</h4>
+            <button onClick={this.props.history.goBack} className="return-button">&#60; Dashboard</button>  
+          </div>
           <AdvanComicSearch />
         </div>
         <div className="comic-info">
