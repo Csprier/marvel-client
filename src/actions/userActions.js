@@ -9,7 +9,8 @@ export const createUser = (username, email, password) => dispatch => {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ 
+    // body: JSON.stringify(user)
+    body: JSON.stringify({
       username,
       email,
       password
@@ -19,7 +20,7 @@ export const createUser = (username, email, password) => dispatch => {
   .then(res => res.json())
   .then(res => {
     console.log('response inside createUser async:', res)
-    dispatch(login(username, password))
+    // dispatch(login(res.username, res.password))
   })
   .catch(error => {
     console.error(error);

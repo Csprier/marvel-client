@@ -8,7 +8,7 @@ import '../css/user-component-styles/user-creation.css';
 
 class UserCreationForm extends Component {
   onSubmit(values) {
-    this.props.dispatch(createUser(values.username, values.password, values.email))
+    this.props.dispatch(createUser(values.username, values.email, values.password))
       .then(() => this.props.history.push('/dashboard'))
   }
 
