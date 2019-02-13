@@ -54,3 +54,10 @@
   color: white;
   /* border: 1px solid black; */
 }
+
+.sign-up-link {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: arial;
+}

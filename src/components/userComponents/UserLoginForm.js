@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field, focus } from 'redux-form';
+import { Link } from 'react-router-dom';
 
 // Validators
 import { required, nonEmpty, isTrimmed } from './form-validators.js';
@@ -54,6 +55,10 @@ class UserLoginForm extends Component {
           <button className="login-button" name="submit-login" type="submit">LOG IN</button>
           {error}
         </form>
+        <p className="sign-up-link">
+          Don't have an account?
+          <Link to="/register">Sign Up</Link>
+        </p>
       </div>
     );
   }
