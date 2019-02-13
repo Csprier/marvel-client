@@ -1,0 +1,8 @@
+.form-field-error {
+  color: red;
+  width: 100%;
+  height: auto;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: arial;
+}

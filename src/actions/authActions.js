@@ -1,5 +1,5 @@
 import jwtDecode from 'jwt-decode';
-import { SubmissionError } from 'redux-form';
+// import { SubmissionError } from 'redux-form';
 
 import { API_BASE_URL } from '../config';
 import { normalizeResponseErrors } from './utils';
@@ -32,7 +32,6 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS',
 // Set loading to false & add error to redux state
 export const LOGIN_ERROR = 'LOGIN_ERROR',
   loginError = error => {
-    console.log('Login error action ran');
     return {
       type: LOGIN_ERROR,
       error
@@ -65,14 +64,15 @@ export const login = (username, password) => dispatch => {
 		.then(res => res.json())
 		.then(({ authToken }) => storeToken(authToken, dispatch))
 		.catch(error => {
+			// console.log(error);
 			if (error.error) {
 				const { status } = error.error;
 				const message = status === 401 ? 'Incorrect username or password' : 'Unable to login, please try again';
 				dispatch(loginError(message))
-				return Promise.reject( new SubmissionError({_error : message}));
+				// return Promise.reject( new SubmissionError({_error : message}));
 			}
-			dispatch(loginError('Unable to login, please try again'));
-			return Promise.reject( new SubmissionError({_error : 'Unable to login, please try again'}));
+			// dispatch(loginError('Unable to login, please try again'));
+			// return Promise.reject( new SubmissionError({_error : 'Unable to login, please try again'}));
 		})
 	);
 };

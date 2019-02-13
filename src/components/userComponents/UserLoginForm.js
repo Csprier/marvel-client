@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field, focus } from 'redux-form';
 
+// Validators
+import { required, nonEmpty, isTrimmed } from './form-validators.js';
+
 // ACTIONS
 import { login } from '../../actions/authActions.js';
 
 // CSS
 import '../css/user-component-styles/user-login.css'
+import './forms.css';
 
 class UserLoginForm extends Component {
   onSubmit(values) {
@@ -15,10 +19,10 @@ class UserLoginForm extends Component {
 
   render() {
     let error;
-    if (this.props.error) {
+    if (this.props.loginFail) {
       error = (
         <div className="form-field-error" aria-live="polite">
-          {this.props.error}
+          {this.props.loginFail}
         </div>
       );
     }
@@ -36,6 +40,7 @@ class UserLoginForm extends Component {
             id="loginusername" 
             type="text" 
             component="input"
+            validate={[ required, nonEmpty, isTrimmed ]}
             />
           <label htmlFor="password">Password</label>
           <Field 
@@ -43,12 +48,12 @@ class UserLoginForm extends Component {
             name="password" 
             id="loginpassword" 
             type="password" 
-            component="input" 
+            component="input"
+            validate={[ required, nonEmpty ]}
           />
           <button className="login-button" name="submit-login" type="submit">LOG IN</button>
           {error}
         </form>
-        {/* <button name="demo-login" type="submit" title="login as demo user" onClick={() => this.props.dispatch(loginUserHandler(this.props.history, 'testuser', 'password'))}>DEMO</button> */}
       </div>
     );
   }
@@ -56,8 +61,7 @@ class UserLoginForm extends Component {
 
 const mapStateToProps = state => ({
   loggedIn: state.auth.user !== null,
-  user: state.auth.user,
-  error: state.auth.error
+  loginFail: state.auth.error
 });
 
 UserLoginForm = reduxForm({
