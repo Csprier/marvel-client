@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import './css/landingpage.css';
 // import UserCreationForm from './userComponents/UserCreationForm';
 // import UserLoginForm from './userComponents/UserLoginForm';
@@ -10,6 +12,10 @@ class LandingPage extends Component {
   }
 
   render() {
+    if (this.props.loggedIn) {
+      return <Redirect to="/dashboard" />;
+    }
+
     return(
       <div className="landing-page">
         <div className="landing-page-info-container">
@@ -20,12 +26,14 @@ class LandingPage extends Component {
               <button className="marvel-button">Go to the Dashboard</button>
             </form>
           </div>
-          {/* <UserCreationForm />
-          <UserLoginForm /> */}
         </div>
       </div>
     );
   }
 }
 
-export default LandingPage;
+const mapStateToProps = state => ({
+  loggedIn: state.auth.user !== null
+});
+
+export default connect(mapStateToProps)(LandingPage);

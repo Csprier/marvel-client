@@ -61,18 +61,19 @@ export const login = (username, password) => dispatch => {
 				password
 			})
 		})
-			.then(res => normalizeResponseErrors(res))
-			.then(res => res.json())
-			.then(({ authToken }) => storeToken(authToken, dispatch))
-			.catch(error => {
-				if (error.error) {
-					const { status } = error.error;
-					const message = status === 401 ? 'Incorrect username or password' : 'Unable to login , please try again';
-					return Promise.reject( new SubmissionError({_error : message}));
-				}
-				dispatch(loginError('Unable to login, please try again'));
-				return Promise.reject( new SubmissionError({_error : 'Unable to login , please try again'}));
-			})
+		.then(res => normalizeResponseErrors(res))
+		.then(res => res.json())
+		.then(({ authToken }) => storeToken(authToken, dispatch))
+		.catch(error => {
+			if (error.error) {
+				const { status } = error.error;
+				const message = status === 401 ? 'Incorrect username or password' : 'Unable to login, please try again';
+				dispatch(loginError(message))
+				return Promise.reject( new SubmissionError({_error : message}));
+			}
+			dispatch(loginError('Unable to login, please try again'));
+			return Promise.reject( new SubmissionError({_error : 'Unable to login, please try again'}));
+		})
 	);
 };
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm, Field, focus } from 'redux-form';
 
 // ACTIONS
 import { login } from '../../actions/authActions.js';
@@ -10,12 +10,19 @@ import '../css/user-component-styles/user-login.css'
 
 class UserLoginForm extends Component {
   onSubmit(values) {
-    console.log(values);
     this.props.dispatch(login(values.username, values.password))
-      .then(() => this.props.history.push('/dashboard'));
   }
 
   render() {
+    let error;
+    if (this.props.error) {
+      error = (
+        <div className="form-field-error" aria-live="polite">
+          {this.props.error}
+        </div>
+      );
+    }
+
     return (
       <div className="user-login-form">
         <h2>Login</h2>
@@ -39,7 +46,7 @@ class UserLoginForm extends Component {
             component="input" 
           />
           <button className="login-button" name="submit-login" type="submit">LOG IN</button>
-          {this.props.loginFail}
+          {error}
         </form>
         {/* <button name="demo-login" type="submit" title="login as demo user" onClick={() => this.props.dispatch(loginUserHandler(this.props.history, 'testuser', 'password'))}>DEMO</button> */}
       </div>
@@ -47,12 +54,15 @@ class UserLoginForm extends Component {
   }
 }
 
-// const mapStateToProps = state => ({
-//   loginFail: state.user.error
-// })
+const mapStateToProps = state => ({
+  loggedIn: state.auth.user !== null,
+  user: state.auth.user,
+  error: state.auth.error
+});
 
 UserLoginForm = reduxForm({
-  form: 'UserLoginForm'
+  form: 'UserLoginForm',
+  obSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
 })(UserLoginForm);
 
-export default connect()(UserLoginForm);
+export default connect(mapStateToProps)(UserLoginForm);
