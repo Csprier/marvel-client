@@ -3,9 +3,8 @@ import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 
 export default () => WrappedComponent => {
-
 	function RequiresLogin(props) {
-		const {authenticating, loggedIn, error, ...passThroughProps} = props;
+		const { authenticating, loggedIn, error, ...passThroughProps } = props;
 		if (authenticating) {
 			return <div>Logging in...</div>;
     } 
@@ -15,9 +14,9 @@ export default () => WrappedComponent => {
 		return <WrappedComponent {...passThroughProps} />;
 	}
 
-	const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
+	// const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
 
-	RequiresLogin.displayName = `RequiresLogin(${displayName})`;
+	// RequiresLogin.displayName = `RequiresLogin(${displayName})`;
 
 	const mapStateToProps = (state) => ({
 		authenticating: state.auth.loading,

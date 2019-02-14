@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
-import requiresLogin from './requires-login';
+// import requiresLogin from './requires-login';
 import ProfileForm from './userComponents/ProfileForm';
 
 // CSS
@@ -39,14 +39,12 @@ class Profile extends Component {
           {error}
           <header className="profile-header">
             <h2>Profile</h2>
-            <div>
-              <button
-                className={this.state.editing ? 'profile-cancel-btn' : 'profile-edit-btn'}
-                title={this.state.editing ? 'Profile cancel button' : 'Profile edit button'}
-                type="button"
-                onClick={this.handleEdit}>
-              </button>
-            </div>
+            <button
+              className={this.state.editing ? 'profile-cancel-btn' : 'profile-edit-btn'}
+              title={this.state.editing ? 'Profile cancel button' : 'Profile edit button'}
+              type="button"
+              onClick={this.handleEdit}>
+            </button>
           </header>
           {this.state.editing
 				    ? <ProfileForm
@@ -76,7 +74,10 @@ class Profile extends Component {
 
 const mapStateToProps = state => ({
   loggedIn: state.auth.user !== null,
-  userId: state.auth.user.id !== null
+  userId: state.auth.user.id !== null,
+  username: state.auth.user.username,
+  email: state.auth.user.email
 });
 
-export default requiresLogin()(connect(mapStateToProps)(Profile));
+export default connect(mapStateToProps)(Profile);
+// export default requiresLogin()(connect(mapStateToProps)(Profile));
