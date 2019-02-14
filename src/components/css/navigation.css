@@ -24,44 +24,36 @@
   color: white;
 }
 
-.logout-button {
-  margin: 2px;
-  padding: 0px 10px;
-  font-family: arial;
-  color: white;
-}
-
-/* 
-.navigation-container {
+.links-container {
   display: flex;
-  justify-content: space-between;
-  position: fixed;
-  z-index: 10;
-  width: 100%;
-  font-family: 'badaboom_bb';
-  letter-spacing: 4px;
-  background-color: darkred;
-  font-size: calc(10px + 2vmin);
-  color: yellow;
-  margin: 0px 0px 0px 0px;
-  padding: 0px 0px 0px 10px;
-}
-
-.navigation-container h1 {
-  display: flex;
-  width: 100%;
+  flex-direction: row;
   margin: 0px;
-  padding: 10px 0px;
+  padding: 0px;
+}
+.links-container ul {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  justify-content: space-around;
+}
+.links-container li {
+  margin: 0px 5px 0px 0px;
+  padding: 10px;
+  text-align: center;
 }
 
-.return-button {
-  display: flex;
-  margin: 0px 10px 0px 0px;
-  padding: 0px 10px 0px 0px;
+/* Links container div-buttons */
+.nav-button {
+  margin: 0px;
+  padding: 0px;
+}
+/* Link from react-router-dom is an anchor tag*/
+.nav-button a { 
+  margin: 0px;
+  padding: 0px;
+  font-size: 13px;
+  color: white;
   font-family: arial;
-  letter-spacing: 4px;
-  font-size: calc(10px + 2vmin);
-  background-color: darkred;
-  color: yellow;
-  border: 1px solid darkred;
-} */
+  font-weight: 100;
+  text-decoration: none;
+}
