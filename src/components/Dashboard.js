@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 // Components
 import Navigation from './Navigation';
 import CharacterForm from './CharacterForm';
@@ -41,4 +43,11 @@ class Dashboard extends Component {
   }
 }
 
-export default RequiresLogin(Dashboard);
+const mapStateToProps = state => {
+  const { username } = state.auth.user;
+  return {
+    username
+  }
+}
+
+export default RequiresLogin(connect(mapStateToProps)(Dashboard));

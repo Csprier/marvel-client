@@ -27,9 +27,9 @@ export const AUTH_REQUEST = 'AUTH_REQUEST',
 	});
 
 export const AUTH_SUCCESS = 'AUTH_SUCCESS',
-	authSuccess = currentUser => ({
+	authSuccess = user => ({
 		type: AUTH_SUCCESS,
-		currentUser
+		user
 	});
 
 export const AUTH_ERROR = 'AUTH_ERROR',

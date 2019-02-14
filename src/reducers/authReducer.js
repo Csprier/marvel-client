@@ -1,11 +1,16 @@
 import {
+  SET_AUTH_TOKEN,
   CLEAR_TOKEN, 
+  AUTH_REQUEST,
+  AUTH_SUCCESS,
+  AUTH_ERROR,
   REQUEST_LOGIN, 
   LOGIN_SUCCESS, 
   LOGIN_ERROR 
 } from '../actions/authActions';
 
 const initialState = {
+  authToken: null, // authToken !== null does not mean it has been validated
 	user: null,
 	loading: false,
 	error: null
@@ -13,10 +18,31 @@ const initialState = {
 
 export default function authReducer(state = initialState, action) {
   switch(action.type) {
+    case SET_AUTH_TOKEN:
+      return {
+        ...state,
+        authToken: action.authToken
+      }
     case CLEAR_TOKEN:
       return {
         ...state,
 			  user: null
+      }
+    case AUTH_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: null
+      }
+    case AUTH_SUCCESS:
+      return {
+        loading: false,
+        user: action.user
+      }
+    case AUTH_ERROR:
+      return {
+        loading: false,
+        error: action.error
       }
     case REQUEST_LOGIN:
       return {
