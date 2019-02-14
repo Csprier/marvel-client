@@ -3,6 +3,7 @@ import jwtDecode from 'jwt-decode';
 
 import { API_BASE_URL } from '../config';
 import { normalizeResponseErrors } from './utils';
+import { saveAuthToken, clearAuthToken } from '../local-storage';
 
 // ===========================================================================
 // AUTH ACTIONS ===============
@@ -38,11 +39,34 @@ export const AUTH_ERROR = 'AUTH_ERROR',
 	});
 
 //Store in localStorage & decompose into state
-export const storeToken = (token, dispatch) => {
-	const decodedToken = jwtDecode(token);
-	// set local storage BEFORE sending decoded token to avoid timing errors
-	localStorage.setItem('authToken', token);
+export const storeToken = (authToken, dispatch) => {
+	const decodedToken = jwtDecode(authToken);
+	dispatch(setAuthToken(authToken));
+	dispatch(authSuccess(decodedToken.user));
+	saveAuthToken(authToken);
 	dispatch(loginSuccess(decodedToken.user));
+};
+
+export const refreshAuthToken = () => (dispatch, getState) => {
+	dispatch(authRequest());
+	const authToken = getState().auth.authToken;
+	return fetch(`${API_BASE_URL}/auth/refresh`, {
+		method: 'POST',
+		headers: {
+			// provide the existing token as credentials to get a new one
+			Authorization: `Bearer: ${authToken}`
+		}
+	})
+	.then(res => normalizeResponseErrors(res))
+	.then(res => res.json())
+	.then(({ authToken }) => storeToken(authToken, dispatch))
+	.catch(err => {
+		// Invalid or Expired credentials will flag this error, or something else went wrong.
+		// Clear everything and log out
+		dispatch(authError(err));
+		dispatch(clearAuthToken());
+		clearAuthToken(authToken);
+	});
 };
 	
 // ===========================================================================
