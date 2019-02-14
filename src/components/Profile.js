@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
-import ProfileForm from './forms/profile-form';
+import requiresLogin from './requires-login';
+import ProfileForm from './userComponents/ProfileForm';
 
 class Profile extends Component {
   constructor() {

@@ -26,15 +26,14 @@ export class ProfileForm extends React.Component {
 			}
 		});
 	
-		this.props.dispatch(editProfile(this.props.initialValues.adminId, updatedProfile))
-		/* work around for messy state logic with redux-forms, definitely should make it more succinct */
-			.then( res => {
-				if( res ) {
-					this.setState({error: res.error});
-				} else {
-					this.props.setEdit();
-				}
-			});
+		// this.props.dispatch(editProfile(this.props.initialValues.adminId, updatedProfile))
+		// 	.then( res => {
+		// 		if( res ) {
+		// 			this.setState({error: res.error});
+		// 		} else {
+		// 			this.props.setEdit();
+		// 		}
+		// 	});
   };
   
   render() {
@@ -57,22 +56,22 @@ export class ProfileForm extends React.Component {
 							name="username"
 							label="Username"
 							type="text"
-							component={renderField}
-							validate={[required, nonEmpty, isTrimmed]}
+							component="input"
+							validate={[ required, nonEmpty, isTrimmed ]}
 						/>
 						<Field
 							name="email"
 							label="Email"
 							type="text"
-							component={renderField}
-							validate={[required, validEmail]}
+							component="input"
+							validate={[ required, validEmail ]}
 						/>
 						<Field
 							name="password"
 							label="Password"
 							type="password"
-							component={renderField}
-							validate={[required, isTrimmed, passwordLength]}
+							component="input"
+							validate={[ required, isTrimmed, length ]}
 							autocomplete="off"
 						/>
 						<div className="form-field form-btns">

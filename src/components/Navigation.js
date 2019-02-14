@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { logout } from '../actions/authActions';
 
@@ -16,6 +17,9 @@ class Navigation extends Component {
     return(
       <div className="navigation-container">
         <h1>Marvel API</h1>
+        <Link to="/profile">
+          <div>Profile</div>
+        </Link>
         <button 
           className="logout-button" 
           onClick={this.onClickLogout}
