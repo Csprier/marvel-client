@@ -4,6 +4,9 @@ import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
 import ProfileForm from './userComponents/ProfileForm';
 
+// CSS
+import './css/profile.css';
+
 class Profile extends Component {
   constructor() {
 		super();
@@ -35,7 +38,7 @@ class Profile extends Component {
         <div className="profile">
           {error}
           <header className="profile-header">
-            <h2>profile</h2>
+            <h2>Profile</h2>
             <div>
               <button
                 className={this.state.editing ? 'profile-cancel-btn' : 'profile-edit-btn'}
