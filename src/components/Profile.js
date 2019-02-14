@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
+import ProfileForm from './forms/profile-form';
+
 class Profile extends Component {
   constructor() {
 		super();
