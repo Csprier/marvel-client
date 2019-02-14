@@ -59,65 +59,67 @@ class UserCreationForm extends Component {
     }
 
     return (
-      <div className="user-creation-form">
-          <h2>Create an Account</h2>
-          <form onSubmit={this.props.handleSubmit(values =>
-            this.onSubmit(values)
-          )}>
-            <label htmlFor="createusername">Username</label>
-            <Field 
-              aria-label="createusername"
-              name="username" 
-              id="username" 
-              type="text" 
-              component="input"
-              validate={[ required, nonEmpty, isTrimmed ]}
-              autoComplete="off"
-              placeholder="Username..."
+      <div className="user-creation-form-container">
+        <div className="user-creation-form">
+            <h2>Create an Account</h2>
+            <form onSubmit={this.props.handleSubmit(values =>
+              this.onSubmit(values)
+            )}>
+              <label htmlFor="createusername">Username</label>
+              <Field 
+                aria-label="createusername"
+                name="username" 
+                id="username" 
+                type="text" 
+                component="input"
+                validate={[ required, nonEmpty, isTrimmed ]}
+                autoComplete="off"
+                placeholder="Username..."
+                />
+              <label htmlFor="createemail">Email</label>
+              <Field 
+                aria-label="createemail"
+                name="email" 
+                id="email" 
+                type="text" 
+                component="input"
+                validate={[ required, nonEmpty, validEmail ]}
+                autoComplete="off"
+                placeholder="Email..."
+                />
+              <label htmlFor="createpassword">Password</label>
+              <Field 
+                aria-label="createpassword"
+                name="password" 
+                id="password" 
+                type="password" 
+                component="input" 
+                validate={[ required, nonEmpty, isTrimmed, passwordLength ]}
+                autoComplete="off"
+                placeholder="Password..."
               />
-            <label htmlFor="createemail">Email</label>
-            <Field 
-              aria-label="createemail"
-              name="email" 
-              id="email" 
-              type="text" 
-              component="input"
-              validate={[ required, nonEmpty, validEmail ]}
-              autoComplete="off"
-              placeholder="Email..."
+              <label htmlFor="confirmpassword">Confirm Password</label>
+              <Field 
+                aria-label="confirmpassword"
+                name="confirmpassword" 
+                id="confirmpassword" 
+                type="password" 
+                component="input" 
+                validate={[ required, nonEmpty, validPassword ]}
+                autoComplete="off"
+                placeholder="Confirm Password..."
               />
-            <label htmlFor="createpassword">Password</label>
-            <Field 
-              aria-label="createpassword"
-              name="password" 
-              id="password" 
-              type="password" 
-              component="input" 
-              validate={[ required, nonEmpty, isTrimmed, passwordLength ]}
-              autoComplete="off"
-              placeholder="Password..."
-            />
-            <label htmlFor="confirmpassword">Confirm Password</label>
-            <Field 
-              aria-label="confirmpassword"
-              name="confirmpassword" 
-              id="confirmpassword" 
-              type="password" 
-              component="input" 
-              validate={[ required, nonEmpty, validPassword ]}
-              autoComplete="off"
-              placeholder="Confirm Password..."
-            />
-            <button 
-              className="creation-button" 
-              name="submit-create-account" 
-              type="submit"
-            >CREATE ACCOUNT</button>
-            {error}
-          </form>
-          <p>
-            <Link to="/">&#60; Go back</Link>
-          </p>
+              <button 
+                className="creation-button" 
+                name="submit-create-account" 
+                type="submit"
+              >CREATE ACCOUNT</button>
+              {error}
+            </form>
+            <p>
+              <Link to="/">&#60; Go back</Link>
+            </p>
+        </div>
       </div>
     );
   }
