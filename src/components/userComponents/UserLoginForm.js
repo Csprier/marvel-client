@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field, focus } from 'redux-form';
+import { Link } from 'react-router-dom';
 
 // Validators
 import { required, nonEmpty, isTrimmed } from './form-validators.js';
@@ -41,6 +42,7 @@ class UserLoginForm extends Component {
             type="text" 
             component="input"
             validate={[ required, nonEmpty, isTrimmed ]}
+            placeholder="Username..."
             />
           <label htmlFor="password">Password</label>
           <Field 
@@ -50,10 +52,15 @@ class UserLoginForm extends Component {
             type="password" 
             component="input"
             validate={[ required, nonEmpty ]}
+            placeholder="Password..."
           />
           <button className="login-button" name="submit-login" type="submit">LOG IN</button>
           {error}
         </form>
+        <p className="sign-up-link">
+          Don't have an account?
+          <Link to="/register">Sign Up</Link>
+        </p>
       </div>
     );
   }
@@ -66,7 +73,7 @@ const mapStateToProps = state => ({
 
 UserLoginForm = reduxForm({
   form: 'UserLoginForm',
-  obSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
+  onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
 })(UserLoginForm);
 
 export default connect(mapStateToProps)(UserLoginForm);

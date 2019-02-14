@@ -13,18 +13,18 @@
   height: 40px;
   margin: 0px;
   padding: 0px;
-  background-color: red;
+  background-color: #ED1D24;
 }
 
 .navigation-container h1 {
-  margin: 0px 0px 0px 10px;
-  padding: 0px;
+  margin: 0px 0px 0px 5px;
+  padding: 5px;
   font-family: 'badaboom_bb';
   letter-spacing: 4px;
   color: white;
 }
 
-.return-button {
+.logout-button {
   margin: 2px;
   padding: 0px 10px;
   font-family: arial;

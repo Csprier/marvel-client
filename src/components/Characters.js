@@ -55,7 +55,10 @@ class Characters extends Component {
       <div className="characters-container">
         <Navigation />
         <div className="searchform-container">
-          <h4>Search Characters</h4>
+          <div className="search-row">
+            <h4 className="search-header">Search Characters</h4>
+            <button onClick={this.props.history.goBack} className="return-button">&#60; Dashboard</button>  
+          </div>
           <SearchForm />
         </div>
         <div className="character-info">

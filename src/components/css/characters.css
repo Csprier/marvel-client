@@ -13,13 +13,38 @@
   margin: 0px;
   padding: 0px;
 }
+.return-button {
+  position: relative;
+  display: block;
+  width: 30%;
+  margin: 0px;
+  padding: 5px;
+  border: 1px solid black;
+  font-family: arial;
+}
 
 .searchform-container {
   position: relative;
+  display: flex;
+  flex-direction: column;
   width: 98%;
   margin: 0 auto;
   padding: 0px;
   top: 45px;
+}
+.search-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+.search-header {
+  display: flex;
+  width: 50%;
+  margin: 0px;
+  padding: 0px;
 }
 
 .characters-container h2 {
@@ -37,7 +62,7 @@
   max-height: 100%;
   margin: 0 auto;
   padding: 0px;
-  top: 125px;
+  top: 25%;
   left: 50%;
   transform: translateX(-50%);
   overflow-y: scroll;

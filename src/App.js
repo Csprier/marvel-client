@@ -19,8 +19,8 @@ class App extends Component {
         <div className="App">
           <main>
             <Route exact path="/" component={LandingPage} />
-            <Route exact path="/" component={UserCreationForm} />
             <Route exact path="/" component={UserLoginForm} />
+            <Route exact path="/register" component={UserCreationForm} />
 
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/characters" component={Characters} />
