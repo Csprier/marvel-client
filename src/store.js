@@ -7,6 +7,7 @@ import { loadAuthToken } from './local-storage';
 
 // Reducers
 import authReducer from './reducers/authReducer';
+import protectedDataReducer from './reducers/protectedDataReducer';
 import profileReducer from './reducers/profileReducer';
 import characterReducer from './reducers/characterReducer';
 import searchReducer from './reducers/searchReducer';
@@ -17,6 +18,7 @@ import { setAuthToken, refreshAuthToken } from './actions/authActions';
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  protectedData: protectedDataReducer,
   profile : profileReducer,
   form: formReducer,
   searchTerm: searchReducer,

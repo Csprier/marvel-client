@@ -85,8 +85,8 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS',
   loginSuccess = user => {
     return {
 			type: LOGIN_SUCCESS,
-			loading: false,
-      user
+			user,
+			loading: false
     };
   };  
 
@@ -95,8 +95,8 @@ export const LOGIN_ERROR = 'LOGIN_ERROR',
   loginError = error => {
     return {
 			type: LOGIN_ERROR,
-			loading: false,
-      error
+			error,
+			loading: false
     };
   };
 
