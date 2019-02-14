@@ -1,6 +1,6 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 export default () => WrappedComponent => {
 	function RequiresLogin(props) {
@@ -9,14 +9,14 @@ export default () => WrappedComponent => {
 			return <div>Logging in...</div>;
     } 
     else if (!loggedIn || error) {
-			return <Redirect to="/"/>;
+			return <Redirect to="/" />;
 		}
 		return <WrappedComponent {...passThroughProps} />;
 	}
 
-	// const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
-
-	// RequiresLogin.displayName = `RequiresLogin(${displayName})`;
+	// The display name of Higher-Order Components(which are seen in React Devtools)
+	const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
+	RequiresLogin.displayName = `RequiresLogin(${displayName})`;
 
 	const mapStateToProps = (state) => ({
 		authenticating: state.auth.loading,

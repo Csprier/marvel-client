@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
-// import requiresLogin from './requires-login';
+import RequiresLogin from './requires-login';
 import ProfileForm from './userComponents/ProfileForm';
 
 // CSS
@@ -20,7 +20,7 @@ class Profile extends Component {
 	};
 
   render() {
-    if (this.props.loading){
+    if (this.props.loading) {
       return (<div className="loader">Loading...</div>);
     }
 
@@ -49,9 +49,9 @@ class Profile extends Component {
           {this.state.editing
 				    ? <ProfileForm
                 initialValues={{
-                  userId:this.props.user.id,
-                  username:this.props.username,
-                  email:this.props.email
+                  // userId: this.props.userId,
+                  username: this.props.username,
+                  email: this.props.email
                 }}
                 setEdit={this.handleEdit}
               />
@@ -74,10 +74,11 @@ class Profile extends Component {
 
 const mapStateToProps = state => ({
   loggedIn: state.auth.user !== null,
-  userId: state.auth.user.id !== null,
-  username: state.auth.user.username,
-  email: state.auth.user.email
+  userId: state.auth.user.id,
+  loading: state.profile.loading,
+  username: state.profile.data.username,
+	email: state.profile.data.email,
+	error: state.profile.error
 });
 
-export default connect(mapStateToProps)(Profile);
-// export default requiresLogin()(connect(mapStateToProps)(Profile));
+export default RequiresLogin()(connect(mapStateToProps)(Profile));

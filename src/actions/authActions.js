@@ -4,39 +4,38 @@ import jwtDecode from 'jwt-decode';
 import { API_BASE_URL } from '../config';
 import { normalizeResponseErrors } from './utils';
 
+// ===========================================================================
+// AUTH ACTIONS ===============
+export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN',
+	setAuthToken = authToken => ({
+		type: SET_AUTH_TOKEN,
+		authToken
+	});
+
 // Removes authToken & user info from Redux state
 export const CLEAR_TOKEN = 'CLEAR_TOKEN',
   clearToken = () => {
     return {
       type: CLEAR_TOKEN
     };
-  };
+	};
 
-// Set loading to true
-export const REQUEST_LOGIN = 'REQUEST_LOGIN',
-  requestLogin = () => {
-    return {
-      type: REQUEST_LOGIN
-    };
-  };
+export const AUTH_REQUEST = 'AUTH_REQUEST',
+	authRequest = () => ({
+		type: AUTH_REQUEST
+	});
 
-// Set loading to false & add user to Redux state
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS',
-  loginSuccess = user => {
-    return {
-      type: LOGIN_SUCCESS,
-      user
-    };
-  };  
+export const AUTH_SUCCESS = 'AUTH_SUCCESS',
+	authSuccess = currentUser => ({
+		type: AUTH_SUCCESS,
+		currentUser
+	});
 
-// Set loading to false & add error to redux state
-export const LOGIN_ERROR = 'LOGIN_ERROR',
-  loginError = error => {
-    return {
-      type: LOGIN_ERROR,
-      error
-    };
-  };
+export const AUTH_ERROR = 'AUTH_ERROR',
+	authError = error => ({
+		type: AUTH_ERROR,
+		error
+	});
 
 //Store in localStorage & decompose into state
 export const storeToken = (token, dispatch) => {
@@ -45,6 +44,37 @@ export const storeToken = (token, dispatch) => {
 	localStorage.setItem('authToken', token);
 	dispatch(loginSuccess(decodedToken.user));
 };
+	
+// ===========================================================================
+// LOGIN ACTIONS ===============
+// Set loading to true
+export const REQUEST_LOGIN = 'REQUEST_LOGIN',
+  requestLogin = () => {
+    return {
+			type: REQUEST_LOGIN,
+			loading: true
+    };
+  };
+
+// Set loading to false & add user to Redux state
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS',
+  loginSuccess = user => {
+    return {
+			type: LOGIN_SUCCESS,
+			loading: false,
+      user
+    };
+  };  
+
+// Set loading to false & add error to redux state
+export const LOGIN_ERROR = 'LOGIN_ERROR',
+  loginError = error => {
+    return {
+			type: LOGIN_ERROR,
+			loading: false,
+      error
+    };
+  };
 
 // Asynch login call
 export const login = (username, password) => dispatch => {

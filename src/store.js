@@ -3,12 +3,14 @@ import thunk from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
 
 import authReducer from './reducers/authReducer';
+import profileReducer from './reducers/profileReducer';
 import characterReducer from './reducers/characterReducer';
 import searchReducer from './reducers/searchReducer';
 import comicsReducer from './reducers/comicsReducer';
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  profile : profileReducer,
   form: formReducer,
   searchTerm: searchReducer,
   characters: characterReducer,

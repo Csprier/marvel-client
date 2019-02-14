@@ -1,4 +1,4 @@
-import { REQUEST_PROFILE, PROFILE_SUCCESS, PROFILE_ERROR } from '../actions/profile';
+import { REQUEST_PROFILE, PROFILE_SUCCESS, PROFILE_ERROR } from '../actions/profileActions';
 
 const initialState = {
 	data : {},

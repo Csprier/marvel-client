@@ -1,5 +1,5 @@
-import {API_BASE_URL} from '../config';
-import { logout } from './auth';
+import { API_BASE_URL } from '../config';
+import { logout } from './authActions';
 import { normalizeResponseErrors } from './utils';
 
 // Request all admin user data, set loading to true
@@ -29,8 +29,8 @@ export const PROFILE_ERROR = 'PROFILE_ERROR',
   };
 
 // **************  GET PROFILE INFO  ************** //
-// Must pass adminId in order to use for url
-export const fetchProfile = adminId => dispatch => {
+// Must pass userId in order to use for url
+export const fetchProfile = userId => dispatch => {
 	const token = localStorage.getItem('authToken');
 	dispatch(requestProfile());
 	return fetch(`${API_BASE_URL}/user/${userId}`, {
@@ -51,7 +51,7 @@ export const fetchProfile = adminId => dispatch => {
 };
 
 // **************  EDIT PROFILE INFO  ************** //
-export const editProfile = (adminId, updatedProfile) => dispatch => {
+export const editProfile = (userId, updatedProfile) => dispatch => {
 	const token = localStorage.getItem('authToken');
 	dispatch(requestProfile());
 	return fetch(`${API_BASE_URL}/user/${userId}`, {
@@ -64,7 +64,7 @@ export const editProfile = (adminId, updatedProfile) => dispatch => {
 		.then(res => normalizeResponseErrors(res))
 		.then(res => res.json())
 		.then(() => {
-			dispatch(fetchProfile(adminId));
+			dispatch(fetchProfile(userId));
 		})
 		.catch(error => {
 			dispatch(profileError(error.message));
@@ -72,10 +72,10 @@ export const editProfile = (adminId, updatedProfile) => dispatch => {
 };
 
 // **************  DELETE PROFILE INFO  ************** //
-export const deleteProfile = (adminId, history) => dispatch => {
+export const deleteProfile = (userId, history) => dispatch => {
 	const token = localStorage.getItem('authToken');
 	dispatch(requestProfile());
-	return fetch(`${API_BASE_URL}/admin/${adminId}`, {
+	return fetch(`${API_BASE_URL}/user/${userId}`, {
 		method : 'DELETE',
 		headers : {
 			'Content-Type' : 'application/json',
