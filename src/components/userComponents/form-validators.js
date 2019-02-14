@@ -45,3 +45,8 @@ export const matches = field => (value, allValues) =>
 	field in allValues && value.trim() === allValues[field].trim()
 		? undefined
 		: 'Does not match';
+
+export const passwordsMatch = field => (value, allValues) =>
+	field in allValues && value.trim() === allValues[field].trim()
+		? undefined
+		: 'Passwords don\'t match'

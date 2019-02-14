@@ -42,6 +42,7 @@ class UserLoginForm extends Component {
             type="text" 
             component="input"
             validate={[ required, nonEmpty, isTrimmed ]}
+            placeholder="Username..."
             />
           <label htmlFor="password">Password</label>
           <Field 
@@ -51,6 +52,7 @@ class UserLoginForm extends Component {
             type="password" 
             component="input"
             validate={[ required, nonEmpty ]}
+            placeholder="Password..."
           />
           <button className="login-button" name="submit-login" type="submit">LOG IN</button>
           {error}
@@ -71,7 +73,7 @@ const mapStateToProps = state => ({
 
 UserLoginForm = reduxForm({
   form: 'UserLoginForm',
-  obSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
+  onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
 })(UserLoginForm);
 
 export default connect(mapStateToProps)(UserLoginForm);
