@@ -18,9 +18,13 @@ const passwordLength = length({ min: 8, max: 72 });
 const validPassword = passwordsMatch('password');
 
 class UserCreationForm extends Component {
+  moveToDashboard() {
+    this.props.history.push('/dashboard')
+  }
   onSubmit(values) {
     this.props.dispatch(createUser(values.username, values.email, values.password))
-      .then(() => this.props.history.push('/dashboard'))
+      .then(() => this.moveToDashboard());
+      // .then(() => this.props.history.push('/dashboard'))
   }
 
   render() {
