@@ -21,10 +21,10 @@ class UserCreationForm extends Component {
   moveToDashboard() {
     this.props.history.push('/dashboard')
   }
+  
   onSubmit(values) {
     this.props.dispatch(createUser(values.username, values.email, values.password))
       .then(() => this.moveToDashboard());
-      // .then(() => this.props.history.push('/dashboard'))
   }
 
   render() {
