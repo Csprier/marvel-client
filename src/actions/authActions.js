@@ -1,5 +1,5 @@
 import jwtDecode from 'jwt-decode';
-// import { SubmissionError } from 'redux-form';
+import { SubmissionError } from 'redux-form';
 
 import { API_BASE_URL } from '../config';
 import { normalizeResponseErrors } from './utils';
@@ -15,7 +15,7 @@ export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN',
 
 // Removes authToken & user info from Redux state
 export const CLEAR_TOKEN = 'CLEAR_TOKEN',
-  clearToken = () => {
+  clearAuth = () => {
     return {
       type: CLEAR_TOKEN
     };
@@ -64,7 +64,7 @@ export const refreshAuthToken = () => (dispatch, getState) => {
 		// Invalid or Expired credentials will flag this error, or something else went wrong.
 		// Clear everything and log out
 		dispatch(authError(err));
-		dispatch(clearAuthToken());
+		dispatch(clearAuth());
 		clearAuthToken(authToken);
 	});
 };
@@ -122,6 +122,11 @@ export const login = (username, password) => dispatch => {
 				const { status } = error.error;
 				const message = status === 401 ? 'Incorrect username or password' : 'Unable to login, please try again';
 				dispatch(loginError(message));
+				return Promise.reject(
+					new SubmissionError({
+						_error: message
+					})
+				)
 			}
 		})
 	);
@@ -129,6 +134,6 @@ export const login = (username, password) => dispatch => {
 
 // asynch logout function to clear both Redux and LocalStorage
 export const logout = () => dispatch => {
-	dispatch(clearToken());
+	dispatch(clearAuth());
 	localStorage.removeItem('authToken');
 };

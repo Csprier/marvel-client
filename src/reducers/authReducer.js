@@ -20,7 +20,6 @@ export default function authReducer(state = initialState, action) {
   switch(action.type) {
     case SET_AUTH_TOKEN:
       return {
-        ...state,
         authToken: action.authToken
       }
     case CLEAR_TOKEN:
