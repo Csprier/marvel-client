@@ -2,23 +2,24 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-export default () => WrappedComponent => {
+export default () => Component => {
 	function RequiresLogin(props) {
 		const { authenticating, loggedIn, error, ...passThroughProps } = props;
+
 		if (authenticating) {
 			return <div>Logging in...</div>;
     } 
     else if (!loggedIn || error) {
 			return <Redirect to="/" />;
 		}
-		return <WrappedComponent {...passThroughProps} />;
+		return <Component {...passThroughProps} />;
 	}
 
 	// The display name of Higher-Order Components(which are seen in React Devtools)
-	const displayName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
+	const displayName = Component.displayName || Component.name || 'Component';
 	RequiresLogin.displayName = `RequiresLogin(${displayName})`;
 
-	const mapStateToProps = (state) => ({
+	const mapStateToProps = (state, props) => ({
 		authenticating: state.auth.loading,
 		loggedIn: state.auth.user !== null,
 		error: state.auth.error

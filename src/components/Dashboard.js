@@ -53,4 +53,4 @@ const mapStateToProps = state => ({
     protectedData: state.protectedData.data  
 });
 
-export default RequiresLogin(connect(mapStateToProps)(Dashboard));
+export default RequiresLogin()(connect(mapStateToProps)(Dashboard));
