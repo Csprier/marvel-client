@@ -11,13 +11,13 @@ export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN',
 	setAuthToken = authToken => ({
 		type: SET_AUTH_TOKEN,
 		authToken
-	});
+	})
 
 // Removes authToken & user info from Redux state
-export const CLEAR_TOKEN = 'CLEAR_TOKEN',
+export const CLEAR_AUTH = 'CLEAR_AUTH',
   clearAuth = () => {
     return {
-      type: CLEAR_TOKEN
+      type: CLEAR_AUTH
     };
 	};
 
@@ -39,18 +39,18 @@ export const AUTH_ERROR = 'AUTH_ERROR',
 	});
 
 //Store in localStorage & decompose into state
-export const storeToken = (authToken, dispatch) => {
+export const storeAuthInfo = (authToken, dispatch) => {
 	const decodedToken = jwtDecode(authToken);
+	console.log(`dispatch(setAuthToken(${authToken}))`);
 	dispatch(setAuthToken(authToken));
 	dispatch(authSuccess(decodedToken.user));
 	saveAuthToken(authToken);
-	dispatch(loginSuccess(decodedToken.user));
 };
 
 export const refreshAuthToken = () => (dispatch, getState) => {
 	dispatch(authRequest());
 	const authToken = getState().auth.authToken;
-	return fetch(`${API_BASE_URL}/auth/refresh`, {
+	return fetch(`${API_BASE_URL}/refresh`, {
 		method: 'POST',
 		headers: {
 			// provide the existing token as credentials to get a new one
@@ -59,11 +59,15 @@ export const refreshAuthToken = () => (dispatch, getState) => {
 	})
 	.then(res => normalizeResponseErrors(res))
 	.then(res => res.json())
-	.then(({ authToken }) => storeToken(authToken, dispatch))
+	.then(({ authToken }) => {
+		console.log('refreshAuthToken', authToken);
+		storeAuthInfo(authToken, dispatch)
+	})
 	.catch(err => {
 		// Invalid or Expired credentials will flag this error, or something else went wrong.
 		// Clear everything and log out
-		dispatch(authError(err));
+		console.log(err);
+		// dispatch(authError(err));
 		dispatch(clearAuth());
 		clearAuthToken(authToken);
 	});
@@ -103,6 +107,7 @@ export const LOGIN_ERROR = 'LOGIN_ERROR',
 // Asynch login call
 export const login = (username, password) => dispatch => {
 	dispatch(requestLogin());
+	dispatch(authRequest());
 	return (
 		fetch(`${API_BASE_URL}/api/auth/login`, {
 			method: 'POST',
@@ -116,19 +121,25 @@ export const login = (username, password) => dispatch => {
 		})
 		.then(res => normalizeResponseErrors(res))
 		.then(res => res.json())
-		.then(({ authToken }) => storeToken(authToken, dispatch))
-		.catch(error => {
-			if (error.error) {
-				const { status } = error.error;
-				const message = status === 401 ? 'Incorrect username or password' : 'Unable to login, please try again';
-				dispatch(loginError(message));
-				return Promise.reject(
-					new SubmissionError({
-						_error: message
-					})
-				)
-			}
+		.then(({ authToken }) => {
+			console.log('login AuthToken, storingAuthInfo now!');
+			storeAuthInfo(authToken, dispatch)
 		})
+		.catch(error => {
+			console.log('login.catch(error):', error);
+			const { code } = error;
+			const message = (code === 401) 
+				? 'Incorrect username or password'
+				: 'Unable to login, please try again';
+			dispatch(authError(error));
+			return Promise.reject(
+				new SubmissionError({
+					_error: message
+				})
+			)
+			
+
+		}) // END CATCH
 	);
 };
 

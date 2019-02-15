@@ -15,7 +15,7 @@ export const FETCH_PROTECTED_DATA_ERROR = 'FETCH_PROTECTED_DATA_ERROR',
 
 export const fetchProtectedData = () => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
-  return fetch(`${API_BASE_URL}/protected`, {
+  return fetch(`${API_BASE_URL}/users`, {
     method: 'GET',
     headers: {
       // Provide our auth token as credentials

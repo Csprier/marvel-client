@@ -1,6 +1,6 @@
 import {
   SET_AUTH_TOKEN,
-  CLEAR_TOKEN, 
+  CLEAR_AUTH, 
   AUTH_REQUEST,
   AUTH_SUCCESS,
   AUTH_ERROR,
@@ -22,14 +22,14 @@ export default function authReducer(state = initialState, action) {
       return {
         authToken: action.authToken
       }
-    case CLEAR_TOKEN:
+    case CLEAR_AUTH:
       return {
         ...state,
+        authToken: null,
 			  user: null
       }
     case AUTH_REQUEST:
       return {
-        ...state,
         loading: true,
         error: null
       }
@@ -43,7 +43,7 @@ export default function authReducer(state = initialState, action) {
         loading: false,
         error: action.error
       }
-    case REQUEST_LOGIN:
+      case REQUEST_LOGIN:
       return {
         ...state,
 			  loading: true,

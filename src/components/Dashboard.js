@@ -7,7 +7,7 @@ import CharacterForm from './CharacterForm';
 import ComicForm from './ComicForm';
 
 // Actions
-import { fetchProtectedData } from '../actions/protected-data';
+// import { fetchProtectedData } from '../actions/protected-data';
 
 // HOC
 import RequiresLogin from './requires-login';
@@ -16,9 +16,9 @@ import RequiresLogin from './requires-login';
 import './css/dashboard.css';
 
 class Dashboard extends Component {
-  componentDidMount() {
-    this.props.dispatch(fetchProtectedData());
-  }
+  // componentDidMount() {
+  //   this.props.dispatch(fetchProtectedData());
+  // }
 
   goToCharacters(e) {
     e.preventDefault();
