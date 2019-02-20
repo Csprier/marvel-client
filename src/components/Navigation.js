@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { logout } from '../actions/authActions';
 
@@ -16,10 +17,23 @@ class Navigation extends Component {
     return(
       <div className="navigation-container">
         <h1>Marvel API</h1>
-        <button 
-          className="logout-button" 
-          onClick={this.onClickLogout}
-        >LogOut</button>
+        <div className="links-container">
+
+          <ul>
+            <li>
+              <div className="nav-button">
+                <Link to="/profile">Profile</Link>  
+              </div>
+            </li>
+          
+            <li>
+              <div className="nav-button" onClick={this.onClickLogout}>
+                <Link to="/">LogOut</Link>
+              </div>    
+            </li>
+          </ul>
+
+        </div>
       </div>
     );
   }

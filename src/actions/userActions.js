@@ -18,7 +18,7 @@ export const createUser = (username, email, password) => dispatch => {
   })
   .then(res => normalizeResponseErrors(res))
   .then(res => res.json())
-  .then(res => dispatch(login(username, password)))
+  .then(() => dispatch(login(username, password)))
   .catch(error => {
     const { reason, message, location } = error;
     if (reason === 'ValidationError') {
