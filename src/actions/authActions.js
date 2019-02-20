@@ -41,7 +41,7 @@ export const AUTH_ERROR = 'AUTH_ERROR',
 //Store in localStorage & decompose into state
 export const storeAuthInfo = (authToken, dispatch) => {
 	const decodedToken = jwtDecode(authToken);
-	console.log(`dispatch(setAuthToken(${authToken}))`);
+	// console.log(`dispatch(setAuthToken(${authToken}))`);
 	dispatch(setAuthToken(authToken));
 	dispatch(authSuccess(decodedToken.user));
 	saveAuthToken(authToken);
@@ -50,7 +50,7 @@ export const storeAuthInfo = (authToken, dispatch) => {
 export const refreshAuthToken = () => (dispatch, getState) => {
 	dispatch(authRequest());
 	const authToken = getState().auth.authToken;
-	return fetch(`${API_BASE_URL}/refresh`, {
+	return fetch(`${API_BASE_URL}/api/auth/refresh`, {
 		method: 'POST',
 		headers: {
 			// provide the existing token as credentials to get a new one
@@ -122,7 +122,7 @@ export const login = (username, password) => dispatch => {
 		.then(res => normalizeResponseErrors(res))
 		.then(res => res.json())
 		.then(({ authToken }) => {
-			console.log('login AuthToken, storingAuthInfo now!');
+			// console.log('login AuthToken, storingAuthInfo now!');
 			storeAuthInfo(authToken, dispatch)
 		})
 		.catch(error => {
