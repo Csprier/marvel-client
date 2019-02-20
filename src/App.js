@@ -21,6 +21,7 @@ import history from './history';
 import './App.css';
 
 class App extends Component {
+  // trigger each time a prop value is changed
   componentDidUpdate(prevProps) {
     if (!prevProps.loggedIn && this.props.loggedIn) {
       // When we are logged in, refresh the auth token periodically
@@ -32,6 +33,7 @@ class App extends Component {
     }
   }
 
+  // Perform any clean up before the component is 'destroyed'
   componentWillUnmount() {
     this.stopPeriodicRefresh();
   }

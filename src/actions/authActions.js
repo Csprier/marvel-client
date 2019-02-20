@@ -41,7 +41,6 @@ export const AUTH_ERROR = 'AUTH_ERROR',
 //Store in localStorage & decompose into state
 export const storeAuthInfo = (authToken, dispatch) => {
 	const decodedToken = jwtDecode(authToken);
-	// console.log(`dispatch(setAuthToken(${authToken}))`);
 	dispatch(setAuthToken(authToken));
 	dispatch(authSuccess(decodedToken.user));
 	saveAuthToken(authToken);
@@ -64,10 +63,10 @@ export const refreshAuthToken = () => (dispatch, getState) => {
 		storeAuthInfo(authToken, dispatch)
 	})
 	.catch(err => {
-		// Invalid or Expired credentials will flag this error, or something else went wrong.
-		// Clear everything and log out
-		console.log(err);
-		// dispatch(authError(err));
+		// We couldn't get a refresh token because our current credentials
+		// are invalid or expired, so clear them and sign us out
+		// dispatch(authError(err.message));
+		console.log('RAT ERROR: ', err)
 		dispatch(clearAuth());
 		clearAuthToken(authToken);
 	});
