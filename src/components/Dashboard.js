@@ -13,6 +13,7 @@ import ComicForm from './ComicForm';
 import RequiresLogin from './requires-login';
 
 // CSS
+import '../loader.css';
 import './css/dashboard.css';
 
 class Dashboard extends Component {

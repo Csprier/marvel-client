@@ -4,6 +4,8 @@ import { listAllComicsByTitle } from '../actions/comicsActions';
 import { listAllComicsByTitleStartingWith, updateComicSearchTerm } from '../actions/searchActions';
 import AdvanComicSearch from './AdvanComicSearch';
 import Navigation from './Navigation';
+
+import '../loader.css';
 import './css/comics.css';
 
 class Comics extends Component {

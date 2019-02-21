@@ -4,6 +4,7 @@ import { listAllCharactersByName } from '../actions/charactersActions';
 import { listAllCharactersByNameStartingWith, updateSearchTerm } from '../actions/searchActions';
 import './css/characters.css';
 
+import '../loader.css';
 import Navigation from './Navigation';
 import SearchForm from './SearchForm';
 
