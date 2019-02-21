@@ -46,27 +46,25 @@ export const storeAuthInfo = (authToken, dispatch) => {
 	saveAuthToken(authToken);
 };
 
+// Refresh Auth Token Async
 export const refreshAuthToken = () => (dispatch, getState) => {
-	dispatch(authRequest());
+	// dispatch(authRequest());
 	const authToken = getState().auth.authToken;
-	return fetch(`${API_BASE_URL}/api/auth/refresh`, {
+	return fetch(`${API_BASE_URL}/auth/refresh`, {
 		method: 'POST',
-		headers: {
-			// provide the existing token as credentials to get a new one
-			Authorization: `Bearer: ${authToken}`
-		}
+		headers: { Authorization: `Bearer ${authToken}` }
 	})
 	.then(res => normalizeResponseErrors(res))
 	.then(res => res.json())
 	.then(({ authToken }) => {
-		console.log('refreshAuthToken', authToken);
-		storeAuthInfo(authToken, dispatch)
+		storeAuthInfo(authToken, dispatch);
+		// authSuccess(res.username);
 	})
 	.catch(err => {
 		// We couldn't get a refresh token because our current credentials
 		// are invalid or expired, so clear them and sign us out
-		// dispatch(authError(err.message));
-		console.log('RAT ERROR: ', err)
+		console.log('RefreshAuthToken ERROR: ', err);
+		// dispatch(authError(err.error.message));
 		dispatch(clearAuth());
 		clearAuthToken(authToken);
 	});
@@ -105,10 +103,10 @@ export const LOGIN_ERROR = 'LOGIN_ERROR',
 
 // Asynch login call
 export const login = (username, password) => dispatch => {
-	dispatch(requestLogin());
+	// dispatch(requestLogin());
 	dispatch(authRequest());
 	return (
-		fetch(`${API_BASE_URL}/api/auth/login`, {
+		fetch(`${API_BASE_URL}/auth/login`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

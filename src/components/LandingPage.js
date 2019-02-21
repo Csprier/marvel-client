@@ -4,8 +4,6 @@ import { Redirect } from 'react-router-dom';
 import './css/landingpage.css';
 
 class LandingPage extends Component {
-  
-
   render() {
     if (this.props.loggedIn) {
       return <Redirect to="/dashboard" />;

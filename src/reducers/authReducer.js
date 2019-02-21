@@ -20,6 +20,7 @@ export default function authReducer(state = initialState, action) {
   switch(action.type) {
     case SET_AUTH_TOKEN:
       return {
+        ...state,
         authToken: action.authToken
       }
     case CLEAR_AUTH:
@@ -30,11 +31,13 @@ export default function authReducer(state = initialState, action) {
       }
     case AUTH_REQUEST:
       return {
+        ...state,
         loading: true,
         error: null
       }
     case AUTH_SUCCESS:
       return {
+        ...state,
         loading: false,
         user: action.user
       }
@@ -43,7 +46,7 @@ export default function authReducer(state = initialState, action) {
         loading: false,
         error: action.error
       }
-      case REQUEST_LOGIN:
+    case REQUEST_LOGIN:
       return {
         ...state,
 			  loading: true,
