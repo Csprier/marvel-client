@@ -13,15 +13,18 @@ export default (state = initialState, action) => {
   switch(action.type) {
     case GET_CHARACTERS_REQUEST:
       return {
-        ...state
+        ...state,
+        loading: true
       }
     case GET_CHARACTERS_SUCCESS:
       return {
-        ...state
+        ...state,
+        loading: false
       }
     case GET_CHARACTER_NAMES:
-      return { // THIS IS NOT RIGHT YET
+      return {
         ...state,
+        loading: false,
         data: action.characters
       }
     default:

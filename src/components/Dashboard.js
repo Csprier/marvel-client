@@ -33,6 +33,10 @@ class Dashboard extends Component {
   }
 
   render() {
+    if (this.props.loading){
+			return (<div className="loader">Loading...</div>);
+    }
+    
     return(
       <div className="dashboard-container">
         <div className="db-navigation-container">

@@ -20,6 +20,11 @@ class Comics extends Component {
   }
 
   render() {
+    if (this.props.loading){
+      console.log('comics loading: ', this.props.loading)
+			return (<div className="loader">Loading...</div>);
+    }
+    
     const comicImages = this.props.images.map((comic, i) => {
       return (
         <div className="image-container" key={i}>

@@ -23,7 +23,7 @@
   padding: 0px;
   top: 45px;
 }
-.advan-search-row{
+.advan-search-row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

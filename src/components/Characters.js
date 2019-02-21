@@ -21,6 +21,11 @@ class Characters extends Component {
   }
 
   render() {
+    if (this.props.loading){
+      console.log('characters loading: ', this.props.loading)
+			return (<div className="loader">Loading...</div>);
+    }
+    
     const characterInfo = this.props.characters.map((character, i) => {
       return (
         <li key={i} className="character-list-item">
