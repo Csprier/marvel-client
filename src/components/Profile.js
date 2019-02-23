@@ -55,7 +55,7 @@ class Profile extends Component {
             >
               Edit</button>
           </header>
-          {this.state.editing
+          {this.props.editing
 				    ? <ProfileForm
                 initialValues={{
                   // userId: this.props.userId,
@@ -84,6 +84,7 @@ class Profile extends Component {
 const mapStateToProps = state => ({
   loggedIn: state.auth.user !== null,
   userId: state.auth.user.id,
+  editing: state.profile.editing,
   loading: state.profile.loading,
   username: state.profile.data.username,
 	email: state.profile.data.email,
