@@ -8,7 +8,13 @@ export const REQUEST_PROFILE = 'REQUEST_PROFILE',
 	  return {
 		  type: REQUEST_PROFILE
 	  };
-  };
+	};
+export const PROFILE_EDIT = 'PROFILE_EDIT',
+	editMode = () => { // engage edit state change
+		return {
+			type: PROFILE_EDIT
+		};
+	};
 
 // Set loading to false and load profile info into the state
 export const PROFILE_SUCCESS = 'PROFILE_SUCCESS',

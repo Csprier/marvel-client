@@ -6,7 +6,7 @@ import ProfileForm from './userComponents/ProfileForm';
 
 // CSS
 import './css/profile.css';
-import { fetchProfile } from '../actions/profileActions';
+import { fetchProfile, editMode } from '../actions/profileActions';
 
 class Profile extends Component {
   constructor() {
@@ -23,7 +23,8 @@ class Profile extends Component {
   }
   
   handleEdit = () => {
-		this.setState({ editing: !this.state.editing });
+    console.log('Edit button pushed, engage editMode');
+    this.props.dispatch(editMode());
 	};
 
   render() {
@@ -47,8 +48,8 @@ class Profile extends Component {
           <header className="profile-header">
             <h2>Profile</h2>
             <button
-              className={this.state.editing ? 'profile-cancel-btn' : 'profile-edit-btn'}
-              title={this.state.editing ? 'Profile cancel button' : 'Profile edit button'}
+              className="profile-edit-btn"
+              title="edit button"
               type="button"
               onClick={this.handleEdit}
             >
