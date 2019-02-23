@@ -37,7 +37,7 @@ export const PROFILE_ERROR = 'PROFILE_ERROR',
 // **************  GET PROFILE INFO  ************** //
 // Must pass userId in order to use for url
 export const fetchProfile = userId => dispatch => {
-	console.log('Engage fetchProfile');
+	// console.log('Engage fetchProfile');
 	const token = localStorage.getItem('authToken');
 	dispatch(requestProfile());
 	return fetch(`${API_BASE_URL}/user/${userId}`, {

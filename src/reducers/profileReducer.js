@@ -28,7 +28,7 @@ export default function profileReducer(state = initialState, action){
     case PROFILE_EDIT:
       return {
         ...state,
-        editing: !action.editing
+        editing: !state.editing
       }
     case PROFILE_ERROR:
       return {

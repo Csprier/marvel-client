@@ -11,7 +11,11 @@ export class ProfileForm extends React.Component {
 			error: null
 		}
   }
-  
+	
+	componentDidMount() {
+		console.log('Profile Form loaded');
+	}
+	
   componentWillUnmount() {
 		// Clear any possible memory leaks
 		this.setState({error: null});
@@ -51,7 +55,6 @@ export class ProfileForm extends React.Component {
 				<form onSubmit={this.props.handleSubmit(this.onSubmit)}>
 					<fieldset>
 						<legend>Edit Profile</legend>
-						
 						<Field
 							name="username"
 							label="Username"

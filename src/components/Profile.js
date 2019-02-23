@@ -17,14 +17,17 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    // console.log('Profile loaded');
+    console.log('----------------------------');
     console.log('Fetching Profile data');
+    console.log('Edit mode:', this.props.editing);
+    console.log('----------------------------');
     this.props.dispatch(fetchProfile(this.props.userId));
   }
   
   handleEdit = () => {
     console.log('Edit button pushed, engage editMode');
     this.props.dispatch(editMode());
+    console.log('Edit mode:', this.props.editing);
 	};
 
   render() {
@@ -32,15 +35,44 @@ class Profile extends Component {
       return (<div className="loader">Loading...</div>);
     }
 
+    let editForm;
+    if (this.props.editing) {
+      editForm = (
+        <ProfileForm
+          initialValues={{
+            username: this.props.username,
+            email: this.props.email
+          }}
+          setEdit={this.handleEdit}
+        />
+      );
+    };
+
+    let currentData;
+    if (!this.props.editing) {
+      currentData = (
+        <section className="profile-section">
+          <div className="profile-section-details">
+            <h3>Username</h3>
+            <p>{this.props.username}</p>
+          </div>
+          <div className="profile-section-details">
+            <h3>Email</h3>
+            <p>{this.props.email}</p>
+          </div>
+        </section>
+      );
+    };
+
     let error;
-    if(this.props.error) {
+    if (this.props.error) {
       error = (
         <div className="error-msg" aria-live="polite" role="alert">
           {this.props.error}
         </div>
       )
     }
-    console.log('Profile: ', this.props);
+
     return(
       <div className="profile-container">
         <div className="profile">
@@ -53,28 +85,9 @@ class Profile extends Component {
               type="button"
               onClick={this.handleEdit}
             >
-              Edit</button>
+            Edit</button>
           </header>
-          {this.props.editing
-				    ? <ProfileForm
-                initialValues={{
-                  // userId: this.props.userId,
-                  username: this.props.username,
-                  email: this.props.email
-                }}
-                setEdit={this.handleEdit}
-              />
-            : <section className="profile-section">
-                <div className="profile-section-details">
-                  <h3>Username</h3>
-                  <p>{this.props.username}</p>
-                </div>
-                <div className="profile-section-details">
-                  <h3>Email</h3>
-                  <p>{this.props.email}</p>
-                </div>
-              </section>
-            }
+          {this.props.editing ? editForm : currentData}
         </div>
       </div>
     );
