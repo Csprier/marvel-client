@@ -52,7 +52,7 @@ export class ProfileForm extends React.Component {
 							type="text"
 							component="input"
 							validate={[ required, nonEmpty, isTrimmed ]}
-							placeholder={this.props.initialValues[0]}
+							// placeholder={this.props.initialValues[0]}
 						/>
 						<Field
 							name="email"
@@ -60,7 +60,7 @@ export class ProfileForm extends React.Component {
 							type="text"
 							component="input"
 							validate={[ required, validEmail ]}
-							placeholder={this.props.initialValues[1]}
+							// placeholder={this.props.initialValues[1]}
 						/>
 						<div className="form-field form-btns">
 							<button className="form-reset-btn" type="button" onClick={this.props.setEdit}>Cancel</button>

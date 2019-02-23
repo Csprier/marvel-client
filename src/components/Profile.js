@@ -49,14 +49,7 @@ class Profile extends Component {
           </header>
           {(this.props.editing)  
             ? <div className="edit-form">
-                <button
-                  className="profile-edit-btn"
-                  title="edit button"
-                  type="button"
-                  onClick={this.handleEditModeChange}
-                >
-                Cancel</button>
-                <form onSubmit={(e) => this.handleSubmit(e)}>
+                <form onSubmit={(values) => this.handleSubmit(values)}>
                   <label> Username
                     <input 
                       className="edit-form-input"
@@ -71,9 +64,22 @@ class Profile extends Component {
                   </label>
                   <button className="edit-form-submit" type="submit">Submit Edit</button>
                 </form>
+                <button
+                  className="profile-edit-btn"
+                  title="edit button"
+                  type="button"
+                  onClick={this.handleEditModeChange}
+                >
+                Cancel</button>
               </div>
           : <section className="profile-section">
-              <div>
+              <div className="profile-data-display">
+                <div className="profile-section-details">
+                  <span>Username: {this.props.username}</span>
+                </div>
+                <div className="profile-section-details">
+                  <span>Email: {this.props.email}</span>
+                </div>
                 <button
                   className="profile-edit-btn"
                   title="edit button"
@@ -81,14 +87,6 @@ class Profile extends Component {
                   onClick={this.handleEditModeChange}
                 >
                 Edit</button>
-                <div className="profile-section-details">
-                  <h4>Username</h4>
-                  <p>{this.props.username}</p>
-                </div>
-                <div className="profile-section-details">
-                  <h4>Email</h4>
-                  <p>{this.props.email}</p>
-                </div>
               </div>
             </section> 
           }
