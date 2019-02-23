@@ -18,7 +18,6 @@ class Profile extends Component {
   }
   
   handleEdit = () => {
-    console.log('Edit button pushed, engage editMode');
     this.props.dispatch(editMode());
     console.log('Edit mode:', this.props.editing);
   };
@@ -48,16 +47,29 @@ class Profile extends Component {
           <header className="profile-header">
             <h2>Profile</h2>
           </header>
-          { this.props.editing  
-            ? <div>
+          {(this.props.editing)  
+            ? <div className="edit-form">
+                <button
+                  className="profile-edit-btn"
+                  title="edit button"
+                  type="button"
+                  onClick={this.handleEdit}
+                >
+                Cancel</button>
                 <form>
-                  <input 
-                    placeholder={this.props.username}
-                  />
-                  <input 
-                    placeholder={this.props.email}
-                  />
-                  <button type="submit">Submit Edit</button>
+                  <label> Username
+                    <input 
+                      className="edit-form-input"
+                      placeholder={this.props.username}
+                    />
+                  </label>
+                  <label> Email
+                    <input 
+                      className="edit-form-input"
+                      placeholder={this.props.email}
+                    />
+                  </label>
+                  <button className="edit-form-submit" type="submit">Submit Edit</button>
                 </form>
               </div>
           : <section className="profile-section">
@@ -70,11 +82,11 @@ class Profile extends Component {
                 >
                 Edit</button>
                 <div className="profile-section-details">
-                  <h3>Username</h3>
+                  <h4>Username</h4>
                   <p>{this.props.username}</p>
                 </div>
                 <div className="profile-section-details">
-                  <h3>Email</h3>
+                  <h4>Email</h4>
                   <p>{this.props.email}</p>
                 </div>
               </div>
