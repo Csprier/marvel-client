@@ -50,8 +50,9 @@ class Profile extends Component {
               className={this.state.editing ? 'profile-cancel-btn' : 'profile-edit-btn'}
               title={this.state.editing ? 'Profile cancel button' : 'Profile edit button'}
               type="button"
-              onClick={this.handleEdit}>
-            </button>
+              onClick={this.handleEdit}
+            >
+              Edit</button>
           </header>
           {this.state.editing
 				    ? <ProfileForm
