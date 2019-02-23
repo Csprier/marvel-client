@@ -12,18 +12,18 @@ class Profile extends Component {
   componentDidMount() {
     console.log('----------------------------');
     console.log('Fetching Profile data');
-    console.log('Edit mode:', this.props.editing);
     console.log('----------------------------');
     this.props.dispatch(fetchProfile(this.props.userId));
   }
   
-  handleEdit = () => {
+  handleEditModeChange = () => {
+    console.log('this.handleEditModeChange()');
     this.props.dispatch(editMode());
-    console.log('Edit mode:', this.props.editing);
   };
   
-  handleSubmit = (values) => {
-    console.log('submit values:', values);
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('submit values:', e.target.values);
   }
 
   render() {
@@ -39,7 +39,7 @@ class Profile extends Component {
         </div>
       )
     }
-
+    console.log('Edit Mode:', this.props.editing);
     return(
       <div className="profile-container">
         <div className="profile">
@@ -53,10 +53,10 @@ class Profile extends Component {
                   className="profile-edit-btn"
                   title="edit button"
                   type="button"
-                  onClick={this.handleEdit}
+                  onClick={this.handleEditModeChange}
                 >
                 Cancel</button>
-                <form>
+                <form onSubmit={(e) => this.handleSubmit(e)}>
                   <label> Username
                     <input 
                       className="edit-form-input"
@@ -78,7 +78,7 @@ class Profile extends Component {
                   className="profile-edit-btn"
                   title="edit button"
                   type="button"
-                  onClick={this.handleEdit}
+                  onClick={this.handleEditModeChange}
                 >
                 Edit</button>
                 <div className="profile-section-details">
