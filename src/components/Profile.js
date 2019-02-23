@@ -9,6 +9,10 @@ import './css/profile.css';
 import { fetchProfile, editMode } from '../actions/profileActions';
 
 class Profile extends Component {
+  constructor() {
+    props();
+  }
+
   componentDidMount() {
     console.log('----------------------------');
     console.log('Fetching Profile data');
@@ -23,7 +27,7 @@ class Profile extends Component {
   
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log('submit values:', e.target.values);
+    console.log('submit values:', e);
   }
 
   render() {
@@ -49,7 +53,7 @@ class Profile extends Component {
           </header>
           {(this.props.editing)  
             ? <div className="edit-form">
-                <form onSubmit={(values) => this.handleSubmit(values)}>
+                <form onSubmit={e => this.handleSubmit(e)}>
                   <label> Username
                     <input 
                       className="edit-form-input"
@@ -62,7 +66,11 @@ class Profile extends Component {
                       placeholder={this.props.email}
                     />
                   </label>
-                  <button className="edit-form-submit" type="submit">Submit Edit</button>
+                  <button 
+                    className="edit-form-submit" 
+                    type="submit"
+                  >
+                  Submit Edit</button>
                 </form>
                 <button
                   className="profile-edit-btn"
