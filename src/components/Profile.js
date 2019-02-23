@@ -6,6 +6,7 @@ import ProfileForm from './userComponents/ProfileForm';
 
 // CSS
 import './css/profile.css';
+import { fetchProfile } from '../actions/profileActions';
 
 class Profile extends Component {
   constructor() {
@@ -16,7 +17,9 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    console.log('Profile loaded');
+    // console.log('Profile loaded');
+    console.log('Fetching Profile data');
+    this.props.dispatch(fetchProfile(this.props.userId));
   }
   
   handleEdit = () => {
