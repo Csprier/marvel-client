@@ -14,6 +14,10 @@ class Profile extends Component {
 			editing: false
 		}
   };
+
+  componentDidMount() {
+    console.log('Profile loaded');
+  }
   
   handleEdit = () => {
 		this.setState({ editing: !this.state.editing });
@@ -32,7 +36,7 @@ class Profile extends Component {
         </div>
       )
     }
-
+    console.log('Profile: ', this.props);
     return(
       <div className="profile-container">
         <div className="profile">
