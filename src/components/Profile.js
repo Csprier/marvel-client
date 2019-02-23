@@ -2,20 +2,13 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
 import RequiresLogin from './requires-login';
-import ProfileForm from './userComponents/ProfileForm';
+// import ProfileForm from './userComponents/ProfileForm';
 
 // CSS
 import './css/profile.css';
 import { fetchProfile, editMode } from '../actions/profileActions';
 
 class Profile extends Component {
-  constructor() {
-		super();
-		this.state = {
-			editing: false
-		}
-  };
-
   componentDidMount() {
     console.log('----------------------------');
     console.log('Fetching Profile data');
@@ -28,41 +21,16 @@ class Profile extends Component {
     console.log('Edit button pushed, engage editMode');
     this.props.dispatch(editMode());
     console.log('Edit mode:', this.props.editing);
-	};
+  };
+  
+  handleSubmit = (values) => {
+    console.log('submit values:', values);
+  }
 
   render() {
     if (this.props.loading) {
       return (<div className="loader">Loading...</div>);
     }
-
-    let editForm;
-    if (this.props.editing) {
-      editForm = (
-        <ProfileForm
-          initialValues={{
-            username: this.props.username,
-            email: this.props.email
-          }}
-          setEdit={this.handleEdit}
-        />
-      );
-    };
-
-    let currentData;
-    if (!this.props.editing) {
-      currentData = (
-        <section className="profile-section">
-          <div className="profile-section-details">
-            <h3>Username</h3>
-            <p>{this.props.username}</p>
-          </div>
-          <div className="profile-section-details">
-            <h3>Email</h3>
-            <p>{this.props.email}</p>
-          </div>
-        </section>
-      );
-    };
 
     let error;
     if (this.props.error) {
@@ -79,15 +47,39 @@ class Profile extends Component {
           {error}
           <header className="profile-header">
             <h2>Profile</h2>
-            <button
-              className="profile-edit-btn"
-              title="edit button"
-              type="button"
-              onClick={this.handleEdit}
-            >
-            Edit</button>
           </header>
-          {this.props.editing ? editForm : currentData}
+          { this.props.editing  
+            ? <div>
+                <form>
+                  <input 
+                    placeholder={this.props.username}
+                  />
+                  <input 
+                    placeholder={this.props.email}
+                  />
+                  <button type="submit">Submit Edit</button>
+                </form>
+              </div>
+          : <section className="profile-section">
+              <div>
+                <button
+                  className="profile-edit-btn"
+                  title="edit button"
+                  type="button"
+                  onClick={this.handleEdit}
+                >
+                Edit</button>
+                <div className="profile-section-details">
+                  <h3>Username</h3>
+                  <p>{this.props.username}</p>
+                </div>
+                <div className="profile-section-details">
+                  <h3>Email</h3>
+                  <p>{this.props.email}</p>
+                </div>
+              </div>
+            </section> 
+          }
         </div>
       </div>
     );

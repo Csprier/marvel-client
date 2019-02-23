@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 
-import { isTrimmed, length, nonEmpty, required, validEmail } from './form-validators';
+import { isTrimmed, nonEmpty, required, validEmail } from './form-validators';
 
 export class ProfileForm extends React.Component {
   constructor() {
@@ -22,22 +22,13 @@ export class ProfileForm extends React.Component {
   }
   
   onSubmit = values => {
-		const updatedProfile = {};
-		Object.keys(values).forEach(key => {
-			//Check to see if the user made a change, and only pass back key/values that are submitted
-			if (values[key]) {
-				updatedProfile[key] = values[key];
-			}
-		});
-	
-		// this.props.dispatch(editProfile(this.props.initialValues.adminId, updatedProfile))
-		// 	.then( res => {
-		// 		if( res ) {
-		// 			this.setState({error: res.error});
-		// 		} else {
-		// 			this.props.setEdit();
-		// 		}
-		// 	});
+		// const updatedProfile = {};
+		// Object.keys(values).forEach(key => {
+		// 	//Check to see if the user made a change, and only pass back key/values that are submitted
+		// 	if (values[key]) {
+		// 		updatedProfile[key] = values[key];
+		// 	}
+		// });
   };
   
   render() {
@@ -61,6 +52,7 @@ export class ProfileForm extends React.Component {
 							type="text"
 							component="input"
 							validate={[ required, nonEmpty, isTrimmed ]}
+							placeholder={this.props.initialValues[0]}
 						/>
 						<Field
 							name="email"
@@ -68,14 +60,7 @@ export class ProfileForm extends React.Component {
 							type="text"
 							component="input"
 							validate={[ required, validEmail ]}
-						/>
-						<Field
-							name="password"
-							label="Password"
-							type="password"
-							component="input"
-							validate={[ required, isTrimmed, length ]}
-							autocomplete="off"
+							placeholder={this.props.initialValues[1]}
 						/>
 						<div className="form-field form-btns">
 							<button className="form-reset-btn" type="button" onClick={this.props.setEdit}>Cancel</button>
