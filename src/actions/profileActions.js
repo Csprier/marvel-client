@@ -60,6 +60,7 @@ export const fetchProfile = userId => dispatch => {
 // **************  EDIT PROFILE INFO  ************** //
 export const editProfile = (userId, updatedProfile) => dispatch => {
 	console.log('Engage Profile Edit');
+	console.log(userId, updatedProfile);
 	const token = localStorage.getItem('authToken');
 	dispatch(requestProfile());
 	return fetch(`${API_BASE_URL}/user/${userId}`, {

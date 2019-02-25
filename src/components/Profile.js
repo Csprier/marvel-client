@@ -6,18 +6,18 @@ import RequiresLogin from './requires-login';
 
 // CSS
 import './css/profile.css';
-import { fetchProfile, editMode } from '../actions/profileActions';
+import { fetchProfile, editMode, editProfile } from '../actions/profileActions';
 
 class Profile extends Component {
   constructor() {
     super();
     this.state = {
       editUsername: '',
-      editEmail: ''
+      editEmail: '',
+      editPassword: ''
     }
-    // this.handleUsernameChange = this.handleUsernameChange.bind(this);
-    // this.handleEmailChange = this.handleEmailChange.bind(this);
   }
+  
   componentDidMount() {
     console.log('----------------------------');
     console.log('Fetching Profile data');
@@ -40,6 +40,11 @@ class Profile extends Component {
       email: e.target.value
     }
   }
+  handlePasswordChange = (e) => {
+    this.setState = {
+      password: e.target.value
+    }
+  }
   
   handleSubmit = (e) => {
     e.preventDefault();
@@ -49,10 +54,18 @@ class Profile extends Component {
     console.log('New Username:', this.refs.editedUsername.value);
     console.log('New Email:', this.refs.editedEmail.value);
     console.log('----------------------------------------------');
+    let userId = this.props.userId;
+    let updatedProfile = {
+      username: this.refs.editedUsername.value,
+      email: this.refs.editedEmail.value,
+      password: this.refs.editedPassword.value
+    }
+    console.log('userId:', userId);
+    console.log('updatedProfile:', updatedProfile);
+    this.props.dispatch(editProfile(userId, updatedProfile));
   }
   
   render() {
-    console.log(this.state);
     if (this.props.loading) {
       return (<div className="loader">Loading...</div>);
     }
@@ -92,6 +105,15 @@ class Profile extends Component {
                       value={this.state.editedEmail} 
                       onChange={this.handleEmailChange}
                       placeholder={this.props.email}
+                    />
+                  </label>
+                  <label> Password
+                    <input 
+                      className="edit-form-input"
+                      ref="editedPassword"
+                      value={this.state.editedPassword} 
+                      onChange={this.handlePasswordChange}
+                      placeholder="Enter your password to submit changes"
                     />
                   </label>
                   <button 
