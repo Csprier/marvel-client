@@ -10,9 +10,14 @@ import { fetchProfile, editMode } from '../actions/profileActions';
 
 class Profile extends Component {
   constructor() {
-    props();
+    super();
+    this.state = {
+      editUsername: '',
+      editEmail: ''
+    }
+    // this.handleUsernameChange = this.handleUsernameChange.bind(this);
+    // this.handleEmailChange = this.handleEmailChange.bind(this);
   }
-
   componentDidMount() {
     console.log('----------------------------');
     console.log('Fetching Profile data');
@@ -24,13 +29,30 @@ class Profile extends Component {
     console.log('this.handleEditModeChange()');
     this.props.dispatch(editMode());
   };
+
+  handleUsernameChange = (e) => {
+    this.setState = {
+      username: e.target.value
+    }
+  }
+  handleUsernameChange = (e) => {
+    this.setState = {
+      email: e.target.value
+    }
+  }
   
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log('submit values:', e);
+    console.log('----------------------------------------------');
+    console.log('Submitting Edits:');
+    console.log('userId:', this.props.userId);
+    console.log('New Username:', this.refs.editedUsername.value);
+    console.log('New Email:', this.refs.editedEmail.value);
+    console.log('----------------------------------------------');
   }
-
+  
   render() {
+    console.log(this.state);
     if (this.props.loading) {
       return (<div className="loader">Loading...</div>);
     }
@@ -53,16 +75,22 @@ class Profile extends Component {
           </header>
           {(this.props.editing)  
             ? <div className="edit-form">
-                <form onSubmit={e => this.handleSubmit(e)}>
+                <form onSubmit={this.handleSubmit}>
                   <label> Username
                     <input 
                       className="edit-form-input"
+                      ref="editedUsername"
+                      value={this.state.editedUsername} 
+                      onChange={this.handleUsernameChange}
                       placeholder={this.props.username}
                     />
                   </label>
                   <label> Email
                     <input 
                       className="edit-form-input"
+                      ref="editedEmail"
+                      value={this.state.editedEmail} 
+                      onChange={this.handleEmailChange}
                       placeholder={this.props.email}
                     />
                   </label>
