@@ -26,7 +26,6 @@ class Profile extends Component {
   }
   
   handleEditModeChange = () => {
-    console.log('this.handleEditModeChange()');
     this.props.dispatch(editMode());
   };
 
