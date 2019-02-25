@@ -64,10 +64,6 @@ class Profile extends Component {
     this.props.dispatch(editProfile(userId, updatedProfile));
   }
 
-  backToDashboard = (e) => {
-    
-  }
-  
   render() {
     if (this.props.loading) {
       return (<div className="loader">Loading...</div>);
