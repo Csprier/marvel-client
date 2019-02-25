@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 
 import { isTrimmed, nonEmpty, required, validEmail } from './form-validators';
+import { editProfile } from '../../actions/profileActions';
 
 export class ProfileForm extends React.Component {
   constructor() {
@@ -18,17 +19,23 @@ export class ProfileForm extends React.Component {
 	
   componentWillUnmount() {
 		// Clear any possible memory leaks
-		this.setState({error: null});
+		this.setState({ error: null });
   }
   
   onSubmit = values => {
-		// const updatedProfile = {};
-		// Object.keys(values).forEach(key => {
-		// 	//Check to see if the user made a change, and only pass back key/values that are submitted
-		// 	if (values[key]) {
-		// 		updatedProfile[key] = values[key];
-		// 	}
-		// });
+		const updatedProfile = {};
+		Object.keys(values).forEach(key => {
+			//Check to see if the user made a change, and only pass back key/values that are submitted
+			if (values[key]) {
+				updatedProfile[key] = values[key];
+			}
+		});
+		this.props.dispatch(editProfile(this.props.initialValues.userId, updatedProfile))
+			.then( res => {
+				(res) 
+					? this.setState({ error: res.error }) 
+					: this.props.setEdit();
+			});
   };
   
   render() {

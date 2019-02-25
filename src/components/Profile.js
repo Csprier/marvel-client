@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import RequiresLogin from './requires-login';
+import ProfileForm from './userComponents/ProfileForm';
 
 // CSS
 import './css/profile.css';
@@ -77,7 +78,46 @@ class Profile extends Component {
           <header className="profile-header">
             <h2>Profile</h2>
           </header>
-          {(this.props.editing)  
+          {(this.props.editing) 
+            ? <div className="profile-form-container">
+                <ProfileForm 
+                  initialValues={{
+                    userId:this.props.userId,
+                    username:this.props.username,
+                    email:this.props.email
+                  }}
+                />
+              </div>
+            : <section className="profile-section">
+                <div className="profile-data-display">
+                  <div className="profile-section-details">
+                    <h4>Username:</h4> 
+                    <p>{this.props.username}</p>
+                  </div>
+                  <div className="profile-section-details">
+                    <h4>Email:</h4>
+                    <p>{this.props.email}</p>
+                  </div>
+                  <div className="profile-buttons">
+                    <button
+                      className="profile-edit-btn"
+                      title="edit button"
+                      type="button"
+                      onClick={this.handleEditModeChange}
+                    >
+                    Edit</button>
+                    <button
+                      className="back-to-dashboard-btn"
+                      title="backToDashboard-btn"
+                      type="button"
+                    >
+                      <Link to="/dashboard">Cancel</Link>
+                    </button>
+                  </div>
+                </div>
+              </section> 
+          }
+          {/* {(this.props.editing)  
             ? <div className="edit-form">
                 <form onSubmit={this.handleSubmit}>
                   <label> Username
@@ -152,7 +192,7 @@ class Profile extends Component {
                 </div>
               </div>
             </section> 
-          }
+          } */}
           {error}
         </div>
       </div>
