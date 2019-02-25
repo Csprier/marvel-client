@@ -8,7 +8,13 @@ export const REQUEST_PROFILE = 'REQUEST_PROFILE',
 	  return {
 		  type: REQUEST_PROFILE
 	  };
-  };
+	};
+export const PROFILE_EDIT = 'PROFILE_EDIT',
+	editMode = () => { // engage edit state change
+		return {
+			type: PROFILE_EDIT
+		};
+	};
 
 // Set loading to false and load profile info into the state
 export const PROFILE_SUCCESS = 'PROFILE_SUCCESS',
@@ -31,6 +37,7 @@ export const PROFILE_ERROR = 'PROFILE_ERROR',
 // **************  GET PROFILE INFO  ************** //
 // Must pass userId in order to use for url
 export const fetchProfile = userId => dispatch => {
+	// console.log('Engage fetchProfile');
 	const token = localStorage.getItem('authToken');
 	dispatch(requestProfile());
 	return fetch(`${API_BASE_URL}/user/${userId}`, {
@@ -53,6 +60,7 @@ export const fetchProfile = userId => dispatch => {
 // **************  EDIT PROFILE INFO  ************** //
 export const editProfile = (userId, updatedProfile) => dispatch => {
 	console.log('Engage Profile Edit');
+	console.log(userId, updatedProfile);
 	const token = localStorage.getItem('authToken');
 	dispatch(requestProfile());
 	return fetch(`${API_BASE_URL}/user/${userId}`, {

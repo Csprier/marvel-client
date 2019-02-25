@@ -1,7 +1,13 @@
-import { REQUEST_PROFILE, PROFILE_SUCCESS, PROFILE_ERROR } from '../actions/profileActions';
+import { 
+  REQUEST_PROFILE, 
+  PROFILE_SUCCESS, 
+  PROFILE_EDIT,
+  PROFILE_ERROR 
+} from '../actions/profileActions';
 
 const initialState = {
-	data : {},
+  data : {},
+  editing: false,
 	loading: false,
 	error: null
 };
@@ -18,6 +24,11 @@ export default function profileReducer(state = initialState, action){
         ...state,
 			  loading: false,
 			  data : action.data
+      }
+    case PROFILE_EDIT:
+      return {
+        ...state,
+        editing: !state.editing
       }
     case PROFILE_ERROR:
       return {
