@@ -9,10 +9,10 @@ export const REQUEST_PROFILE = 'REQUEST_PROFILE',
 		  type: REQUEST_PROFILE
 	  };
 	};
-export const PROFILE_EDIT = 'PROFILE_EDIT',
+export const PROFILE_EDIT_MODE = 'PROFILE_EDIT_MODE',
 	editMode = () => { // engage edit state change
 		return {
-			type: PROFILE_EDIT
+			type: PROFILE_EDIT_MODE
 		};
 	};
 

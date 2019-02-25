@@ -77,11 +77,11 @@ class Profile extends Component {
         </div>
       )
     }
+
     console.log('Edit Mode:', this.props.editing);
     return(
       <div className="profile-container">
         <div className="profile">
-          {error}
           <header className="profile-header">
             <h2>Profile</h2>
           </header>
@@ -161,6 +161,7 @@ class Profile extends Component {
               </div>
             </section> 
           }
+          {error}
         </div>
       </div>
     );
