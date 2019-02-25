@@ -121,42 +121,48 @@ class Profile extends Component {
                       placeholder="Enter your password to submit changes"
                     />
                   </label>
-                  <button 
-                    className="edit-form-submit" 
-                    type="submit"
-                  >
-                  Submit Edit</button>
+                  <div className="profile-buttons">
+                    <button 
+                      className="edit-form-submit" 
+                      type="submit"
+                    >
+                    Submit Edit</button>
+                    <button
+                      className="profile-edit-btn"
+                      title="edit button"
+                      type="button"
+                      onClick={this.handleEditModeChange}
+                    >
+                    Cancel</button>
+                  </div>
                 </form>
-                <button
-                  className="profile-edit-btn"
-                  title="edit button"
-                  type="button"
-                  onClick={this.handleEditModeChange}
-                >
-                Cancel</button>
               </div>
           : <section className="profile-section">
               <div className="profile-data-display">
                 <div className="profile-section-details">
-                  <span>Username: {this.props.username}</span>
+                  <h4>Username:</h4> 
+                  <p>{this.props.username}</p>
                 </div>
                 <div className="profile-section-details">
-                  <span>Email: {this.props.email}</span>
+                  <h4>Email:</h4>
+                  <p>{this.props.email}</p>
                 </div>
-                <button
-                  className="profile-edit-btn"
-                  title="edit button"
-                  type="button"
-                  onClick={this.handleEditModeChange}
-                >
-                Edit</button>
-                <button
-                  className="back-to-dashboard-btn"
-                  title="backToDashboard-btn"
-                  type="button"
-                >
-                  <Link to="/dashboard">Cancel</Link>
-                </button>
+                <div className="profile-buttons">
+                  <button
+                    className="profile-edit-btn"
+                    title="edit button"
+                    type="button"
+                    onClick={this.handleEditModeChange}
+                  >
+                  Edit</button>
+                  <button
+                    className="back-to-dashboard-btn"
+                    title="backToDashboard-btn"
+                    type="button"
+                  >
+                    <Link to="/dashboard">Cancel</Link>
+                  </button>
+                </div>
               </div>
             </section> 
           }
