@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import RequiresLogin from './requires-login';
 // import ProfileForm from './userComponents/ProfileForm';
@@ -63,6 +64,10 @@ class Profile extends Component {
     console.log('updatedProfile:', updatedProfile);
     this.props.dispatch(editProfile(userId, updatedProfile));
   }
+
+  backToDashboard = (e) => {
+    
+  }
   
   render() {
     if (this.props.loading) {
@@ -110,6 +115,7 @@ class Profile extends Component {
                     <input 
                       className="edit-form-input"
                       ref="editedPassword"
+                      type="password"
                       value={this.state.editedPassword} 
                       onChange={this.handlePasswordChange}
                       placeholder="Enter your password to submit changes"
@@ -144,6 +150,13 @@ class Profile extends Component {
                   onClick={this.handleEditModeChange}
                 >
                 Edit</button>
+                <button
+                  className="back-to-dashboard-btn"
+                  title="backToDashboard-btn"
+                  type="button"
+                >
+                  <Link to="/dashboard">Cancel</Link>
+                </button>
               </div>
             </section> 
           }
