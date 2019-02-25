@@ -47,20 +47,12 @@ class Profile extends Component {
   
   handleSubmit = (e) => {
     e.preventDefault();
-    // console.log('----------------------------------------------');
-    // console.log('Submitting Edits:');
-    // console.log('userId:', this.props.userId);
-    // console.log('New Username:', this.refs.editedUsername.value);
-    // console.log('New Email:', this.refs.editedEmail.value);
-    // console.log('----------------------------------------------');
     let userId = this.props.userId;
     let updatedProfile = {
-      username: this.refs.editedUsername.value,
-      email: this.refs.editedEmail.value,
+      username: (this.refs.editedUsername.value.length !== 0) ? this.refs.editedUsername.value : this.props.username,
+      email: (this.refs.editedEmail.value.length !== 0) ? this.refs.editEmail.value : this.props.email,
       password: this.refs.editedPassword.value
     }
-    // console.log('userId:', userId);
-    // console.log('updatedProfile:', updatedProfile);
     this.props.dispatch(editProfile(userId, updatedProfile));
   }
 

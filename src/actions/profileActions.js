@@ -60,7 +60,6 @@ export const fetchProfile = userId => dispatch => {
 // **************  EDIT PROFILE INFO  ************** //
 export const editProfile = (userId, updatedProfile) => dispatch => {
 	console.log('Engage Profile Edit');
-	console.log(userId, updatedProfile);
 	const token = localStorage.getItem('authToken');
 	dispatch(requestProfile());
 	return fetch(`${API_BASE_URL}/user/${userId}`, {
@@ -69,15 +68,16 @@ export const editProfile = (userId, updatedProfile) => dispatch => {
 			'Content-Type' : 'application/json',
 			'Authorization' : `Bearer ${token}`
 		},
-		body : JSON.stringify(updatedProfile)})
-		.then(res => normalizeResponseErrors(res))
-		.then(res => res.json())
-		.then(() => {
-			dispatch(fetchProfile(userId));
-		})
-		.catch(error => {
-			dispatch(profileError(error.message));
-    });
+		body : JSON.stringify(updatedProfile)
+	})
+	.then(res => normalizeResponseErrors(res))
+	.then(res => res.json())
+	.then(() => {
+		dispatch(fetchProfile(userId));
+	})
+	.catch(error => {
+		dispatch(profileError(error.message));
+	});
 };
 
 // **************  DELETE PROFILE INFO  ************** //
