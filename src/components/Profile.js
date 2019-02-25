@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import RequiresLogin from './requires-login';
-// import ProfileForm from './userComponents/ProfileForm';
 
 // CSS
 import './css/profile.css';
@@ -48,20 +47,20 @@ class Profile extends Component {
   
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log('----------------------------------------------');
-    console.log('Submitting Edits:');
-    console.log('userId:', this.props.userId);
-    console.log('New Username:', this.refs.editedUsername.value);
-    console.log('New Email:', this.refs.editedEmail.value);
-    console.log('----------------------------------------------');
+    // console.log('----------------------------------------------');
+    // console.log('Submitting Edits:');
+    // console.log('userId:', this.props.userId);
+    // console.log('New Username:', this.refs.editedUsername.value);
+    // console.log('New Email:', this.refs.editedEmail.value);
+    // console.log('----------------------------------------------');
     let userId = this.props.userId;
     let updatedProfile = {
       username: this.refs.editedUsername.value,
       email: this.refs.editedEmail.value,
       password: this.refs.editedPassword.value
     }
-    console.log('userId:', userId);
-    console.log('updatedProfile:', updatedProfile);
+    // console.log('userId:', userId);
+    // console.log('updatedProfile:', updatedProfile);
     this.props.dispatch(editProfile(userId, updatedProfile));
   }
 
