@@ -61,8 +61,8 @@ class ProfileForm extends Component {
 							type="text"
 							component="input"
 							validate={[ required, nonEmpty, isTrimmed ]}
-							placeholder="Username..."
-							// placeholder={this.props.initialValues.username}
+							// placeholder="Username..."
+							placeholder={this.props.initialValues.username}
 						/>
 						<Field
 							name="email"
@@ -70,12 +70,11 @@ class ProfileForm extends Component {
 							type="text"
 							component="input"
 							validate={[ required, validEmail ]}
-							placeholder="Email..."
-							// placeholder={this.props.initialValues.email}
+							// placeholder="Email..."
+							placeholder={this.props.initialValues.email}
 						/>
 						<div className="form-field form-btns">
-							<button className="form-reset-btn" type="button">Cancel</button>
-							<button className="form-submit-btn" type="submit">Save</button>
+							<button className="form-submit-btn" type="submit">Submit</button>
               {error}
 						</div>
 					</fieldset>
@@ -85,12 +84,9 @@ class ProfileForm extends Component {
   }
 }
 
-// ProfileForm = reduxForm({
-//   form: 'ProfileForm'
-// })
 const mapStateToProps = state => ({
 	userId: state.profile.data.id
-})
+});
 
 export default connect(mapStateToProps)(reduxForm({ 
 	form: 'profile'

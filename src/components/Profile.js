@@ -81,11 +81,11 @@ class Profile extends Component {
           {(this.props.editing) 
             ? <div className="profile-form-container">
                 <ProfileForm 
-                  // initialValues={{
-                  //   userId:this.props.userId,
-                  //   username:this.props.username,
-                  //   email:this.props.email
-                  // }}
+                  initialValues={{
+                    userId:this.props.userId,
+                    username:this.props.username,
+                    email:this.props.email
+                  }}
                 />
                 <button
                   className="profile-edit-btn"
