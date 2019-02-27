@@ -1,7 +1,7 @@
 import { 
   REQUEST_PROFILE, 
   PROFILE_SUCCESS, 
-  PROFILE_EDIT,
+  PROFILE_EDIT_MODE,
   PROFILE_ERROR 
 } from '../actions/profileActions';
 
@@ -25,7 +25,7 @@ export default function profileReducer(state = initialState, action){
 			  loading: false,
 			  data : action.data
       }
-    case PROFILE_EDIT:
+    case PROFILE_EDIT_MODE:
       return {
         ...state,
         editing: !state.editing
