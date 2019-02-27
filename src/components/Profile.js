@@ -80,14 +80,13 @@ class Profile extends Component {
           </header>
           {(this.props.editing) 
             ? <div className="profile-form-container">
-                {/* <ProfileForm 
-                  initialValues={{
-                    userId:this.props.userId,
-                    username:this.props.username,
-                    email:this.props.email
-                  }}
-                /> */}
-                <p>This is where ProfileForm should render</p>
+                <ProfileForm 
+                  // initialValues={{
+                  //   userId:this.props.userId,
+                  //   username:this.props.username,
+                  //   email:this.props.email
+                  // }}
+                />
                 <button
                   className="profile-edit-btn"
                   title="edit button"
@@ -145,6 +144,33 @@ const mapStateToProps = state => ({
 export default RequiresLogin()(connect(mapStateToProps)(Profile));
 
 /** WORKING NON-REDUXFORM VERSION, NO ERROR HANDLING */
+// handleUsernameChange = (e) => {
+//   this.setState = {
+//     username: e.target.value
+//   }
+// }
+// handleUsernameChange = (e) => {
+//   this.setState = {
+//     email: e.target.value
+//   }
+// }
+// handlePasswordChange = (e) => {
+//   this.setState = {
+//     password: e.target.value
+//   }
+// }
+
+// handleSubmit = (e) => {
+//   e.preventDefault();
+//   let userId = this.props.userId;
+//   let updatedProfile = {
+//     username: (this.refs.editedUsername.value.length !== 0) ? this.refs.editedUsername.value : this.props.username,
+//     email: (this.refs.editedEmail.value.length !== 0) ? this.refs.editEmail.value : this.props.email,
+//     password: this.refs.editedPassword.value
+//   }
+//   this.props.dispatch(editProfile(userId, updatedProfile));
+// }
+
 // {(this.props.editing)  
 //   ? <div className="edit-form">
 //       <form onSubmit={this.handleSubmit}>
