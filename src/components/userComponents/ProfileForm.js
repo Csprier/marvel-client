@@ -6,47 +6,48 @@ import { isTrimmed, nonEmpty, required, validEmail } from './form-validators';
 import { editProfile } from '../../actions/profileActions';
 
 export class ProfileForm extends React.Component {
-  constructor() {
-		super();
-		this.state = {
-			error: null
-		}
-  }
+  // constructor() {
+	// 	super();
+	// 	this.state = {
+	// 		error: null
+	// 	}
+  // }
 	
 	componentDidMount() {
 		console.log('Profile Form loaded');
 	}
 	
-  componentWillUnmount() {
-		// Clear any possible memory leaks
-		this.setState({ error: null });
-  }
+  // componentWillUnmount() {
+	// 	// Clear any possible memory leaks
+	// 	this.setState({ error: null });
+  // }
   
   onSubmit = values => {
-		const updatedProfile = {};
-		Object.keys(values).forEach(key => {
-			//Check to see if the user made a change, and only pass back key/values that are submitted
-			if (values[key]) {
-				updatedProfile[key] = values[key];
-			}
-		});
-		this.props.dispatch(editProfile(this.props.initialValues.userId, updatedProfile))
-			.then( res => {
-				(res) 
-					? this.setState({ error: res.error }) 
-					: this.props.setEdit();
-			});
+		console.log(values);
+		// const updatedProfile = {};
+		// Object.keys(values).forEach(key => {
+		// 	//Check to see if the user made a change, and only pass back key/values that are submitted
+		// 	if (values[key]) {
+		// 		updatedProfile[key] = values[key];
+		// 	}
+		// });
+		// this.props.dispatch(editProfile(this.props.initialValues.userId, updatedProfile))
+		// 	.then( res => {
+		// 		(res) 
+		// 			? this.setState({ error: res.error }) 
+		// 			: this.props.setEdit();
+		// 	});
   };
   
   render() {
-		let {error} = this.state;
-		if (error) {
-			error = (
-				<div className="error-msg" aria-live="polite">
-					{this.state.error}
-				</div>
-			);
-		}
+		// let {error} = this.state;
+		// if (error) {
+		// 	error = (
+		// 		<div className="error-msg" aria-live="polite">
+		// 			{this.state.error}
+		// 		</div>
+		// 	);
+		// }
 		
 		return (
 			<div className="form-wrapper">
@@ -59,7 +60,7 @@ export class ProfileForm extends React.Component {
 							type="text"
 							component="input"
 							validate={[ required, nonEmpty, isTrimmed ]}
-							// placeholder={this.props.initialValues[0]}
+							placeholder={this.props.initialValues.username}
 						/>
 						<Field
 							name="email"
@@ -67,12 +68,12 @@ export class ProfileForm extends React.Component {
 							type="text"
 							component="input"
 							validate={[ required, validEmail ]}
-							// placeholder={this.props.initialValues[1]}
+							placeholder={this.props.initialValues.email}
 						/>
 						<div className="form-field form-btns">
 							<button className="form-reset-btn" type="button" onClick={this.props.setEdit}>Cancel</button>
 							<button className="form-submit-btn	" type="submit">Save</button>
-              {error}
+              {/* {error} */}
 						</div>
 					</fieldset>
 				</form>
