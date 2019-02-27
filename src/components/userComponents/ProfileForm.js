@@ -26,7 +26,6 @@ class ProfileForm extends Component {
   }
   
   onSubmit = values => {
-		console.log('ProfileForm submit values:', values);
 		const updatedProfile = {};
 		Object.keys(values).forEach(key => {
 			//Check to see if the user made a change, and only pass back key/values that are submitted
@@ -34,14 +33,8 @@ class ProfileForm extends Component {
 				updatedProfile[key] = values[key];
 			}
 		});
-		console.log(updatedProfile);
+		console.log('Profile updates: ', updatedProfile);
 		this.props.dispatch(editProfile(this.props.userId, updatedProfile))
-			.catch(e => console.log('ERROR IN DISPATCH', e))
-			// .then( res => {
-			// 	(res) 
-			// 		? this.setState({ error: res.error }) 
-			// 		: this.props.setEdit();
-			// });
 	};
 	
 	handleEditModeChange = () => {

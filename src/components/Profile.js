@@ -7,18 +7,9 @@ import ProfileForm from './userComponents/ProfileForm';
 
 // CSS
 import './css/profile.css';
-import { fetchProfile, editMode, editProfile } from '../actions/profileActions';
+import { fetchProfile, editMode } from '../actions/profileActions';
 
 class Profile extends Component {
-  constructor() {
-    super();
-    // this.state = {
-    //   editUsername: '',
-    //   editEmail: '',
-    //   editPassword: ''
-    // }
-  }
-  
   componentDidMount() {
     console.log('----------------------------');
     console.log('Fetching Profile data');
@@ -29,33 +20,6 @@ class Profile extends Component {
   handleEditModeChange = () => {
     this.props.dispatch(editMode());
   };
-
-  // handleUsernameChange = (e) => {
-  //   this.setState = {
-  //     username: e.target.value
-  //   }
-  // }
-  // handleUsernameChange = (e) => {
-  //   this.setState = {
-  //     email: e.target.value
-  //   }
-  // }
-  // handlePasswordChange = (e) => {
-  //   this.setState = {
-  //     password: e.target.value
-  //   }
-  // }
-  
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   let userId = this.props.userId;
-  //   let updatedProfile = {
-  //     username: (this.refs.editedUsername.value.length !== 0) ? this.refs.editedUsername.value : this.props.username,
-  //     email: (this.refs.editedEmail.value.length !== 0) ? this.refs.editEmail.value : this.props.email,
-  //     password: this.refs.editedPassword.value
-  //   }
-  //   this.props.dispatch(editProfile(userId, updatedProfile));
-  // }
 
   render() {
     if (this.props.loading) {
@@ -86,13 +50,6 @@ class Profile extends Component {
                     email:this.props.email
                   }}
                 />
-                {/* <button
-                  className="profile-edit-btn"
-                  title="edit button"
-                  type="button"
-                  onClick={this.handleEditModeChange}
-                >
-                Cancel</button> */}
               </div>
             : <section className="profile-section">
                 <div className="profile-data-display">
