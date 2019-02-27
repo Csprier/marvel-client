@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 
 import { isTrimmed, nonEmpty, required, validEmail } from './form-validators';
-import { editProfile, editMode } from '../../actions/profileActions';
+import { editProfile, profileError, editMode } from '../../actions/profileActions';
 
 // CSS
 import '../css/profile-form.css';
@@ -31,10 +31,16 @@ class ProfileForm extends Component {
 			//Check to see if the user made a change, and only pass back key/values that are submitted
 			if (values[key]) {
 				updatedProfile[key] = values[key];
-			}
+			} 
+			// else if (values.username.length === 0) {
+			// 	updatedProfile[key] = this.props.username
+			// }
+			// else if (values.email.length === 0) {
+			// 	updatedProfile[key] = this.props.email
+			// }
 		});
 		console.log('Profile updates: ', updatedProfile);
-		this.props.dispatch(editProfile(this.props.userId, updatedProfile))
+		// this.props.dispatch(editProfile(this.props.userId, updatedProfile))
 	};
 	
 	handleEditModeChange = () => {
@@ -96,15 +102,27 @@ class ProfileForm extends Component {
 						</div>
 					</fieldset>
 				</form>
+				<div className="note-container">
+					<ul className="notes">
+						<li>- Currently, will not submit without all fields having input</li>
+						<li>- Will overwrite what's in the database, even if it means being an empty string</li>
+						<li>- Validation is not showing</li>
+					</ul>
+				</div>
 			</div>
 		);
   }
 }
 
 const mapStateToProps = state => ({
-	userId: state.profile.data.id
+	userId: state.profile.data.id,
+	username: state.profile.data.username,
+	email: state.profile.data.email
 });
 
 export default connect(mapStateToProps)(reduxForm({ 
-	form: 'profile'
+	form: 'profile',
+	onSubmitFail: (errors, dispatch) => {
+		console.log(errors);
+	}
 })(ProfileForm));
