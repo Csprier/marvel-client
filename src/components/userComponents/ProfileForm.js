@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 
 import { isTrimmed, nonEmpty, required, validEmail } from './form-validators';
-import { editProfile } from '../../actions/profileActions';
+import { editProfile, editMode } from '../../actions/profileActions';
+
+// CSS
+import '../css/profile-form.css';
 
 class ProfileForm extends Component {
   constructor() {
@@ -39,6 +42,10 @@ class ProfileForm extends Component {
 			// 		? this.setState({ error: res.error }) 
 			// 		: this.props.setEdit();
 			// });
+	};
+	
+	handleEditModeChange = () => {
+    this.props.dispatch(editMode());
   };
   
   render() {
@@ -55,26 +62,43 @@ class ProfileForm extends Component {
 				<form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 					<fieldset>
 						<legend>Edit Profile</legend>
+						<label>Username
 						<Field
 							name="username"
-							label="Username"
+							autoFocus
+							className="pf-input"
 							type="text"
 							component="input"
 							validate={[ required, nonEmpty, isTrimmed ]}
-							// placeholder="Username..."
 							placeholder={this.props.initialValues.username}
 						/>
+						</label>
+						<label>Email
 						<Field
 							name="email"
-							label="Email"
+							autoFocus
+							className="pf-input"
 							type="text"
 							component="input"
 							validate={[ required, validEmail ]}
-							// placeholder="Email..."
 							placeholder={this.props.initialValues.email}
 						/>
-						<div className="form-field form-btns">
+						</label>
+						<label>Password
+						<Field 
+							name="password"
+							autoFocus
+							className="pf-input"
+							type="password"
+							component="input"
+							validate={[ required, nonEmpty, isTrimmed ]}
+							autoComplete="off"
+							placeholder="Enter your password to submit"
+						/>
+						</label>
+						<div className="form-btns">
 							<button className="form-submit-btn" type="submit">Submit</button>
+							<button className="form-cancel-btn" onClick={this.handleEditModeChange}>Cancel</button>
               {error}
 						</div>
 					</fieldset>

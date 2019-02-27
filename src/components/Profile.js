@@ -82,18 +82,17 @@ class Profile extends Component {
             ? <div className="profile-form-container">
                 <ProfileForm 
                   initialValues={{
-                    userId:this.props.userId,
                     username:this.props.username,
                     email:this.props.email
                   }}
                 />
-                <button
+                {/* <button
                   className="profile-edit-btn"
                   title="edit button"
                   type="button"
                   onClick={this.handleEditModeChange}
                 >
-                Cancel</button>
+                Cancel</button> */}
               </div>
             : <section className="profile-section">
                 <div className="profile-data-display">
