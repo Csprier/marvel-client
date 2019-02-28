@@ -42,6 +42,7 @@ class UserLoginForm extends Component {
             type="text" 
             component="input"
             validate={[ required, nonEmpty, isTrimmed ]}
+            // validate={[ required ]}
             placeholder="Username..."
             />
           <label htmlFor="password">Password</label>

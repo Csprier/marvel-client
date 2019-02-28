@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
+// import { Field, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
 
-import { isTrimmed, nonEmpty, required, validEmail } from './form-validators';
-import { editProfile, profileError, editMode } from '../../actions/profileActions';
+// import { myInput } from '../Field/Input';
+// import { isTrimmed, nonEmpty, required, validEmail } from './form-validators';
+// import { validators } from './form-validators';
+import { editMode } from '../../actions/profileActions';
+// editProfile, profileError, 
 
 // CSS
 import '../css/profile-form.css';
+import FieldLevelValidationForm from '../Field/fieldLevelValidationForm';
 
 class ProfileForm extends Component {
   constructor() {
@@ -56,44 +61,57 @@ class ProfileForm extends Component {
 				</div>
 			);
 		}
+
 		return (
 			<div className="form-wrapper">
-				<form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+				<FieldLevelValidationForm  onSubmit={this.props.handleSubmit(values => this.onSubmit(values))} />
+				{/* <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 					<fieldset>
 						<legend>Edit Profile</legend>
 						<label>Username
-						<Field
-							name="username"
-							autoFocus
-							className="pf-input"
-							type="text"
-							component="input"
-							validate={[ required, nonEmpty, isTrimmed ]}
-							placeholder={this.props.initialValues.username}
-						/>
+							<Field
+								name="username"
+								autoFocus
+								className="pf-input"
+								type="text"
+								component="input"
+								validate={[ 
+									validators.required, 
+									validators.nonEmpty, 
+									validators.isTrimmed 
+								]}
+								placeholder={this.props.initialValues.username}
+							/>
 						</label>
 						<label>Email
-						<Field
-							name="email"
-							autoFocus
-							className="pf-input"
-							type="text"
-							component="input"
-							validate={[ required, validEmail ]}
-							placeholder={this.props.initialValues.email}
-						/>
+							<Field
+								name="email"
+								autoFocus
+								className="pf-input"
+								type="text"
+								component="input"
+								validate={[ 
+									validators.required, 
+									validators.validEmail 
+								]}
+								placeholder={this.props.initialValues.email}
+							/>
 						</label>
 						<label>Password
-						<Field 
-							name="password"
-							autoFocus
-							className="pf-input"
-							type="password"
-							component="input"
-							validate={[ required, nonEmpty, isTrimmed ]}
-							autoComplete="off"
-							placeholder="Enter your password to submit"
-						/>
+							<Field 
+								name="password"
+								autoFocus
+								className="pf-input"
+								type="password"
+								component="input"
+								validate={[ 
+									validators.required, 
+									validators.nonEmpty, 
+									validators.isTrimmed 
+								]}
+								autoComplete="off"
+								placeholder="Enter your password to submit"
+							/>
 						</label>
 						<div className="form-btns">
 							<button className="form-submit-btn" type="submit">Submit</button>
@@ -101,7 +119,8 @@ class ProfileForm extends Component {
               {error}
 						</div>
 					</fieldset>
-				</form>
+				</form> */}
+				<button className="form-cancel-btn" onClick={this.handleEditModeChange}>Cancel</button>
 				<div className="note-container">
 					<ul className="notes">
 						<li>- Currently, will not submit without all fields having input</li>

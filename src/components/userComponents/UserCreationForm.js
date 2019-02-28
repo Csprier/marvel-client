@@ -4,7 +4,9 @@ import { reduxForm, Field } from 'redux-form';
 import { Link } from 'react-router-dom';
 
 // Validators
-import { required, nonEmpty, isTrimmed, passwordsMatch, length, validEmail } from './form-validators.js';
+// import { required, nonEmpty, isTrimmed, passwordsMatch, length, validEmail } from './form-validators.js';
+import { passwordsMatch, length } from './form-validators';
+import { validators } from './form-validators';
 
 // ACTIONS
 import { createUser } from '../../actions/userActions';
@@ -72,7 +74,11 @@ class UserCreationForm extends Component {
                 id="username" 
                 type="text" 
                 component="input"
-                validate={[ required, nonEmpty, isTrimmed ]}
+                validate={[ 
+                  validators.required, 
+                  validators.nonEmpty, 
+                  validators.isTrimmed
+                 ]}
                 autoComplete="off"
                 placeholder="Username..."
                 />
@@ -83,7 +89,11 @@ class UserCreationForm extends Component {
                 id="email" 
                 type="text" 
                 component="input"
-                validate={[ required, nonEmpty, validEmail ]}
+                validate={[ 
+                  validators.required, 
+                  validators.nonEmpty, 
+                  validators.validEmail 
+                ]}
                 autoComplete="off"
                 placeholder="Email..."
                 />
@@ -94,7 +104,12 @@ class UserCreationForm extends Component {
                 id="password" 
                 type="password" 
                 component="input" 
-                validate={[ required, nonEmpty, isTrimmed, passwordLength ]}
+                validate={[ 
+                  validators.required, 
+                  validators.nonEmpty, 
+                  validators.isTrimmed, 
+                  passwordLength 
+                ]}
                 autoComplete="off"
                 placeholder="Password..."
               />
@@ -105,7 +120,11 @@ class UserCreationForm extends Component {
                 id="confirmpassword" 
                 type="password" 
                 component="input" 
-                validate={[ required, nonEmpty, validPassword ]}
+                validate={[ 
+                  validators.required, 
+                  validators.nonEmpty, 
+                  validPassword
+                 ]}
                 autoComplete="off"
                 placeholder="Confirm Password..."
               />
