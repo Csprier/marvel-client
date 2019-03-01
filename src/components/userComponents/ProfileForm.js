@@ -53,14 +53,14 @@ class ProfileForm extends Component {
   };
   
   render() {
-		let {error} = this.state;
-		if (error) {
-			error = (
-				<div className="error-msg" aria-live="polite">
-					{this.state.error}
-				</div>
-			);
-		}
+		// let {error} = this.state;
+		// if (error) {
+		// 	error = (
+		// 		<div className="error-msg" aria-live="polite">
+		// 			{this.state.error}
+		// 		</div>
+		// 	);
+		// }
 
 		return (
 			<div className="form-wrapper">
@@ -122,14 +122,7 @@ class ProfileForm extends Component {
 						</div>
 					</fieldset>
 				</form> */}
-				<button className="form-cancel-btn" onClick={this.handleEditModeChange}>Cancel</button>
-				{/* <div className="note-container">
-					<ul className="notes">
-						<li>- Currently, will not submit without all fields having input</li>
-						<li>- Will overwrite what's in the database, even if it means being an empty string</li>
-						<li>- Validation is not showing</li>
-					</ul>
-				</div> */}
+				{/* <button className="form-cancel-btn" onClick={this.handleEditModeChange}>Cancel</button> */}
 			</div>
 		);
   }

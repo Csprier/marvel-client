@@ -50,6 +50,7 @@ class Profile extends Component {
                     email:this.props.email
                   }}
                 />
+                <button className="form-cancel-btn" onClick={this.handleEditModeChange}>Cancel</button>
               </div>
             : <section className="profile-section">
                 <div className="profile-data-display">

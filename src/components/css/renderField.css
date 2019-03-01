@@ -1,3 +1,21 @@
+.inp {
+  margin: 0px 0px 0px 1px;
+  padding: 0px 2px;
+  height: 20px;
+  border: 1px solid black;
+}
+
+.render-field-container {
+  margin: 0 auto;
+  padding: 0px;
+  width: 98%;
+  height: 100%;
+  /* border: 1px solid black; */
+}
+.render-field-container label {
+  font-weight: lighter;
+}
+
 .error-span {
   color: red;
   font-family: arial;

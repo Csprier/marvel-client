@@ -1,0 +1,7 @@
+.flv-button-container {
+  margin: 10px 0px 0px 0px;
+  padding: 0px;
+  display: flex;
+  justify-content: space-around;
+  /* border: 1px solid blue; */
+}

@@ -23,21 +23,7 @@
   padding: 0px;
 }
 
-/* NOTES */
-.note-container {
-  width: 100%;
-  margin: 0px;
-  padding: 0px;
-}
-.notes {
-  width: 98%;
-  margin: 0 auto;
-  padding: 0px;
-  border: 1px solid red;
-}
-.notes li {
-  margin: 0px;
-  padding: 5px;
-  font-size: 10px;
-  font-family: arial;
+.form-cancel-btn {
+  position: relative;
+  bottom: 0;
 }
