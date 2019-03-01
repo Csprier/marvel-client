@@ -64,7 +64,9 @@ class ProfileForm extends Component {
 
 		return (
 			<div className="form-wrapper">
-				<FieldLevelValidationForm  onSubmit={this.props.handleSubmit(values => this.onSubmit(values))} />
+				<FieldLevelValidationForm  
+					onSubmit={this.props.handleSubmit(values => this.onSubmit(values))} 
+				/>
 				{/* <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 					<fieldset>
 						<legend>Edit Profile</legend>
@@ -121,13 +123,13 @@ class ProfileForm extends Component {
 					</fieldset>
 				</form> */}
 				<button className="form-cancel-btn" onClick={this.handleEditModeChange}>Cancel</button>
-				<div className="note-container">
+				{/* <div className="note-container">
 					<ul className="notes">
 						<li>- Currently, will not submit without all fields having input</li>
 						<li>- Will overwrite what's in the database, even if it means being an empty string</li>
 						<li>- Validation is not showing</li>
 					</ul>
-				</div>
+				</div> */}
 			</div>
 		);
   }

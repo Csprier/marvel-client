@@ -4,8 +4,8 @@ import { reduxForm, Field, focus } from 'redux-form';
 import { Link } from 'react-router-dom';
 
 // Validators
-import { required, nonEmpty, isTrimmed } from './form-validators.js';
-
+// import { required, nonEmpty, isTrimmed } from './form-validators.js';
+import { validators } from './form-validators';
 // ACTIONS
 import { login } from '../../actions/authActions.js';
 
@@ -41,7 +41,7 @@ class UserLoginForm extends Component {
             id="loginusername" 
             type="text" 
             component="input"
-            validate={[ required, nonEmpty, isTrimmed ]}
+            validate={[ validators.required, validators.nonEmpty, validators.isTrimmed ]}
             // validate={[ required ]}
             placeholder="Username..."
             />
@@ -52,7 +52,7 @@ class UserLoginForm extends Component {
             id="loginpassword" 
             type="password" 
             component="input"
-            validate={[ required, nonEmpty ]}
+            validate={[ validators.required, validators.nonEmpty ]}
             placeholder="Password..."
           />
           <button className="login-button" name="submit-login" type="submit">LOG IN</button>

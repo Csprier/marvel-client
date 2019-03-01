@@ -2,16 +2,7 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
 import { validators } from '../userComponents/form-validators';
-
-const renderField = ({ input, label, type, meta: { touched, error } }) => (
-  <div>
-    <label>{label}</label>
-    <div>
-      <input {...input} placeholder={label} type={type}/>
-      {touched && ((error && <span>{error}</span>))}
-    </div>
-  </div>
-)
+import renderField from './renderField';
 
 const FieldLevelValidationForm = (props) => {
   const { handleSubmit, pristine, reset, submitting } = props;
@@ -19,7 +10,7 @@ const FieldLevelValidationForm = (props) => {
     <form onSubmit={handleSubmit}>
       <Field name="username" type="text"
         component={renderField} label="Username"
-        validate={[ validators.required ]}
+        // validate={[ validators.required ]}
       />
       <Field name="email" type="email"
         component={renderField} label="Email"

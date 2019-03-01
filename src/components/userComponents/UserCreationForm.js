@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 // Validators
 // import { required, nonEmpty, isTrimmed, passwordsMatch, length, validEmail } from './form-validators.js';
-import { passwordsMatch, length } from './form-validators';
+// import { passwordsMatch, length } from './form-validators';
 import { validators } from './form-validators';
 
 // ACTIONS
@@ -16,8 +16,8 @@ import { loginError } from '../../actions/authActions';
 import '../css/user-component-styles/user-creation.css';
 
 // Password validation
-const passwordLength = length({ min: 8, max: 72 });
-const validPassword = passwordsMatch('password');
+const passwordLength = validators.length({ min: 8, max: 72 });
+const validPassword = validators.passwordsMatch('password');
 
 class UserCreationForm extends Component {
   moveToDashboard() {
