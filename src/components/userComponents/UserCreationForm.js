@@ -4,8 +4,6 @@ import { reduxForm, Field } from 'redux-form';
 import { Link } from 'react-router-dom';
 
 // Validators
-// import { required, nonEmpty, isTrimmed, passwordsMatch, length, validEmail } from './form-validators.js';
-// import { passwordsMatch, length } from './form-validators';
 import { validators } from './form-validators';
 import renderField from '../Field/renderField';
 
@@ -25,52 +23,52 @@ class UserCreationForm extends Component {
     this.props.history.push('/dashboard')
   }
   
-  onSubmit(values) {
+  handleRegisterSubmit(values) {
     this.props.dispatch(createUser(values.username, values.email, values.password))
       .then(() => this.moveToDashboard());
   }
 
   render() {
-    let error;
-    if (this.props.usernameerror) {
-      error = (
-        <div className="form-field-error" aria-live="polite">
-          {this.props.usernameerror}
-        </div>
-      );
-    }
-    else if (this.props.emailerror) {
-      error = (
-        <div className="form-field-error" aria-live="polite">
-          {this.props.emailerror}
-        </div>
-      );
-    } 
-    else if (this.props.passworderror) {
-      error = (
-        <div className="form-field-error" aria-live="polite">
-          {this.props.passworderror}
-        </div>
-      );
-    }
-    else if (this.props.confirmpassworderror) {
-      error = (
-        <div className="form-field-error" aria-live="polite">
-          {this.props.confirmpassworderror}
-        </div>
-      );
-    }
+    // let error;
+    // if (this.props.usernameerror) {
+    //   error = (
+    //     <div className="form-field-error" aria-live="polite">
+    //       {this.props.usernameerror}
+    //     </div>
+    //   );
+    // }
+    // else if (this.props.emailerror) {
+    //   error = (
+    //     <div className="form-field-error" aria-live="polite">
+    //       {this.props.emailerror}
+    //     </div>
+    //   );
+    // } 
+    // else if (this.props.passworderror) {
+    //   error = (
+    //     <div className="form-field-error" aria-live="polite">
+    //       {this.props.passworderror}
+    //     </div>
+    //   );
+    // }
+    // else if (this.props.confirmpassworderror) {
+    //   error = (
+    //     <div className="form-field-error" aria-live="polite">
+    //       {this.props.confirmpassworderror}
+    //     </div>
+    //   );
+    // }
 
     return (
       <div className="user-creation-form-container">
         <div className="user-creation-form">
             <h2>Create an Account</h2>
             <form onSubmit={this.props.handleSubmit(values =>
-              this.onSubmit(values)
+              this.handleRegisterSubmit(values)
             )}>
-              <label htmlFor="createusername">Username</label>
               <Field 
                 aria-label="createusername"
+                label="Username"
                 name="username" 
                 id="username" 
                 type="text" 
@@ -83,9 +81,9 @@ class UserCreationForm extends Component {
                 autoComplete="off"
                 placeholder="Username..."
                 />
-              <label htmlFor="createemail">Email</label>
               <Field 
                 aria-label="createemail"
+                label="Email"
                 name="email" 
                 id="email" 
                 type="text" 
@@ -98,9 +96,9 @@ class UserCreationForm extends Component {
                 autoComplete="off"
                 placeholder="Email..."
                 />
-              <label htmlFor="createpassword">Password</label>
               <Field 
                 aria-label="createpassword"
+                label="Password"
                 name="password" 
                 id="password" 
                 type="password" 
@@ -108,22 +106,23 @@ class UserCreationForm extends Component {
                 validate={[ 
                   validators.required, 
                   validators.nonEmpty, 
-                  validators.isTrimmed, 
+                  validators.isTrimmed,
                   passwordLength 
                 ]}
                 autoComplete="off"
                 placeholder="Password..."
               />
-              <label htmlFor="confirmpassword">Confirm Password</label>
               <Field 
                 aria-label="confirmpassword"
+                label="Confirm Password"
                 name="confirmpassword" 
                 id="confirmpassword" 
                 type="password" 
                 component={renderField} 
                 validate={[ 
                   validators.required, 
-                  validators.nonEmpty, 
+                  validators.nonEmpty,
+                  validators.passwordsMatch,
                   validPassword
                  ]}
                 autoComplete="off"
@@ -134,8 +133,8 @@ class UserCreationForm extends Component {
                 name="submit-create-account" 
                 type="submit"
               >CREATE ACCOUNT</button>
-              {error}
             </form>
+            {/* {error} */}
             <p>
               <Link to="/">&#60; Go back</Link>
             </p>

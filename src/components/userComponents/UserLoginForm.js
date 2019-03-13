@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { reduxForm, Field, focus } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import { Link } from 'react-router-dom';
 
 // Validators
@@ -16,7 +16,7 @@ import '../css/user-component-styles/user-login.css'
 import './forms.css';
 
 class UserLoginForm extends Component {
-  onSubmit(values) {
+  handleLoginSubmit(values) {
     this.props.dispatch(login(values.username, values.password))
   }
 
@@ -34,7 +34,7 @@ class UserLoginForm extends Component {
       <div className="user-login-form">
         <h2>Login</h2>
         <form onSubmit={this.props.handleSubmit(values =>
-          this.onSubmit(values)
+          this.handleLoginSubmit(values)
         )}>
           <label htmlFor="username">Username</label>
           <Field 

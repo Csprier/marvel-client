@@ -29,6 +29,7 @@ export const createUser = (username, email, password) => dispatch => {
         })
       );
     }
+    console.log(error);
   });
 };
 
