@@ -123,19 +123,18 @@ export const login = (username, password) => dispatch => {
 			storeAuthInfo(authToken, dispatch)
 		})
 		.catch(error => {
-			console.log('login.catch(error):', error);
-			const { code } = error;
-			const message = (code === 401) 
+			// console.log('login.catch(error):', error);
+			const { status } = error;
+			const message = (status === 401) 
 				? 'Incorrect username or password'
-				: 'Unable to login, please try again';
-			dispatch(authError(error));
-			return Promise.reject(
-				new SubmissionError({
-					_error: message
-				})
-			)
-			
-
+				: 'Unauthorized login';
+			console.log('Message:', message);
+			// dispatch(authError(message));
+			// return Promise.reject(
+			// 	new SubmissionError({
+			// 		_error: message
+			// 	})
+			// )
 		}) // END CATCH
 	);
 };
