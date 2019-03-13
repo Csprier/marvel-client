@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 // import { required, nonEmpty, isTrimmed, passwordsMatch, length, validEmail } from './form-validators.js';
 // import { passwordsMatch, length } from './form-validators';
 import { validators } from './form-validators';
+import renderField from '../Field/renderField';
 
 // ACTIONS
 import { createUser } from '../../actions/userActions';
@@ -73,7 +74,7 @@ class UserCreationForm extends Component {
                 name="username" 
                 id="username" 
                 type="text" 
-                component="input"
+                component={renderField}
                 validate={[ 
                   validators.required, 
                   validators.nonEmpty, 
@@ -88,7 +89,7 @@ class UserCreationForm extends Component {
                 name="email" 
                 id="email" 
                 type="text" 
-                component="input"
+                component={renderField}
                 validate={[ 
                   validators.required, 
                   validators.nonEmpty, 
@@ -103,7 +104,7 @@ class UserCreationForm extends Component {
                 name="password" 
                 id="password" 
                 type="password" 
-                component="input" 
+                component={renderField} 
                 validate={[ 
                   validators.required, 
                   validators.nonEmpty, 
@@ -119,7 +120,7 @@ class UserCreationForm extends Component {
                 name="confirmpassword" 
                 id="confirmpassword" 
                 type="password" 
-                component="input" 
+                component={renderField} 
                 validate={[ 
                   validators.required, 
                   validators.nonEmpty, 

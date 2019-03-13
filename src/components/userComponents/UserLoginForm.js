@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 // Validators
 // import { required, nonEmpty, isTrimmed } from './form-validators.js';
 import { validators } from './form-validators';
+import renderField from '../Field/renderField';
+
 // ACTIONS
 import { login } from '../../actions/authActions.js';
 
@@ -40,7 +42,7 @@ class UserLoginForm extends Component {
             name="username"
             id="loginusername" 
             type="text" 
-            component="input"
+            component={renderField}
             validate={[ validators.required, validators.nonEmpty, validators.isTrimmed ]}
             placeholder="Username..."
             />
@@ -50,7 +52,7 @@ class UserLoginForm extends Component {
             name="password" 
             id="loginpassword" 
             type="password" 
-            component="input"
+            component={renderField}
             validate={[ validators.required, validators.nonEmpty ]}
             placeholder="Password..."
           />
