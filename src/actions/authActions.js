@@ -64,7 +64,6 @@ export const refreshAuthToken = () => (dispatch, getState) => {
 		// We couldn't get a refresh token because our current credentials
 		// are invalid or expired, so clear them and sign us out
 		console.log('RefreshAuthToken ERROR: ', err);
-		// dispatch(authError(err.error.message));
 		dispatch(clearAuth());
 		clearAuthToken(authToken);
 	});
@@ -103,7 +102,6 @@ export const LOGIN_ERROR = 'LOGIN_ERROR',
 
 // Asynch login call
 export const login = (username, password) => dispatch => {
-	// dispatch(requestLogin());
 	dispatch(authRequest());
 	return (
 		fetch(`${API_BASE_URL}/auth/login`, {
@@ -123,18 +121,11 @@ export const login = (username, password) => dispatch => {
 			storeAuthInfo(authToken, dispatch)
 		})
 		.catch(error => {
-			// console.log('login.catch(error):', error);
 			const { status } = error;
 			const message = (status === 401) 
-				? 'Incorrect username or password'
-				: 'Unauthorized login';
-			console.log('Message:', message);
-			// dispatch(authError(message));
-			// return Promise.reject(
-			// 	new SubmissionError({
-			// 		_error: message
-			// 	})
-			// )
+				? 'Unauthorized login'
+				: 'Incorrect username or password';
+			dispatch(loginError(message));
 		}) // END CATCH
 	);
 };
