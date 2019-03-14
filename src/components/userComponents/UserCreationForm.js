@@ -30,31 +30,10 @@ class UserCreationForm extends Component {
 
   render() {
     let error;
-    if (this.props.usernameerror) {
+    if (this.props.loginFail) {
       error = (
         <div className="form-field-error" aria-live="polite">
-          {this.props.usernameerror}
-        </div>
-      );
-    }
-    else if (this.props.emailerror) {
-      error = (
-        <div className="form-field-error" aria-live="polite">
-          {this.props.emailerror}
-        </div>
-      );
-    } 
-    else if (this.props.passworderror) {
-      error = (
-        <div className="form-field-error" aria-live="polite">
-          {this.props.passworderror}
-        </div>
-      );
-    }
-    else if (this.props.confirmpassworderror) {
-      error = (
-        <div className="form-field-error" aria-live="polite">
-          {this.props.confirmpassworderror}
+          {this.props.loginFail}
         </div>
       );
     }
@@ -91,7 +70,8 @@ class UserCreationForm extends Component {
                 validate={[ 
                   validators.required, 
                   validators.nonEmpty, 
-                  validators.validEmail 
+                  validators.validEmail, 
+                  validators.isTrimmed,
                 ]}
                 autoComplete="off"
                 placeholder="Email..."
@@ -122,7 +102,7 @@ class UserCreationForm extends Component {
                 validate={[ 
                   validators.required, 
                   validators.nonEmpty,
-                  validators.passwordsMatch,
+                  validators.isTrimmed,
                   validPassword
                  ]}
                 autoComplete="off"
@@ -133,8 +113,8 @@ class UserCreationForm extends Component {
                 name="submit-create-account" 
                 type="submit"
               >CREATE ACCOUNT</button>
+              {error}
             </form>
-            {error}
             <p><Link to="/" className="go-back">&#60;Go back</Link></p>
         </div>
       </div>
@@ -144,10 +124,11 @@ class UserCreationForm extends Component {
 
 const mapStateToProps = state => ({
   loggedIn: state.auth.user !== null,
-  usernameerror: (state.auth.error !== null && state.auth.error.username !== null) ? state.auth.error.username : undefined, 
-  emailerror: (state.auth.error !== null && state.auth.error.email !== null) ? state.auth.error.email : undefined,
-  passworderror: (state.auth.error !== null && state.auth.error.password !== null) ? state.auth.error.password : undefined,
-  confirmpassworderror: (state.auth.error !== null && state.auth.error.confirmpassword !== null) ? state.auth.error.confirmpassword : undefined
+  loginFail: (state.auth.error !== null) ? state.auth.error : undefined, 
+  // usernameerror: (state.auth.error !== null && state.auth.error.username !== null) ? state.auth.error.username : undefined, 
+  // emailerror: (state.auth.error !== null && state.auth.error.email !== null) ? state.auth.error.email : undefined,
+  // passworderror: (state.auth.error !== null && state.auth.error.password !== null) ? state.auth.error.password : undefined,
+  // confirmpassworderror: (state.auth.error !== null && state.auth.error.confirmpassword !== null) ? state.auth.error.confirmpassword : undefined
 });
 
 UserCreationForm = reduxForm({
@@ -156,6 +137,7 @@ UserCreationForm = reduxForm({
   forceUnregisterOnUnmount: true, // unregister fields on unmount
   onSubmitFail: (submitError, dispatch) => {
     dispatch(loginError(submitError))
+    console.log('onSubmitFail submitError:', submitError);
   }
 })(UserCreationForm);
 
