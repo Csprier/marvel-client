@@ -29,35 +29,35 @@ class UserCreationForm extends Component {
   }
 
   render() {
-    // let error;
-    // if (this.props.usernameerror) {
-    //   error = (
-    //     <div className="form-field-error" aria-live="polite">
-    //       {this.props.usernameerror}
-    //     </div>
-    //   );
-    // }
-    // else if (this.props.emailerror) {
-    //   error = (
-    //     <div className="form-field-error" aria-live="polite">
-    //       {this.props.emailerror}
-    //     </div>
-    //   );
-    // } 
-    // else if (this.props.passworderror) {
-    //   error = (
-    //     <div className="form-field-error" aria-live="polite">
-    //       {this.props.passworderror}
-    //     </div>
-    //   );
-    // }
-    // else if (this.props.confirmpassworderror) {
-    //   error = (
-    //     <div className="form-field-error" aria-live="polite">
-    //       {this.props.confirmpassworderror}
-    //     </div>
-    //   );
-    // }
+    let error;
+    if (this.props.usernameerror) {
+      error = (
+        <div className="form-field-error" aria-live="polite">
+          {this.props.usernameerror}
+        </div>
+      );
+    }
+    else if (this.props.emailerror) {
+      error = (
+        <div className="form-field-error" aria-live="polite">
+          {this.props.emailerror}
+        </div>
+      );
+    } 
+    else if (this.props.passworderror) {
+      error = (
+        <div className="form-field-error" aria-live="polite">
+          {this.props.passworderror}
+        </div>
+      );
+    }
+    else if (this.props.confirmpassworderror) {
+      error = (
+        <div className="form-field-error" aria-live="polite">
+          {this.props.confirmpassworderror}
+        </div>
+      );
+    }
 
     return (
       <div className="user-creation-form-container">
@@ -134,10 +134,8 @@ class UserCreationForm extends Component {
                 type="submit"
               >CREATE ACCOUNT</button>
             </form>
-            {/* {error} */}
-            <p>
-              <Link to="/">&#60; Go back</Link>
-            </p>
+            {error}
+            <p><Link to="/" className="go-back">&#60;Go back</Link></p>
         </div>
       </div>
     );
