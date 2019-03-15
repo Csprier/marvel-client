@@ -4,9 +4,8 @@ import { reduxForm, Field } from 'redux-form';
 import { Link } from 'react-router-dom';
 
 // Validators
-// import { required, nonEmpty, isTrimmed, passwordsMatch, length, validEmail } from './form-validators.js';
-// import { passwordsMatch, length } from './form-validators';
 import { validators } from './form-validators';
+import renderField from '../Field/renderField';
 
 // ACTIONS
 import { createUser } from '../../actions/userActions';
@@ -24,38 +23,17 @@ class UserCreationForm extends Component {
     this.props.history.push('/dashboard')
   }
   
-  onSubmit(values) {
+  handleRegisterSubmit(values) {
     this.props.dispatch(createUser(values.username, values.email, values.password))
       .then(() => this.moveToDashboard());
   }
 
   render() {
     let error;
-    if (this.props.usernameerror) {
+    if (this.props.loginFail) {
       error = (
         <div className="form-field-error" aria-live="polite">
-          {this.props.usernameerror}
-        </div>
-      );
-    }
-    else if (this.props.emailerror) {
-      error = (
-        <div className="form-field-error" aria-live="polite">
-          {this.props.emailerror}
-        </div>
-      );
-    } 
-    else if (this.props.passworderror) {
-      error = (
-        <div className="form-field-error" aria-live="polite">
-          {this.props.passworderror}
-        </div>
-      );
-    }
-    else if (this.props.confirmpassworderror) {
-      error = (
-        <div className="form-field-error" aria-live="polite">
-          {this.props.confirmpassworderror}
+          {this.props.loginFail}
         </div>
       );
     }
@@ -65,15 +43,15 @@ class UserCreationForm extends Component {
         <div className="user-creation-form">
             <h2>Create an Account</h2>
             <form onSubmit={this.props.handleSubmit(values =>
-              this.onSubmit(values)
+              this.handleRegisterSubmit(values)
             )}>
-              <label htmlFor="createusername">Username</label>
               <Field 
                 aria-label="createusername"
+                label="Username"
                 name="username" 
                 id="username" 
                 type="text" 
-                component="input"
+                component={renderField}
                 validate={[ 
                   validators.required, 
                   validators.nonEmpty, 
@@ -82,47 +60,49 @@ class UserCreationForm extends Component {
                 autoComplete="off"
                 placeholder="Username..."
                 />
-              <label htmlFor="createemail">Email</label>
               <Field 
                 aria-label="createemail"
+                label="Email"
                 name="email" 
                 id="email" 
                 type="text" 
-                component="input"
+                component={renderField}
                 validate={[ 
                   validators.required, 
                   validators.nonEmpty, 
-                  validators.validEmail 
+                  validators.validEmail, 
+                  validators.isTrimmed,
                 ]}
                 autoComplete="off"
                 placeholder="Email..."
                 />
-              <label htmlFor="createpassword">Password</label>
               <Field 
                 aria-label="createpassword"
+                label="Password"
                 name="password" 
                 id="password" 
                 type="password" 
-                component="input" 
+                component={renderField} 
                 validate={[ 
                   validators.required, 
                   validators.nonEmpty, 
-                  validators.isTrimmed, 
+                  validators.isTrimmed,
                   passwordLength 
                 ]}
                 autoComplete="off"
                 placeholder="Password..."
               />
-              <label htmlFor="confirmpassword">Confirm Password</label>
               <Field 
                 aria-label="confirmpassword"
+                label="Confirm Password"
                 name="confirmpassword" 
                 id="confirmpassword" 
                 type="password" 
-                component="input" 
+                component={renderField} 
                 validate={[ 
                   validators.required, 
-                  validators.nonEmpty, 
+                  validators.nonEmpty,
+                  validators.isTrimmed,
                   validPassword
                  ]}
                 autoComplete="off"
@@ -135,9 +115,7 @@ class UserCreationForm extends Component {
               >CREATE ACCOUNT</button>
               {error}
             </form>
-            <p>
-              <Link to="/">&#60; Go back</Link>
-            </p>
+            <p><Link to="/" className="go-back">Go back</Link></p>
         </div>
       </div>
     );
@@ -146,18 +124,16 @@ class UserCreationForm extends Component {
 
 const mapStateToProps = state => ({
   loggedIn: state.auth.user !== null,
-  usernameerror: (state.auth.error !== null && state.auth.error.username !== null) ? state.auth.error.username : undefined, 
-  emailerror: (state.auth.error !== null && state.auth.error.email !== null) ? state.auth.error.email : undefined,
-  passworderror: (state.auth.error !== null && state.auth.error.password !== null) ? state.auth.error.password : undefined,
-  confirmpassworderror: (state.auth.error !== null && state.auth.error.confirmpassword !== null) ? state.auth.error.confirmpassword : undefined
+  loginFail: (state.auth.error !== null) ? state.auth.error : undefined
 });
 
 UserCreationForm = reduxForm({
   form: 'userCreationForm', // save form name
-  destroyOnUnmount: false, // preserve form data
+  // destroyOnUnmount: false, // preserve form data
   forceUnregisterOnUnmount: true, // unregister fields on unmount
   onSubmitFail: (submitError, dispatch) => {
     dispatch(loginError(submitError))
+    console.log('onSubmitFail submitError:', submitError);
   }
 })(UserCreationForm);
 

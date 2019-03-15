@@ -1,5 +1,5 @@
 import jwtDecode from 'jwt-decode';
-import { SubmissionError } from 'redux-form';
+// import { SubmissionError } from 'redux-form';
 
 import { API_BASE_URL } from '../config';
 import { normalizeResponseErrors } from './utils';
@@ -64,7 +64,6 @@ export const refreshAuthToken = () => (dispatch, getState) => {
 		// We couldn't get a refresh token because our current credentials
 		// are invalid or expired, so clear them and sign us out
 		console.log('RefreshAuthToken ERROR: ', err);
-		// dispatch(authError(err.error.message));
 		dispatch(clearAuth());
 		clearAuthToken(authToken);
 	});
@@ -103,7 +102,6 @@ export const LOGIN_ERROR = 'LOGIN_ERROR',
 
 // Asynch login call
 export const login = (username, password) => dispatch => {
-	// dispatch(requestLogin());
 	dispatch(authRequest());
 	return (
 		fetch(`${API_BASE_URL}/auth/login`, {
@@ -119,23 +117,14 @@ export const login = (username, password) => dispatch => {
 		.then(res => normalizeResponseErrors(res))
 		.then(res => res.json())
 		.then(({ authToken }) => {
-			// console.log('login AuthToken, storingAuthInfo now!');
 			storeAuthInfo(authToken, dispatch)
 		})
 		.catch(error => {
-			console.log('login.catch(error):', error);
-			const { code } = error;
-			const message = (code === 401) 
-				? 'Incorrect username or password'
-				: 'Unable to login, please try again';
-			dispatch(authError(error));
-			return Promise.reject(
-				new SubmissionError({
-					_error: message
-				})
-			)
-			
-
+			const { status } = error;
+			const message = (status === 401) 
+				? 'Unauthorized login'
+				: 'Incorrect username or password';
+			dispatch(loginError(message));
 		}) // END CATCH
 	);
 };

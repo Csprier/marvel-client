@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { reduxForm, Field, focus } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import { Link } from 'react-router-dom';
 
 // Validators
-// import { required, nonEmpty, isTrimmed } from './form-validators.js';
 import { validators } from './form-validators';
+import renderField from '../Field/renderField';
+
 // ACTIONS
 import { login } from '../../actions/authActions.js';
 
@@ -14,7 +15,7 @@ import '../css/user-component-styles/user-login.css'
 import './forms.css';
 
 class UserLoginForm extends Component {
-  onSubmit(values) {
+  handleLoginSubmit(values) {
     this.props.dispatch(login(values.username, values.password))
   }
 
@@ -32,7 +33,7 @@ class UserLoginForm extends Component {
       <div className="user-login-form">
         <h2>Login</h2>
         <form onSubmit={this.props.handleSubmit(values =>
-          this.onSubmit(values)
+          this.handleLoginSubmit(values)
         )}>
           <label htmlFor="username">Username</label>
           <Field 
@@ -40,7 +41,7 @@ class UserLoginForm extends Component {
             name="username"
             id="loginusername" 
             type="text" 
-            component="input"
+            component={renderField}
             validate={[ validators.required, validators.nonEmpty, validators.isTrimmed ]}
             placeholder="Username..."
             />
@@ -50,7 +51,7 @@ class UserLoginForm extends Component {
             name="password" 
             id="loginpassword" 
             type="password" 
-            component="input"
+            component={renderField}
             validate={[ validators.required, validators.nonEmpty ]}
             placeholder="Password..."
           />
@@ -73,7 +74,7 @@ const mapStateToProps = state => ({
 
 UserLoginForm = reduxForm({
   form: 'UserLoginForm',
-  onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
+  // onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
 })(UserLoginForm);
 
 export default connect(mapStateToProps)(UserLoginForm);
