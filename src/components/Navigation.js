@@ -16,23 +16,18 @@ class Navigation extends Component {
   render() {
     return(
       <div className="navigation-container">
-        <h1>Marvel API</h1>
+        <div className="nav-header-container">
+          <h1>Marvel API</h1>
+        </div>
         <div className="links-container">
-
-          <ul>
+          <ul className="links">
             <li>
-              <div className="nav-button">
-                <Link to="/profile">Profile</Link>  
-              </div>
+              <Link to="/profile">Profile</Link>  
             </li>
-          
             <li>
-              <div className="nav-button" onClick={this.onClickLogout}>
-                <Link to="/">LogOut</Link>
-              </div>    
+              <Link to="/" onClick={this.onClickLogout}>LogOut</Link>
             </li>
           </ul>
-
         </div>
       </div>
     );

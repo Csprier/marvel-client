@@ -53,9 +53,9 @@
   padding: 5px;
   text-align: center;
   font-family: arial;
-  background-color: #ED1D24;
+  background-color: green;
   color: white;
-  /* border: 1px solid black; */
+  border: 1px solid green;
 }
 
 .sign-up-link {
@@ -63,4 +63,8 @@
   flex-direction: column;
   text-align: center;
   font-family: arial;
+}
+.sign-up-link a {
+  text-decoration: none;
+  color: blue;
 }

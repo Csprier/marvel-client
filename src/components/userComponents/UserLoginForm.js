@@ -4,7 +4,6 @@ import { reduxForm, Field } from 'redux-form';
 import { Link } from 'react-router-dom';
 
 // Validators
-// import { required, nonEmpty, isTrimmed } from './form-validators.js';
 import { validators } from './form-validators';
 import renderField from '../Field/renderField';
 

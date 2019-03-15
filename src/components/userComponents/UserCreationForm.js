@@ -115,7 +115,7 @@ class UserCreationForm extends Component {
               >CREATE ACCOUNT</button>
               {error}
             </form>
-            <p><Link to="/" className="go-back">&#60;Go back</Link></p>
+            <p><Link to="/" className="go-back">Go back</Link></p>
         </div>
       </div>
     );
@@ -124,16 +124,12 @@ class UserCreationForm extends Component {
 
 const mapStateToProps = state => ({
   loggedIn: state.auth.user !== null,
-  loginFail: (state.auth.error !== null) ? state.auth.error : undefined, 
-  // usernameerror: (state.auth.error !== null && state.auth.error.username !== null) ? state.auth.error.username : undefined, 
-  // emailerror: (state.auth.error !== null && state.auth.error.email !== null) ? state.auth.error.email : undefined,
-  // passworderror: (state.auth.error !== null && state.auth.error.password !== null) ? state.auth.error.password : undefined,
-  // confirmpassworderror: (state.auth.error !== null && state.auth.error.confirmpassword !== null) ? state.auth.error.confirmpassword : undefined
+  loginFail: (state.auth.error !== null) ? state.auth.error : undefined
 });
 
 UserCreationForm = reduxForm({
   form: 'userCreationForm', // save form name
-  destroyOnUnmount: false, // preserve form data
+  // destroyOnUnmount: false, // preserve form data
   forceUnregisterOnUnmount: true, // unregister fields on unmount
   onSubmitFail: (submitError, dispatch) => {
     dispatch(loginError(submitError))

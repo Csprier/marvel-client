@@ -16,9 +16,17 @@
   background-color: #ED1D24;
 }
 
-.navigation-container h1 {
-  margin: 0px 0px 0px 5px;
-  padding: 5px;
+.nav-header-container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 2px 0px 0px 5px;
+  padding: 0px;
+}
+.nav-header-container h1 {
+  display: flex;
+  margin: 0px;
+  padding: 0px;
   font-family: 'badaboom_bb';
   letter-spacing: 4px;
   color: white;
@@ -29,29 +37,26 @@
   flex-direction: row;
   margin: 0px;
   padding: 0px;
-}
-.links-container ul {
-  margin: 0px;
-  padding: 0px;
-  display: flex;
-  justify-content: space-around;
-}
-.links-container li {
-  margin: 0px 5px 0px 0px;
-  padding: 10px;
-  text-align: center;
+  /* border: 1px solid white; */
 }
 
-/* Links container div-buttons */
-.nav-button {
+/* Link from react-router-dom is an anchor tag*/
+.links {
+  display: flex;
   margin: 0px;
   padding: 0px;
 }
-/* Link from react-router-dom is an anchor tag*/
-.nav-button a { 
+.links li {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin: 0px 10px;
+  padding: 0px;
+}
+.links a { 
   margin: 0px;
   padding: 0px;
-  font-size: 13px;
   color: white;
   font-family: arial;
   font-weight: 100;
