@@ -17,7 +17,8 @@ class Navigation extends Component {
     return(
       <div className="navigation-container">
         <div className="nav-header-container">
-          <h1>Marvel API</h1>
+          {/* <h1>Marvel API</h1> */}
+          <h1>M</h1>
         </div>
         <div className="links-container">
           <ul className="links">
